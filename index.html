@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> </meta>
 		<title>Isaac Craig CS</title>
-	</head>
 		<style>
 			h1 {
 				font-size: 30px;
@@ -14,7 +14,7 @@
 				font-size: 20px;
 				font-family: monospace;
 				color: #323642;
-				margin-bottom: 0;
+				margin-bottom: .25em;
 				text-align: center;
 			}
 			p {
@@ -26,11 +26,15 @@
 			* {
 				box-sizing: border-box;
 			}
-			.box {
+			.container {
+				width: 32.5em;
+				padding: .75em;
+				padding-top: .3em;
+				margin-top: 2em;
 				float: left;
-				width: 31.75%;
-				padding: 10px;
-				margin-top: 50px;
+			<!--	display: flex;
+				flex-direction: column;
+				flex-wrap: wrap; -->
 			}
 			.clearfix::after {
 				content: "";
@@ -46,19 +50,19 @@
 		</div>
 		
 		<div class="clearfix">
-			<div class="box" style="background-color:#d3d3d3; margin-left:20px; margin-right:20px;">
+			<div class="container" style="background-color:#d3d3d3; margin-left:1.5em; margin-right:.75em; font-family: monospace;">
 				<h2>About me</h2>
-				<p>My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis.</p>
+				My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis.
 			</div>
 			
-			<div class="box" style="background-color:#e3e3e3; margin-left:20px;; margin-right:20px;">
+			<div class="container" style="background-color:#e3e3e3; margin-left:.75em;; margin-right:.75em; font-family: monospace;">
 				<h2>Personal Projects</h2>
-				<p>Here are some of my personal projects:</p>
+				Here are some of my personal projects:
 			</div>
 			
-			<div class="box" style="background-color:#a3a3a3; margin-left:20px; margin-right:20px;">
+			<div class="container" style="background-color:#a3a3a3; margin-left:.75em; margin-right:1.5em; font-family: monospace;">
 				<h2>Class projects</h2>
-				<p>Here are some of my class projcts and notes:</p>
+				Here are some of my class projcts and notes:
 			</div>
 		</div>
 		
