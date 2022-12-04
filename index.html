@@ -4,8 +4,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"> </meta>
 		<title>Isaac Craig CS</title>
 		<style>
+			body {
+				--navbar-height: 50px;
+				padding-top: var(--navbar-height);
+			}
+			body, html {
+				width: 100%;
+				margin: 0;
+				padding: 0;
+			}
+			
 			h1 {
-				font-size: 30px;
+				font-size: 40px;
 				font-family: monospace; 
 				color=white;
 				text-shadow: 2px 2px black;
@@ -23,18 +33,35 @@
 				color: #323642;
 				line-height: 0px;
 			}
+			
+			.navbar {
+				background:#3D4158;
+				position: fixed;
+				width: 100%;
+				height: var(--navbar-height);
+				top: 0;
+				left: 0;
+				transition: transform 0.3s;
+			}
+			.navbar--hidden {
+				transform: translateY(calc(-1 * var(--navbar-height)));
+			}
+			
+			img {
+				width: 100%;
+				display:block;
+				margin: 0;
+			}
+			
 			* {
 				box-sizing: border-box;
 			}
 			.container {
-				width: 32.5em;
+				width: 32%;
 				padding: .75em;
 				padding-top: .3em;
-				margin-top: 2em;
+				margin-top: 3em;
 				float: left;
-			<!--	display: flex;
-				flex-direction: column;
-				flex-wrap: wrap; -->
 			}
 			.clearfix::after {
 				content: "";
@@ -45,14 +72,40 @@
 	</head>
 	
 	<body>
-		<div style="background-color:#d3d3d3;color:white;padding:10px;margin-top:-10px;margin-left:-10px;margin-right:-10px;text-align: center">
-			<h1>Welcome to my (Isaac Craig's) Computer Science Portfolio!</h1>
+		<div class="navbar" style="font-family: monospace; font-size: 40px; font-weight: bold; text-align: center; color: white; text-shadow: 2px 2px black;">
+			Welcome to my (Isaac Craig's) Computer Science Portfolio!
+		</div>
+
+		<script>
+			{
+			const navbar = document.querySelector(".navbar");
+			let lastScrollY = window.scrollY;
+			
+			window.addEventListener("scroll", () => {
+				if (lastScrollY < window.scrollY) {
+					navbar.classList.add("navbar--hidden");
+				} else {
+					navbar.classList.remove("navbar--hidden");
+				}
+				
+				lastScrollY = window.scrollY;
+			});
+			}
+		</script>
+		
+		<img src="img/Sunrise_Hike.jpg" alt="Sunrise Hike">
+		
+		<div style="width: 100%; height: 6em; margin: 0px; font-family: monospace; text-align: center; padding-top: 2em; color: white; font-size: 20px; background-color: #817A8C";>
+			My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis.
 		</div>
 		
 		<div class="clearfix">
 			<div class="container" style="background-color:#d3d3d3; margin-left:1.5em; margin-right:.75em; font-family: monospace;">
 				<h2>About me</h2>
-				My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis.
+				My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. 
+				My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. 
+				y name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig,y name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig,y name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig,y name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig,y name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig,y name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig,y name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig,y name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig,y name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig,y name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig,y name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig,y name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig,y name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig,y name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig,y name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig,
+				My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis.My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis.My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis.My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis.My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis.My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis.My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis.My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis.My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis.
 			</div>
 			
 			<div class="container" style="background-color:#e3e3e3; margin-left:.75em;; margin-right:.75em; font-family: monospace;">
