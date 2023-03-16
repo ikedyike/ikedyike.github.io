@@ -21,17 +21,26 @@
 				text-shadow: 2px 2px black;
 				}
 			h2 {
-				font-size: 20px;
+				font-size: 30px;
+				font-family: monospace;
+				color: white;
+				margin-bottom: .25em;
+				text-align: center;
+				text-shadow: 2px 2px black;
+			}
+			h3 {
+				font-size: 25px;
 				font-family: monospace;
 				color: #323642;
 				margin-bottom: .25em;
 				text-align: center;
 			}
 			p {
-				font-size: 14px;
+				font-size: 20px;
 				font-family: monospace;
 				color: #323642;
-				line-height: 0px;
+				text-align: center;
+				white-space: normal;
 			}
 			
 			.navbar {
@@ -48,19 +57,35 @@
 			}
 			
 			img {
-				width: 100%;
-				display:block;
+				max-width: 100%;
+				display:flex;
 				margin: 0;
 			}
-			
+			.container.image{
+				width: 50%;
+				height: 50%;
+				display: flex;
+				flex-basis: 50%;
+			}
+			.container.centerimage{
+				width: 50%;
+				height: 50%;
+				display: flex;
+			}
+			.container.text{
+				width: 50%;
+				display: flex;
+				float: right;
+				padding-right: 10%;
+				margin-top: 0%;
+			}
 			* {
 				box-sizing: border-box;
 			}
 			.container {
-				width: 33.3333333333333%;
+				width: 100%;
 				padding: .75em;
 				padding-top: .3em;
-				float: left;
 			}
 			.clearfix::after {
 				content: "";
@@ -94,88 +119,70 @@
 		
 		<img src="img/Sunrise_Hike.jpg" alt="Sunrise Hike">
 		
-		<div style="width: 100%; height: 6em; margin: 0px; font-family: monospace; text-align: center; padding-top: 2em; color: white; font-size: 20px; background-color: #817A8C; text-shadow: 2px 2px black;";>
+		<div style="width: 100%; height: 6em; margin: 0px; font-family: monospace; text-align: center; padding-top: 2em; color: white; font-size: 25px; background-color: #817A8C; text-shadow: 2px 2px black;";>
 			My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis.
 		</div>
 		
 		<div class="clearfix">
 			<div class="container" style="background-color:#d3d3d3; font-family: monospace;">
 				<h2 style="padding-bottom: .25vh">ABOUT ME:</h2>
+				<p>
 				My name is Isaac Craig, I am a 3rd year Computer Science major at UC Davis. <br>
+				I transferred after graduating from De Anza Community College in 2022, which is where I obtained by Associated in Arts for "Computer Science for Transfer" and a "Certificate of Achievement-Adv 45-89 units." <br>
+				I have a passion for programming and always strive to learn more. This website is built from the ground up using HTML and CSS, hosted through Github Pages.
+				Below, you will find my personal projects, followed by some projects I built for school. <br>
+				Linkedin: <a href="https://www.linkedin.com/in/isaac-craig-a98992228/">Linkedin.</a>
+				</p>
 				
-				<!-- Lorem Ipsum Placeholder Text -->
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam interdum ultrices. Ut eu pellentesque massa. Mauris dapibus sit amet ipsum ac lobortis. Nulla nulla lorem, euismod vel lacinia nec, auctor id massa. Nunc et facilisis odio, id dignissim ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque ante odio, cursus ac leo id, imperdiet hendrerit nulla. Quisque imperdiet facilisis lectus, ut vehicula urna molestie ut. Ut sodales metus ut purus fringilla, ut laoreet nulla faucibus. Etiam vel lacus ac nibh suscipit malesuada. Mauris sed pretium justo.
-				
-				Praesent efficitur, lectus luctus mattis iaculis, magna ex hendrerit ex, eu auctor quam ex ac orci. Phasellus in molestie velit, vel blandit sapien. Nulla facilisi. Sed venenatis tellus id molestie sodales. Morbi egestas hendrerit nunc, ac sollicitudin magna sagittis eu. Curabitur quis mauris sit amet velit rhoncus molestie. Morbi quam dolor, ornare at risus at, pulvinar dignissim metus. Proin ut ipsum at lectus vehicula malesuada. Donec purus velit, tempor non consequat in, tincidunt in erat. Mauris id magna ullamcorper, sagittis felis a, hendrerit magna. Maecenas eu felis vel sapien faucibus laoreet sed quis lacus.
-
-				In nec massa facilisis, pulvinar sem ac, tristique nibh. Cras fringilla varius nisl a luctus. Nulla facilisi. Nam egestas efficitur finibus. Vivamus efficitur, tellus quis ornare iaculis, dolor orci aliquet odio, a gravida libero dui sed arcu. Etiam ipsum turpis, aliquam at nibh a, pharetra euismod erat. Duis eu odio vitae nulla sagittis egestas ut nec odio. Sed elementum metus ac convallis dapibus.
-
-				Donec ac iaculis nisl. Suspendisse metus urna, sagittis ac vestibulum vel, porta et felis. Nulla arcu magna, semper sed dolor iaculis, bibendum gravida arcu. Integer scelerisque purus nec pretium condimentum. Vestibulum vulputate, velit ac semper ultricies, nibh ipsum viverra lorem, ut tempor dolor sem eu velit. Phasellus ac euismod metus. Pellentesque imperdiet posuere feugiat. Cras vestibulum semper scelerisque. In sem massa, fermentum nec sodales et, elementum nec elit. Phasellus hendrerit eleifend ipsum, quis interdum arcu vehicula ac.
-
-				Cras mauris urna, gravida vitae orci a, ornare laoreet leo. Curabitur vehicula nulla a orci posuere convallis. Pellentesque elit sem, pellentesque sit amet lacinia quis, maximus non tellus. Ut quam velit, consectetur quis lectus ac, pellentesque hendrerit orci. Praesent efficitur, sapien in ornare aliquet, mauris diam rhoncus risus, sit amet posuere turpis diam scelerisque lacus. Donec porta neque sed aliquam pellentesque. Fusce maximus neque magna, eget rhoncus urna sodales eu.
-			
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam interdum ultrices. Ut eu pellentesque massa. Mauris dapibus sit amet ipsum ac lobortis. Nulla nulla lorem, euismod vel lacinia nec, auctor id massa. Nunc et facilisis odio, id dignissim ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque ante odio, cursus ac leo id, imperdiet hendrerit nulla. Quisque imperdiet facilisis lectus, ut vehicula urna molestie ut. Ut sodales metus ut purus fringilla, ut laoreet nulla faucibus. Etiam vel lacus ac nibh suscipit malesuada. Mauris sed pretium justo.
-
-				Praesent efficitur, lectus luctus mattis iaculis, magna ex hendrerit ex, eu auctor quam ex ac orci. Phasellus in molestie velit, vel blandit sapien. Nulla facilisi. Sed venenatis tellus id molestie sodales. Morbi egestas hendrerit nunc, ac sollicitudin magna sagittis eu. Curabitur quis mauris sit amet velit rhoncus molestie. Morbi quam dolor, ornare at risus at, pulvinar dignissim metus. Proin ut ipsum at lectus vehicula malesuada. Donec purus velit, tempor non consequat in, tincidunt in erat. Mauris id magna ullamcorper, sagittis felis a, hendrerit magna. Maecenas eu felis vel sapien faucibus laoreet sed quis lacus.
-
-				In nec massa facilisis, pulvinar sem ac, tristique nibh. Cras fringilla varius nisl a luctus. Nulla facilisi. Nam egestas efficitur finibus. Vivamus efficitur, tellus quis ornare iaculis, dolor orci aliquet odio, a gravida libero dui sed arcu. Etiam ipsum turpis, aliquam at nibh a, pharetra euismod erat. Duis eu odio vitae nulla sagittis egestas ut nec odio. Sed elementum metus ac convallis dapibus.
-
-				Donec ac iaculis nisl. Suspendisse metus urna, sagittis ac vestibulum vel, porta et felis. Nulla arcu magna, semper sed dolor iaculis, bibendum gravida arcu. Integer scelerisque purus nec pretium condimentum. Vestibulum vulputate, velit ac semper ultricies, nibh ipsum viverra lorem, ut tempor dolor sem eu velit. Phasellus ac euismod metus. Pellentesque imperdiet posuere feugiat. Cras vestibulum semper scelerisque. In sem massa, fermentum nec sodales et, elementum nec elit. Phasellus hendrerit eleifend ipsum, quis interdum arcu vehicula ac.
-
-				Cras mauris urna, gravida vitae orci a, ornare laoreet leo. Curabitur vehicula nulla a orci posuere convallis. Pellentesque elit sem, pellentesque sit amet lacinia quis, maximus non tellus. Ut quam velit, consectetur quis lectus ac, pellentesque hendrerit orci. Praesent efficitur, sapien in ornare aliquet, mauris diam rhoncus risus, sit amet posuere turpis diam scelerisque lacus. Donec porta neque sed aliquam pellentesque. Fusce maximus neque magna, eget rhoncus urna sodales eu. Vivamus elementum sit amet est at lacinia.
-			</div>
+				</div>
 			
 			<div class="container" style="background-color:#e3e3e3; font-family: monospace;">
-				<h2 style="padding-bottom: .25vh">PERSONAL PROJECTS</h2>
-				Here are some of my personal projects below this: <br>
 				
-				<!-- Lorem Ipsum Placeholder Text -->
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam interdum ultrices. Ut eu pellentesque massa. Mauris dapibus sit amet ipsum ac lobortis. Nulla nulla lorem, euismod vel lacinia nec, auctor id massa. Nunc et facilisis odio, id dignissim ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque ante odio, cursus ac leo id, imperdiet hendrerit nulla. Quisque imperdiet facilisis lectus, ut vehicula urna molestie ut. Ut sodales metus ut purus fringilla, ut laoreet nulla faucibus. Etiam vel lacus ac nibh suscipit malesuada. Mauris sed pretium justo.
-
-				Praesent efficitur, lectus luctus mattis iaculis, magna ex hendrerit ex, eu auctor quam ex ac orci. Phasellus in molestie velit, vel blandit sapien. Nulla facilisi. Sed venenatis tellus id molestie sodales. Morbi egestas hendrerit nunc, ac sollicitudin magna sagittis eu. Curabitur quis mauris sit amet velit rhoncus molestie. Morbi quam dolor, ornare at risus at, pulvinar dignissim metus. Proin ut ipsum at lectus vehicula malesuada. Donec purus velit, tempor non consequat in, tincidunt in erat. Mauris id magna ullamcorper, sagittis felis a, hendrerit magna. Maecenas eu felis vel sapien faucibus laoreet sed quis lacus.
-
-				In nec massa facilisis, pulvinar sem ac, tristique nibh. Cras fringilla varius nisl a luctus. Nulla facilisi. Nam egestas efficitur finibus. Vivamus efficitur, tellus quis ornare iaculis, dolor orci aliquet odio, a gravida libero dui sed arcu. Etiam ipsum turpis, aliquam at nibh a, pharetra euismod erat. Duis eu odio vitae nulla sagittis egestas ut nec odio. Sed elementum metus ac convallis dapibus.
-
-				Donec ac iaculis nisl. Suspendisse metus urna, sagittis ac vestibulum vel, porta et felis. Nulla arcu magna, semper sed dolor iaculis, bibendum gravida arcu. Integer scelerisque purus nec pretium condimentum. Vestibulum vulputate, velit ac semper ultricies, nibh ipsum viverra lorem, ut tempor dolor sem eu velit. Phasellus ac euismod metus. Pellentesque imperdiet posuere feugiat. Cras vestibulum semper scelerisque. In sem massa, fermentum nec sodales et, elementum nec elit. Phasellus hendrerit eleifend ipsum, quis interdum arcu vehicula ac.
-
-				Cras mauris urna, gravida vitae orci a, ornare laoreet leo. Curabitur vehicula nulla a orci posuere convallis. Pellentesque elit sem, pellentesque sit amet lacinia quis, maximus non tellus. Ut quam velit, consectetur quis lectus ac, pellentesque hendrerit orci. Praesent efficitur, sapien in ornare aliquet, mauris diam rhoncus risus, sit amet posuere turpis diam scelerisque lacus. Donec porta neque sed aliquam pellentesque. Fusce maximus neque magna, eget rhoncus urna sodales eu. Vivamus elementum sit amet est at lacinia.
+				<h2 style="padding-bottom: .25vh">PERSONAL PROJECTS</h2>
+				
+				<h3 style="padding-bottom: .25vh">DINO FALL:</h3>
+				
+				<!-- Explanation of Dino Fall -->
+					<div class="container text" style="margin-top:5%; margin-left:0%; padding-left:0%;">
+						<p style="text-align: left; margin-left:0%;">
+							Dino Fall is a short platformer game I have been working on developing in my free time from the ground up. 
+							It is a game where you play as a small dinosaur who is trying to find its way down a mountain. 
+							The goal of the game is to scale your way down the side of the cliff, but if you fall too far you have to restart!
+							When you fall too far, you have to restart your decent from the beginning, aka: it gets easier the more you play.
+						</p>
+					</div>
+				<div class="container image" style="margin-right:0%; margin-bottom:3%;" >
+					<img src="img/Dino Fall preview Screen.gif" alt="Main Menu">
+				</div>
+				
+				<div class="container centerimage" >
+					<img src="img/Falling too far.gif" alt="Dino Fall L" style="margin-right:5%">
+					<img src="img/Dino Fall W.gif" alt="Dino Fall W">
+				</div>
+				<!-- Explanation of Falling -->
+				<div class="container text">
+					<p>
+						How to properly fall: you want to find the shortest path down. 
+					</p>
+				</div>	
 			
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam interdum ultrices. Ut eu pellentesque massa. Mauris dapibus sit amet ipsum ac lobortis. Nulla nulla lorem, euismod vel lacinia nec, auctor id massa. Nunc et facilisis odio, id dignissim ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque ante odio, cursus ac leo id, imperdiet hendrerit nulla. Quisque imperdiet facilisis lectus, ut vehicula urna molestie ut. Ut sodales metus ut purus fringilla, ut laoreet nulla faucibus. Etiam vel lacus ac nibh suscipit malesuada. Mauris sed pretium justo.
-
-				Praesent efficitur, lectus luctus mattis iaculis, magna ex hendrerit ex, eu auctor quam ex ac orci. Phasellus in molestie velit, vel blandit sapien. Nulla facilisi. Sed venenatis tellus id molestie sodales. Morbi egestas hendrerit nunc, ac sollicitudin magna sagittis eu. Curabitur quis mauris sit amet velit rhoncus molestie. Morbi quam dolor, ornare at risus at, pulvinar dignissim metus. Proin ut ipsum at lectus vehicula malesuada. Donec purus velit, tempor non consequat in, tincidunt in erat. Mauris id magna ullamcorper, sagittis felis a, hendrerit magna. Maecenas eu felis vel sapien faucibus laoreet sed quis lacus.
-
-				In nec massa facilisis, pulvinar sem ac, tristique nibh. Cras fringilla varius nisl a luctus. Nulla facilisi. Nam egestas efficitur finibus. Vivamus efficitur, tellus quis ornare iaculis, dolor orci aliquet odio, a gravida libero dui sed arcu. Etiam ipsum turpis, aliquam at nibh a, pharetra euismod erat. Duis eu odio vitae nulla sagittis egestas ut nec odio. Sed elementum metus ac convallis dapibus.
-
-				Donec ac iaculis nisl. Suspendisse metus urna, sagittis ac vestibulum vel, porta et felis. Nulla arcu magna, semper sed dolor iaculis, bibendum gravida arcu. Integer scelerisque purus nec pretium condimentum. Vestibulum vulputate, velit ac semper ultricies, nibh ipsum viverra lorem, ut tempor dolor sem eu velit. Phasellus ac euismod metus. Pellentesque imperdiet posuere feugiat. Cras vestibulum semper scelerisque. In sem massa, fermentum nec sodales et, elementum nec elit. Phasellus hendrerit eleifend ipsum, quis interdum arcu vehicula ac.
-
-				Cras mauris urna, gravida vitae orci a, ornare laoreet leo. Curabitur vehicula nulla a orci posuere convallis. Pellentesque elit sem, pellentesque sit amet lacinia quis, maximus non tellus. Ut quam velit, consectetur quis lectus ac, pellentesque hendrerit orci. Praesent efficitur, sapien in ornare aliquet, mauris diam rhoncus risus, sit amet posuere turpis diam scelerisque lacus. Donec porta neque sed aliquam pellentesque. Fusce maximus neque magna, eget rhoncus urna sodales eu. Vivamus elementum sit amet est at lacinia.
+				<div class="container text">
+					<p>
+						How not to fall: you do not want to fall from too high up.
+					</p>
+				</div>	
+			
+				<div class="container image" >
+					<img src="img/Dino Jump.gif" alt="Jumping" style="margin-right:5%">
+					<img src="img/Dino Sprint.gif" alt="Srinting">
+				</div>
+				
 			</div>
 			
 			<div class="container" style="background-color:#a3a3a3; font-family: monospace;">
 				<h2 style="padding-bottom: .25vh">CLASS PROJECTS</h2>
-				Here are some of my class projcts and notes: <br>
-				
-				<!-- Lorem Ipsum Placeholder Text -->
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam interdum ultrices. Ut eu pellentesque massa. Mauris dapibus sit amet ipsum ac lobortis. Nulla nulla lorem, euismod vel lacinia nec, auctor id massa. Nunc et facilisis odio, id dignissim ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque ante odio, cursus ac leo id, imperdiet hendrerit nulla. Quisque imperdiet facilisis lectus, ut vehicula urna molestie ut. Ut sodales metus ut purus fringilla, ut laoreet nulla faucibus. Etiam vel lacus ac nibh suscipit malesuada. Mauris sed pretium justo.
-
-				Praesent efficitur, lectus luctus mattis iaculis, magna ex hendrerit ex, eu auctor quam ex ac orci. Phasellus in molestie velit, vel blandit sapien. Nulla facilisi. Sed venenatis tellus id molestie sodales. Morbi egestas hendrerit nunc, ac sollicitudin magna sagittis eu. Curabitur quis mauris sit amet velit rhoncus molestie. Morbi quam dolor, ornare at risus at, pulvinar dignissim metus. Proin ut ipsum at lectus vehicula malesuada. Donec purus velit, tempor non consequat in, tincidunt in erat. Mauris id magna ullamcorper, sagittis felis a, hendrerit magna. Maecenas eu felis vel sapien faucibus laoreet sed quis lacus.
-
-				In nec massa facilisis, pulvinar sem ac, tristique nibh. Cras fringilla varius nisl a luctus. Nulla facilisi. Nam egestas efficitur finibus. Vivamus efficitur, tellus quis ornare iaculis, dolor orci aliquet odio, a gravida libero dui sed arcu. Etiam ipsum turpis, aliquam at nibh a, pharetra euismod erat. Duis eu odio vitae nulla sagittis egestas ut nec odio. Sed elementum metus ac convallis dapibus.
-
-				Donec ac iaculis nisl. Suspendisse metus urna, sagittis ac vestibulum vel, porta et felis. Nulla arcu magna, semper sed dolor iaculis, bibendum gravida arcu. Integer scelerisque purus nec pretium condimentum. Vestibulum vulputate, velit ac semper ultricies, nibh ipsum viverra lorem, ut tempor dolor sem eu velit. Phasellus ac euismod metus. Pellentesque imperdiet posuere feugiat. Cras vestibulum semper scelerisque. In sem massa, fermentum nec sodales et, elementum nec elit. Phasellus hendrerit eleifend ipsum, quis interdum arcu vehicula ac.
-
-				Cras mauris urna, gravida vitae orci a, ornare laoreet leo. Curabitur vehicula nulla a orci posuere convallis. Pellentesque elit sem, pellentesque sit amet lacinia quis, maximus non tellus. Ut quam velit, consectetur quis lectus ac, pellentesque hendrerit orci. Praesent efficitur, sapien in ornare aliquet, mauris diam rhoncus risus, sit amet posuere turpis diam scelerisque lacus. Donec porta neque sed aliquam pellentesque. Fusce maximus neque magna, eget rhoncus urna sodales eu. Vivamus elementum sit amet est at lacinia.
-			
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquam interdum ultrices. Ut eu pellentesque massa. Mauris dapibus sit amet ipsum ac lobortis. Nulla nulla lorem, euismod vel lacinia nec, auctor id massa. Nunc et facilisis odio, id dignissim ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque ante odio, cursus ac leo id, imperdiet hendrerit nulla. Quisque imperdiet facilisis lectus, ut vehicula urna molestie ut. Ut sodales metus ut purus fringilla, ut laoreet nulla faucibus. Etiam vel lacus ac nibh suscipit malesuada. Mauris sed pretium justo.
-
-				Praesent efficitur, lectus luctus mattis iaculis, magna ex hendrerit ex, eu auctor quam ex ac orci. Phasellus in molestie velit, vel blandit sapien. Nulla facilisi. Sed venenatis tellus id molestie sodales. Morbi egestas hendrerit nunc, ac sollicitudin magna sagittis eu. Curabitur quis mauris sit amet velit rhoncus molestie. Morbi quam dolor, ornare at risus at, pulvinar dignissim metus. Proin ut ipsum at lectus vehicula malesuada. Donec purus velit, tempor non consequat in, tincidunt in erat. Mauris id magna ullamcorper, sagittis felis a, hendrerit magna. Maecenas eu felis vel sapien faucibus laoreet sed quis lacus.
-
-				In nec massa facilisis, pulvinar sem ac, tristique nibh. Cras fringilla varius nisl a luctus. Nulla facilisi. Nam egestas efficitur finibus. Vivamus efficitur, tellus quis ornare iaculis, dolor orci aliquet odio, a gravida libero dui sed arcu. Etiam ipsum turpis, aliquam at nibh a, pharetra euismod erat. Duis eu odio vitae nulla sagittis egestas ut nec odio. Sed elementum metus ac convallis dapibus.
-
-				Donec ac iaculis nisl. Suspendisse metus urna, sagittis ac vestibulum vel, porta et felis. Nulla arcu magna, semper sed dolor iaculis, bibendum gravida arcu. Integer scelerisque purus nec pretium condimentum. Vestibulum vulputate, velit ac semper ultricies, nibh ipsum viverra lorem, ut tempor dolor sem eu velit. Phasellus ac euismod metus. Pellentesque imperdiet posuere feugiat. Cras vestibulum semper scelerisque. In sem massa, fermentum nec sodales et, elementum nec elit. Phasellus hendrerit eleifend ipsum, quis interdum arcu vehicula ac.
-
-				Cras mauris urna, gravida vitae orci a, ornare laoreet leo. Curabitur vehicula nulla a orci posuere convallis. Pellentesque elit sem, pellentesque sit amet lacinia quis, maximus non tellus. Ut quam velit, consectetur quis lectus ac, pellentesque hendrerit orci. Praesent efficitur, sapien in ornare aliquet, mauris diam rhoncus risus, sit amet posuere turpis diam scelerisque lacus. Donec porta neque sed aliquam pellentesque. Fusce maximus neque magna, eget rhoncus urna sodales eu. Vivamus elementum sit amet est at lacinia.
-			</div>
+				Here are some of my class projcts and notes: <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+				</div>
 		</div>
 		
 	</body>
