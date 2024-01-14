@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
@@ -7,25 +8,69 @@
 	<title>Isaac Craig Portfolio</title>
 	<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+	<!-- <img src="img/cartoon_umbrella.png" alt="Umbrella" class="center"> -->
+	
+	<div class="container">
+		<img src="img/cartoon_umbrella.png" alt="Portfolio Image" class="portfolio-image">
+		
+		<div id="title">
+			<span>Isaac Craig</span>
+			<span>Portfolio</span>
+		</div>
+	</div>
+	
+	<div class="button-container">
+        <div class="button"></div>
+        <div class="button"></div>
+        <div class="button"></div>
+    </div>
+	
 	<script>
+		window.onresize = function(){ location.reload(); }
+		
 		function rain(){
 			let amount = 100;
 			let body = document.querySelector('body');
+			let umbrella = document.querySelector('img[src="img/cartoon_umbrella.png"]');
+			
+			if (!umbrella) {
+				console.error("Umbrella image not found.");
+				return;
+			}
+			
+			let umbrellaRect = umbrella.getBoundingClientRect();
+			/* let umbrellaMiddle = (umbrellaRect.left + umbrellaRect.right) / 2; */
+			
 			let i = 0;
 			while (i < amount) {
 				let drop = document.createElement('i');
 				
-				let size = Math.random() * 5;
+				let size = Math.random() * 4;
 				let posX = Math.floor(Math.random() * window.innerWidth);
 				let delay = Math.random() * -20;
 				let duration = Math.random() * 5;
+				
+				if (posX >= umbrellaRect.left && posX <= umbrellaRect.right) {
+					drop.style.animation = 'animateAboveUmbrella 5s linear infinite';
+                } 
 				
 				drop.style.width = 0.2 + size+'px';
 				drop.style.left = posX + 'px'
 				drop.style.animationDelay = delay + 's';
 				drop.style.animationDuration = 1 + duration + 's';
+				drop.style.top = '0';
 				
+				/* if (posX >= umbrellaRect.left && posX <= umbrellaMiddle) {
+					drop.style.top = -(window.innerHeight*1.2) + 'px';
+					console.log(drop.style.top);
+                } else if (posX >= umbrellaMiddle && posX <= umbrellaRect.right) {
+					drop.style.top = -(window.innerHeight*1.15) + 'px';
+				} else {
+					drop.style.top = 0;
+				} */
+		
 				body.appendChild(drop);
 				i++
 			}
@@ -33,11 +78,7 @@
 			
 		rain();
 	</script>
-	<!-- <img src="img/cartoon_umbrella.png" alt="Umbrella" class="center"> -->
-	<img src="img/cartoon_umbrella.png" alt="Portfolio Image" class="portfolio-image">
-	<div id="title">
-		<span>Isaac Craig</span>
-		<span>Portfolio</span>
-	</div>
+	
 </body>
+
 </html>
