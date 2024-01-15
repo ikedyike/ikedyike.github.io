@@ -5,6 +5,15 @@
 	box-sizing: border-box;
 }
 
+body
+{
+	/* background: #373737; */
+	background: radial-gradient(ellipse at bottom, #191b1c 0%, black 100%);
+	background-color: black;
+	height: 100vh;
+	overflow: hidden;
+}
+
 .container {
     position: relative;
     text-align: center;
@@ -23,9 +32,9 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	top: 90%;
+	top: 100%;
 	left: 50%;
-    transform: translate(-50%, 15%);
+    transform: translate(-50%);
 	color: #FFF;
 	text-align: center;
     font-family: 'Ubuntu Mono', monospace;
@@ -36,35 +45,68 @@
 
 .button-container {
     position: absolute;
-    bottom: 20px; /* Adjust the bottom position based on your design */
+    bottom: 2%; /* Adjust the bottom position based on your design */
     left: 50%;
+	height: 20%;
     transform: translateX(-50%);
     display: flex;
     justify-content: space-between;
-    width: 100px; /* Adjust the width of the button container */
+    width: 10%; /* Adjust the width of the button container */
+	z-index: 1;
 }
 
 .button {
-    width: 30px; /* Adjust the width of each button */
-    height: 30px; /* Adjust the height of each button */
-    background-color: #fff; /* Adjust the background color */
-    border: 1px solid #000; /* Adjust the border color and style */
+    width: 3vw; /* Adjust the width of each button */
+    height: 3vw; /* Adjust the height of each button */
+    background-image: url('img/rain.png'); /* Adjust the background color */
+	background-size: cover;
+	background-position: center;
+    border: none; /* Adjust the border color and style */
+	align-self: flex-end;
+	z-index: 1;
+	
+	aspect-ratio: 1 / 1;
 }
 
-body
-{
-	/* background: #373737; */
-	background: radial-gradient(ellipse at bottom, #191b1c 0%, black 100%);
-	background-color: black;
-	height: 100vh;
-	overflow: hidden;
+
+/*
+@media only screen and (max-width: 1500px) {
+  
+	.portfolio-image {
+		max-width: 25%;
+	}
+    #title {
+        font-size: 4vw; 
+    }
+} 
+
+@media only screen and (max-width: 1000px) {
+  
+	.portfolio-image {
+		max-width: 30%;
+	}
+    #title {
+        font-size: 5vw; 
+    }
+} */
+
+@media only screen and (max-width: 768px) {
+    .container {
+        top: 25%; /* Adjusted for better positioning on mobile */
+    }
+	.portfolio-image {
+		max-width: 30%;
+	}
+    #title {
+        font-size: 5vw; /* Adjust font size for better visibility on mobile  */
+    }
 }
 
 i
 {
 	position: absolute;
 	height: 200px;
-	background: linear-gradient(transparent, #FFF);
+	background: linear-gradient(transparent, #FFF); /*#wv33007*/
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 	animation: animate 5s linear infinite;
