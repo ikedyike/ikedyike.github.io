@@ -51,20 +51,18 @@ body
     transform: translateX(-50%);
     display: flex;
     justify-content: space-between;
-    width: 10%; /* Adjust the width of the button container */
 	z-index: 1;
 }
 
 .button {
-    width: 3vw; /* Adjust the width of each button */
-    height: 3vw; /* Adjust the height of each button */
+    width: 5vh; /* Adjust the width of each button */
+    height: 5vh; /* Adjust the height of each button */
     background-image: url('img/rain.png'); /* Adjust the background color */
 	background-size: cover;
 	background-position: center;
     border: none; /* Adjust the border color and style */
 	align-self: flex-end;
 	z-index: 1;
-	
 	aspect-ratio: 1 / 1;
 }
 
@@ -92,7 +90,7 @@ body
 
 @media only screen and (max-width: 768px) {
     .container {
-        top: 25%; /* Adjusted for better positioning on mobile */
+        top: 35%; /* Adjusted for better positioning on mobile */
     }
 	.portfolio-image {
 		max-width: 30%;
@@ -126,10 +124,10 @@ i
 @keyframes animateAboveUmbrella {
     0% 
 	{
-        transform: translateY(-18vh); /* Start above the screen */
+        transform: translateY(-200px); /* Start above the screen */
     }
     100% 
 	{
-        transform: translateY(calc(33% + 18vh)); /* 1/3 of the screen height */
+        transform: translateY(calc(30px)); /* 1/3 of the screen height */
     }
 }
