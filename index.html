@@ -11,7 +11,6 @@
 
 <body>
 	<!-- <img src="img/cartoon_umbrella.png" alt="Umbrella" class="center"> -->
-	
 	<div class="container">
 		<img src="img/cartoon_umbrella.png" alt="Portfolio Image" class="portfolio-image">
 		
@@ -20,6 +19,24 @@
 			<span>Portfolio</span>
 		</div>
 	</div>
+	
+	<!-- MIGHT DELETE -->
+	<!-- Button to toggle overlay -->
+	<div class="menu-button-container">
+		<div class="menu-button" onclick="toggleOverlay()">☰</div>
+	</div>
+
+	<!-- Overlay content -->
+	<div class="overlay" id="overlay">
+		<div class="overlay-content">
+			<span onclick="closeOverlay()">✖</span>
+			<span>Personal Projects</span>
+			<span>About Me</span>
+			<!-- Add more options as needed -->
+		</div>
+	</div>
+	
+	<!-- END MIGHT DELETE -->
 	
 	<div class="button-container">
         <div class="button"></div>
@@ -74,6 +91,15 @@
 				body.appendChild(drop);
 				i++
 			}
+		}
+		
+		function toggleOverlay() {
+			var overlay = document.getElementById('overlay');
+			overlay.style.display = (overlay.style.display === 'none' || overlay.style.display === '') ? 'block' : 'none';
+		}
+
+		function closeOverlay() {
+			document.getElementById('overlay').style.display = 'none';
 		}
 			
 		rain();

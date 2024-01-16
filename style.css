@@ -43,6 +43,54 @@ body
 	z-index: 1;
 }
 
+/* MIGHT DELETE */
+.menu-button {
+    position: fixed;
+    top: 2%;
+    left: 2%;
+    font-size: 2em;
+    cursor: pointer;
+    color: #FFF;
+}
+
+.menu-button-container {
+	position: absolute;
+    top: 2%; /* Adjust the bottom position based on your design */
+    left: 2%;
+    display: flex;
+    /* justify-content: space-between; */
+	z-index: 1;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 3;
+}
+
+.overlay-content {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    text-align: right;
+    color: #FFF;
+}
+
+.overlay-content span {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 2em;
+    cursor: pointer;
+}
+/* END MIGHT DELETE */
+
+
+
 .button-container {
     position: absolute;
     bottom: 2%; /* Adjust the bottom position based on your design */
