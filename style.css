@@ -43,11 +43,11 @@ body
 	z-index: 1;
 }
 
-/* MIGHT DELETE */
 .menu-button {
     position: fixed;
     top: 2%;
     left: 2%;
+	font-family: 'Ubuntu Mono', monospace;
     font-size: 2em;
     cursor: pointer;
     color: #FFF;
@@ -77,6 +77,7 @@ body
     position: absolute;
     top: 2%;
     right: 2%;
+	font-family: 'Ubuntu Mono', monospace;
     text-align: right;
     color: #FFF;
 }
@@ -87,12 +88,10 @@ body
     font-size: 2em;
     cursor: pointer;
 }
-/* END MIGHT DELETE */
-
-
 
 .button-container {
     position: absolute;
+	width: 5%;
     bottom: 2%; /* Adjust the bottom position based on your design */
     left: 50%;
 	height: 20%;
@@ -114,28 +113,6 @@ body
 	aspect-ratio: 1 / 1;
 }
 
-
-/*
-@media only screen and (max-width: 1500px) {
-  
-	.portfolio-image {
-		max-width: 25%;
-	}
-    #title {
-        font-size: 4vw; 
-    }
-} 
-
-@media only screen and (max-width: 1000px) {
-  
-	.portfolio-image {
-		max-width: 30%;
-	}
-    #title {
-        font-size: 5vw; 
-    }
-} */
-
 @media only screen and (max-width: 768px) {
     .container {
         top: 35%; /* Adjusted for better positioning on mobile */
@@ -147,12 +124,16 @@ body
         font-size: 5vw; /* Adjust font size for better visibility on mobile  */
     }
 	.overlay-content span {
-		font-size: 1.5em;
+		right: 4%;
+		font-size: 2em;
 	}
 	.menu-button {
-    font-size: 1.5em;
-}
-
+		left: 4%;	
+		font-size: 2em;
+	}
+	.button-container {
+		width: 20%
+	}
 }
 
 i

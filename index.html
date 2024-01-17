@@ -28,10 +28,14 @@
 
 	<!-- Overlay content -->
 	<div class="overlay" id="overlay">
-		<div class="overlay-content">
+		<div class="overlay-content" id="aboutMeContent" style="display: none;">
+            <Span onclick="showMainMenu()">←</Span>
+            <Span>About Me (Isaac Craig)</Span>
+        </div>
+		<div class="overlay-content" id="overlay-content">
 			<span onclick="closeOverlay()">✖</span>
 			<span>Personal Projects</span>
-			<span>About Me</span>
+			<span onclick="aboutOverlay()">About Me</span>
 			<!-- Add more options as needed -->
 		</div>
 	</div>
@@ -39,16 +43,16 @@
 	<!-- END MIGHT DELETE -->
 	
 	<div class="button-container">
-        <div class="button"></div>
-        <div class="button"></div>
-        <div class="button"></div>
+        <div class="button" id="decreaseButton" onclick="decreaseRain()"></div>
+        <div class="button" id="increaseButton" onclick="increaseRain()"></div>
     </div>
 	
 	<script>
-		window.onresize = function(){ location.reload(); }
+		window.onresize = function(){ updateRain(); }
+		
+		let amount = 50;
 		
 		function rain(){
-			let amount = 50;
 			let body = document.querySelector('body');
 			let umbrella = document.querySelector('img[src="img/cartoon_umbrella.png"]');
 			
@@ -64,7 +68,7 @@
 			while (i < amount) {
 				let drop = document.createElement('i');
 				
-				let size = Math.random() * 4;
+				let size = Math.random() * 3;
 				let posX = Math.floor(Math.random() * window.innerWidth);
 				let delay = Math.random() * -20;
 				let duration = Math.random() * 5;
@@ -93,10 +97,44 @@
 			}
 		}
 		
+		function updateRain() {
+			let existingDrops = document.querySelectorAll('i');
+			existingDrops.forEach(drop => {
+				document.body.removeChild(drop);
+				console.log("Removed existing raindrop");
+			});
+			console.log(amount);
+			rain();
+		}
+		
+		function increaseRain() {
+			if (amount < 100) {
+				amount += 25; // Increase the amount of raindrops by 100
+				updateRain();
+			}
+		}
+
+		function decreaseRain() {
+			if (amount > 25) { // Ensure there are at least 200 raindrops
+				amount -= 25;
+				updateRain();
+			}
+		}
+				
 		function toggleOverlay() {
 			var overlay = document.getElementById('overlay');
 			overlay.style.display = (overlay.style.display === 'none' || overlay.style.display === '') ? 'block' : 'none';
 		}
+
+		function aboutOverlay() {
+			document.getElementById('overlay-content').style.display = 'none';
+            document.getElementById('aboutMeContent').style.display = 'block';
+		}
+		
+		function showMainMenu() {
+            document.getElementById('overlay-content').style.display = 'block';
+            document.getElementById('aboutMeContent').style.display = 'none';
+        }
 
 		function closeOverlay() {
 			document.getElementById('overlay').style.display = 'none';
