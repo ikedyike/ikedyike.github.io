@@ -28,15 +28,33 @@
 	<!-- Overlay content -->
 	<div class="overlay" id="overlay">
 		<div class="overlay-content" id="aboutMeContent" style="display: none;">
-            <Span onclick="showMainMenu()">←</Span>
+            <Span onclick="showMainMenu()">🢀</Span>
             <Span>About Me (Isaac Craig)</Span>
         </div>
 		<div class="overlay-content" id="projectsContent" style="display: none;">
-            <Span onclick="showMainMenu()">←</Span>
-            <Span>Dino Fall</Span>
-			<Span>Cryptkeeper</Span>
-			<Span>This Website</Span>
+            <Span onclick="showMainMenu()">🢀</Span>
+            <Span onclick="dinoDropOverlay()">Dino Drop</Span>
+			<Span onclick="cryptKeeperOverlay()">Cryptkeeper</Span>
+			<Span onclick="websiteOverlay()">This Website</Span>
         </div>
+		
+		<!-- PROJECT OVERLAYS -->
+		<div class="overlay-content" id="dinoDropContent" style="display: none;">
+            <Span onclick="projectOverlay()">🢀</Span>
+            <Span>Dino Drop</Span>
+			<Span.small>Dino Drop is a platformer game I have developed from the ground up.</Span.small>
+        </div>
+		<div class="overlay-content" id="cryptKeeperContent" style="display: none;">
+            <Span onclick="projectOverlay()">🢀</Span>
+            <Span>Cryptkeeper</Span>
+			<Span.small>You are the duck.</Span.small>
+        </div>
+		<div class="overlay-content" id="websiteContent" style="display: none;">
+            <Span onclick="projectOverlay()">🢀</Span>
+            <Span>This Website</Span>
+			<Span.small>This website was built from scratch using HTML, CSS and JS.</Span.small>
+        </div>
+		
 		<div class="overlay-content" id="overlay-content">
 			<span onclick="closeOverlay()">✖</span>
 			<span onclick="projectOverlay()">Personal Projects</span>
@@ -136,13 +154,37 @@
 		
 		function projectOverlay() {
 			document.getElementById('overlay-content').style.display = 'none';
+			document.getElementById('dinoDropContent').style.display = 'none';
+			document.getElementById('cryptKeeperContent').style.display = 'none';
+			document.getElementById('websiteContent').style.display = 'none';
             document.getElementById('projectsContent').style.display = 'block';
+		}
+		
+		function dinoDropOverlay() {
+			document.getElementById('overlay-content').style.display = 'none';
+			document.getElementById('projectsContent').style.display = 'none';
+			document.getElementById('dinoDropContent').style.display = 'block';
+		}
+		
+		function cryptKeeperOverlay() {
+			document.getElementById('overlay-content').style.display = 'none';
+			document.getElementById('projectsContent').style.display = 'none';
+			document.getElementById('cryptKeeperContent').style.display = 'block';
+		}
+		
+		function websiteOverlay() {
+			document.getElementById('overlay-content').style.display = 'none';
+			document.getElementById('projectsContent').style.display = 'none';
+			document.getElementById('websiteContent').style.display = 'block';
 		}
 		
 		function showMainMenu() {
             document.getElementById('overlay-content').style.display = 'block';
+			document.getElementById('dinoDropContent').style.display = 'none';
 			document.getElementById('projectsContent').style.display = 'none';
             document.getElementById('aboutMeContent').style.display = 'none';
+			document.getElementById('cryptKeeperContent').style.display = 'none';
+			document.getElementById('websiteContent').style.display = 'none';
         }
 
 		function closeOverlay() {
