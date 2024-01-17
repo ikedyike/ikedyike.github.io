@@ -134,6 +134,9 @@ body
 	.button-container {
 		width: 20%
 	}
+	.overlay-content span { 
+		font-size: 1.5em;
+	}
 }
 
 i

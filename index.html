@@ -20,27 +20,30 @@
 		</div>
 	</div>
 	
-	<!-- MIGHT DELETE -->
+	<!-- OVERLAY CONTENT -->
 	<!-- Button to toggle overlay -->
 	<div class="menu-button-container">
 		<div class="menu-button" onclick="toggleOverlay()">☰</div>
 	</div>
-
 	<!-- Overlay content -->
 	<div class="overlay" id="overlay">
 		<div class="overlay-content" id="aboutMeContent" style="display: none;">
             <Span onclick="showMainMenu()">←</Span>
             <Span>About Me (Isaac Craig)</Span>
         </div>
+		<div class="overlay-content" id="projectsContent" style="display: none;">
+            <Span onclick="showMainMenu()">←</Span>
+            <Span>Dino Fall</Span>
+			<Span>Cryptkeeper</Span>
+			<Span>This Website</Span>
+        </div>
 		<div class="overlay-content" id="overlay-content">
 			<span onclick="closeOverlay()">✖</span>
-			<span>Personal Projects</span>
+			<span onclick="projectOverlay()">Personal Projects</span>
 			<span onclick="aboutOverlay()">About Me</span>
 			<!-- Add more options as needed -->
 		</div>
 	</div>
-	
-	<!-- END MIGHT DELETE -->
 	
 	<div class="button-container">
         <div class="button" id="decreaseButton" onclick="decreaseRain()"></div>
@@ -131,8 +134,14 @@
             document.getElementById('aboutMeContent').style.display = 'block';
 		}
 		
+		function projectOverlay() {
+			document.getElementById('overlay-content').style.display = 'none';
+            document.getElementById('projectsContent').style.display = 'block';
+		}
+		
 		function showMainMenu() {
             document.getElementById('overlay-content').style.display = 'block';
+			document.getElementById('projectsContent').style.display = 'none';
             document.getElementById('aboutMeContent').style.display = 'none';
         }
 
