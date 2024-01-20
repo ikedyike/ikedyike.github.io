@@ -28,11 +28,19 @@
 	<!-- Overlay content -->
 	<div class="overlay" id="overlay">
 		<div class="overlay-content" id="aboutMeContent" style="display: none;">
-            <Span onclick="showMainMenu()">🢀</Span>
+            <Span onclick="showMainMenu()">⮨</Span>
             <Span>About Me (Isaac Craig)</Span>
+			<Span.small>My name is Isaac Craig and I am a fourth year undergraduate student at UC Davis.</Span.small>
+			<Span.small>I am an aspiring software developer and independent video game developer.</Span.small>
+			<br>
+			<a href="https://www.linkedin.com/in/isaac-craig-a98992228/" target="_blank" class="small">LinkedIn Accout</a>
+			<br>
+			<a href="https://github.com/ikedyike" target="_blank" class="small">Github Account</a>
+			<br>
+			<a href="https://ikedyike.itch.io/" target="_blank" class="small">Itch.io Account</a>
         </div>
 		<div class="overlay-content" id="projectsContent" style="display: none;">
-            <Span onclick="showMainMenu()">🢀</Span>
+            <Span onclick="showMainMenu()">⮨</Span>
             <Span onclick="dinoDropOverlay()">Dino Drop</Span>
 			<Span onclick="cryptKeeperOverlay()">Cryptkeeper</Span>
 			<Span onclick="websiteOverlay()">This Website</Span>
@@ -40,26 +48,29 @@
 		
 		<!-- PROJECT OVERLAYS -->
 		<div class="overlay-content" id="dinoDropContent" style="display: none;">
-            <Span onclick="projectOverlay()">🢀</Span>
+            <Span onclick="projectOverlay()">⮨</Span>
             <Span>Dino Drop</Span>
 			<Span.small>Dino Drop is a platformer game I have developed from the ground up.</Span.small>
         </div>
 		<div class="overlay-content" id="cryptKeeperContent" style="display: none;">
-            <Span onclick="projectOverlay()">🢀</Span>
+            <Span onclick="projectOverlay()">⮨</Span>
             <Span>Cryptkeeper</Span>
 			<Span.small>You are the duck.</Span.small>
+			<br>
+			<Span.small>In development.</Span.small>
         </div>
 		<div class="overlay-content" id="websiteContent" style="display: none;">
-            <Span onclick="projectOverlay()">🢀</Span>
+            <Span onclick="projectOverlay()">⮨</Span>
             <Span>This Website</Span>
 			<Span.small>This website was built from scratch using HTML, CSS and JS.</Span.small>
+			<br>
+			<a href="https://github.com/ikedyike/ikedyike.github.io" target="_blank" class="Span.small">Website Repository</a>
         </div>
 		
 		<div class="overlay-content" id="overlay-content">
 			<span onclick="closeOverlay()">✖</span>
 			<span onclick="projectOverlay()">Personal Projects</span>
 			<span onclick="aboutOverlay()">About Me</span>
-			<!-- Add more options as needed -->
 		</div>
 	</div>
 	
@@ -71,7 +82,9 @@
 	<script>
 		window.onresize = function(){ updateRain(); }
 		
-		let amount = 50;
+		let isMobile = window.innerWidth <= 768;
+		let maxAmount = isMobile ? 35 : 50;
+		
 		
 		function rain(){
 			let body = document.querySelector('body');
@@ -86,7 +99,7 @@
 			/* let umbrellaMiddle = (umbrellaRect.left + umbrellaRect.right) / 2; */
 			
 			let i = 0;
-			while (i < amount) {
+			while (i < maxAmount) {
 				let drop = document.createElement('i');
 				
 				let size = Math.random() * 3;
@@ -95,7 +108,11 @@
 				let duration = Math.random() * 5;
 				
 				if (posX >= umbrellaRect.left && posX <= umbrellaRect.right) {
-					drop.style.animation = 'animateAboveUmbrella 5s linear infinite';
+					if (!isMobile) {
+						drop.style.animation = 'animateAboveUmbrellaPC 5s linear infinite';
+					} else {
+						drop.style.animation = 'animateAboveUmbrellaMobile 5s linear infinite';
+					}
                 } 
 				
 				drop.style.width = 0.2 + size+'px';
@@ -124,20 +141,28 @@
 				document.body.removeChild(drop);
 				console.log("Removed existing raindrop");
 			});
-			console.log(amount);
+			console.log(maxAmount);
 			rain();
 		}
 		
 		function increaseRain() {
-			if (amount < 100) {
-				amount += 25; // Increase the amount of raindrops by 100
+			if (!isMobile && maxAmount < 100) {
+				maxAmount += 25; // Increase the amount of raindrops by 100
+				updateRain();
+			}
+			if (isMobile && maxAmount < 55) {
+				maxAmount += 10; // Increase the amount of raindrops by 100
 				updateRain();
 			}
 		}
 
 		function decreaseRain() {
-			if (amount > 25) { // Ensure there are at least 200 raindrops
-				amount -= 25;
+			if (!isMobile && maxAmount > 25) { // Ensure there are at least 200 raindrops
+				maxAmount -= 25;
+							updateRain();
+			}
+			if (isMobile && maxAmount > 15) {
+				maxAmount -= 10; // Increase the amount of raindrops by 100
 				updateRain();
 			}
 		}

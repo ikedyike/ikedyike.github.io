@@ -77,7 +77,7 @@ body
     position: absolute;
     top: 2%;
     right: 2%;
-	width: 60%;
+	width: 30%;
 	font-family: 'Ubuntu Mono', monospace;
     text-align: right;
     color: #FFF;
@@ -95,9 +95,10 @@ body
 }
 
 
+
 .button-container {
     position: absolute;
-	width: 5%;
+	width: 6%;
     bottom: 2%; /* Adjust the bottom position based on your design */
     left: 50%;
 	height: 20%;
@@ -121,7 +122,7 @@ body
 
 @media only screen and (max-width: 768px) {
     .container {
-        top: 30%; /* Adjusted for better positioning on mobile */
+        top: 50%; /* Adjusted for better positioning on mobile */
     }
 	.portfolio-image {
 		max-width: 30%;
@@ -129,9 +130,12 @@ body
     #title {
         font-size: 5vw; /* Adjust font size for better visibility on mobile  */
     }
+	.overlay-content{
+		width: 80%;
+	}
 	.overlay-content span {
 		right: 4%;
-		font-size: 2em;
+		font-size: 1.5em;
 	}
 	.menu-button {
 		left: 4%;	
@@ -140,12 +144,38 @@ body
 	.button-container {
 		width: 20%
 	}
-	.overlay-content span { 
+	.overlay-content span.small {
+		font-size: .75em;
+	}
+}
+
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+	.container {
+        top: 45%; /* Adjusted for better positioning on mobile */
+    }
+	.portfolio-image {
+		max-width: 15%;
+	}
+    #title {
+        font-size: 5vh; /* Adjust font size for better visibility on mobile  */
+    }
+	.overlay-content{
+		width: 80%;
+	}
+	.overlay-content span {
+		right: 4%;
 		font-size: 1.5em;
 	}
+	.menu-button {
+		left: 4%;	
+		font-size: 2em;
+	}
+	.button-container {
+		width: 7.5%
+	}
 	.overlay-content span.small {
-    font-size: .75em;
-}
+		font-size: .75em;
+	}
 }
 
 i
@@ -169,13 +199,24 @@ i
 	}
 }
 
-@keyframes animateAboveUmbrella {
+@keyframes animateAboveUmbrellaPC {
     0% 
 	{
         transform: translateY(-200px); /* Start above the screen */
     }
     100% 
 	{
-        transform: translateY(calc(30px)); /* 1/3 of the screen height */
+        transform: translateY(calc(30% + 200px)); /* 1/3 of the screen height */
+    }
+}
+
+@keyframes animateAboveUmbrellaMobile {
+    0% 
+	{
+        transform: translateY(-200px); /* Start above the screen */
+    }
+    100% 
+	{
+        transform: translateY(calc(26vh)); /* 1/3 of the screen height */
     }
 }
