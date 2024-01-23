@@ -25,10 +25,13 @@
 	<div class="menu-button-container">
 		<div class="menu-button" onclick="toggleOverlay()">☰</div>
 	</div>
+	
+	<div class="umbrella-coverage"></div>
+	
 	<!-- Overlay content -->
 	<div class="overlay" id="overlay">
 		<div class="overlay-content" id="aboutMeContent" style="display: none;">
-            <Span onclick="showMainMenu()">⮨</Span>
+            <Span onclick="showMainMenu()">←</Span>
             <Span>About Me (Isaac Craig)</Span>
 			<Span.small>My name is Isaac Craig and I am a fourth year undergraduate student at UC Davis.</Span.small>
 			<Span.small>I am an aspiring software developer and independent video game developer.</Span.small>
@@ -38,6 +41,8 @@
 			<a href="https://github.com/ikedyike" target="_blank" class="small">Github Account</a>
 			<br>
 			<a href="https://ikedyike.itch.io/" target="_blank" class="small">Itch.io Account</a>
+			<br>
+			<Span.small>Email: icraig2002@gmail.com</Span.small>
         </div>
 		<div class="overlay-content" id="projectsContent" style="display: none;">
             <Span onclick="showMainMenu()">←</Span>
@@ -75,8 +80,8 @@
 	</div>
 	
 	<div class="button-container">
-        <div class="button" id="decreaseButton" onclick="decreaseRain()"></div>
-        <div class="button" id="increaseButton" onclick="increaseRain()"></div>
+        <div class="button" id="decreaseButton" onclick="decreaseRain()" style="background-image: url('img/no rain.png');"></div>
+        <div class="button" id="increaseButton" onclick="increaseRain()" style="background-image: url('img/rain.png');"></div>
     </div>
 	
 	<script>
@@ -107,13 +112,14 @@
 				let delay = Math.random() * -20;
 				let duration = Math.random() * 5;
 				
+				/*
 				if (posX >= umbrellaRect.left && posX <= umbrellaRect.right) {
 					if (!isMobile) {
 						drop.style.animation = 'animateAboveUmbrellaPC 5s linear infinite';
 					} else {
 						drop.style.animation = 'animateAboveUmbrellaMobile 5s linear infinite';
 					}
-                } 
+                } */
 				
 				drop.style.width = 0.2 + size+'px';
 				drop.style.left = posX + 'px'
