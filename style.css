@@ -186,7 +186,8 @@ a:active {
 	}
 	.umbrella-coverage {
 		top: 55%; /* Adjust the top position based on the design */
-		height: 45%; /* Adjust the height of the coverage box based on the umbrella size */
+		height: 45%;
+		width: 30%;/* Adjust the height of the coverage box based on the umbrella size */
 	}
 }
 
@@ -218,8 +219,9 @@ a:active {
 		font-size: .75em;
 	}
 	.umbrella-coverage {
-		top: 50%; /* Adjust the top position based on the design */
-		height: 50%; /* Adjust the height of the coverage box based on the umbrella size */
+		top: 50%; 
+		height: 50%;
+		width: 15%;
 	}
 }
 
