@@ -106,6 +106,13 @@ body
     cursor: pointer;
 }
 
+.overlay-content span2 {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 2em;
+    cursor: pointer;
+}
+
 .overlay-content span.small {
     font-size: 1em;
 }
@@ -131,6 +138,11 @@ body
 	align-self: flex-end;
 	z-index: 1;
 	aspect-ratio: 1 / 1;
+}
+
+.overlay-content span:hover,
+.overlay-content span:active {
+    color: #7393B3; /* Change text color when hovered over or pressed */
 }
 
 a:link {
