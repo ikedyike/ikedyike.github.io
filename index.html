@@ -50,8 +50,8 @@
 		<div class="overlay-content" id="projectsContent" style="display: none;">
             <Span onclick="showMainMenu()">←</Span>
 			<Span onclick="spellfisterOverlay()">Spellfister</Span>
-            <Span onclick="dinoDropOverlay()">Dino Drop</Span>
-			<Span onclick="cryptKeeperOverlay()">Cryptkeeper</Span>
+            <Span onclick="recycleMeOverlay()">Recycle Me!</Span>
+			<Span onclick="dinoDropOverlay()">Dino Drop</Span>
 			<Span onclick="websiteOverlay()">This Website</Span>
         </div>
 		
@@ -70,6 +70,20 @@
 			<br>
 			<a href="https://github.com/angelinajillian/ctrl-freaks" target="_blank" class="Span.small">Website Repository</a>
         </div>
+		<div class="overlay-content" id="recycleMeContent" style="display: none;">
+            <Span onclick="projectOverlay()">←</Span>
+            <Span2>Recycle Me!</Span2>
+			<Span.small>You are the duck.</Span.small>
+			<br>
+			<Span.small>Recycle Me! is a game I solo developed where you play as a character who has to sort through falling waste!</Span.small>
+			<Span.small> Made in under 24 hours for HackDavis '24 with the theme "Social Good." </Span.small>
+			<br>
+			<a href="https://ctrl-freaks.itch.io/recycle-me" target="_blank" class="Span.small">Recycle Me! Page</a>
+			<br>
+			<a href="https://youtu.be/OC6Q8ofiM10?si=9v5giO6v8XH_9qbw" target="_blank" class="Span.small">Video Game Trailer</a>
+			<br>
+			<a href="https://github.com/ikedyike/Recycle-Me" target="_blank" class="Span.small">Website Repository</a>
+        </div>
 		<div class="overlay-content" id="dinoDropContent" style="display: none;">
             <Span onclick="projectOverlay()">←</Span>
             <Span2>Dino Drop</Span2>
@@ -81,13 +95,6 @@
 			<Span.small>Links:</Span.small>
 			<br>
 			<a href="https://ikedyike.itch.io/dino-drop" target="_blank" class="Span.small">Dino Drop Page</a>
-        </div>
-		<div class="overlay-content" id="cryptKeeperContent" style="display: none;">
-            <Span onclick="projectOverlay()">←</Span>
-            <Span2>Cryptkeeper</Span2>
-			<Span.small>You are the duck.</Span.small>
-			<br>
-			<Span.small>In development.</Span.small>
         </div>
 		<div class="overlay-content" id="websiteContent" style="display: none;">
             <Span onclick="projectOverlay()">←</Span>
@@ -215,7 +222,7 @@
 			document.getElementById('overlay-content').style.display = 'none';
 			document.getElementById('spellfisterContent').style.display = 'none';
 			document.getElementById('dinoDropContent').style.display = 'none';
-			document.getElementById('cryptKeeperContent').style.display = 'none';
+			document.getElementById('recycleMeContent').style.display = 'none';
 			document.getElementById('websiteContent').style.display = 'none';
             document.getElementById('projectsContent').style.display = 'block';
 		}
@@ -232,10 +239,10 @@
 			document.getElementById('dinoDropContent').style.display = 'block';
 		}
 		
-		function cryptKeeperOverlay() {
+		function recycleMeOverlay() {
 			document.getElementById('overlay-content').style.display = 'none';
 			document.getElementById('projectsContent').style.display = 'none';
-			document.getElementById('cryptKeeperContent').style.display = 'block';
+			document.getElementById('recycleMeContent').style.display = 'block';
 		}
 		
 		function websiteOverlay() {
@@ -249,7 +256,7 @@
 			document.getElementById('dinoDropContent').style.display = 'none';
 			document.getElementById('projectsContent').style.display = 'none';
             document.getElementById('aboutMeContent').style.display = 'none';
-			document.getElementById('cryptKeeperContent').style.display = 'none';
+			document.getElementById('recycleMeContent').style.display = 'none';
 			document.getElementById('websiteContent').style.display = 'none';
         }
 
