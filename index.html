@@ -50,7 +50,7 @@
 		<div class="overlay-content" id="projectsContent" style="display: none;">
             <Span onclick="showMainMenu()">←</Span>
 			<Span onclick="spellfisterOverlay()">Spellfister</Span>
-            <Span onclick="recycleMeOverlay()">Recycle Me!</Span>
+            		<Span onclick="recycleMeOverlay()">Recycle Me!</Span>
 			<Span onclick="dinoDropOverlay()">Dino Drop</Span>
 			<Span onclick="websiteOverlay()">This Website</Span>
         </div>
@@ -109,6 +109,7 @@
 		
 		<div class="overlay-content" id="overlay-content">
 			<span onclick="closeOverlay()">✖</span>
+			<span onclick="ikesGamesOverlay()">Ikes Games</span>
 			<span onclick="projectOverlay()">Personal Projects</span>
 			<span onclick="aboutOverlay()">About Me</span>
 		</div>
@@ -225,6 +226,10 @@
 			document.getElementById('recycleMeContent').style.display = 'none';
 			document.getElementById('websiteContent').style.display = 'none';
             document.getElementById('projectsContent').style.display = 'block';
+		}
+
+		function ikesGamesOverlay() {
+   			window.open("https://ikesgames.com", "_blank");
 		}
 		
 		function spellfisterOverlay() {
