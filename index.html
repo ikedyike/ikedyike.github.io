@@ -54,6 +54,9 @@
             		<Span onclick="recycleMeOverlay()">Recycle Me!</Span>
 			<Span onclick="dinoDropOverlay()">Dino Drop</Span>
 			<Span onclick="websiteOverlay()">This Website</Span>
+			<Span onclick="ikesGamesSiteOverlay()">Ikes Games Website</Span>
+			<Span onclick="cvASLOverlay()">CV Sign Language Interpreter</Span>
+			<Span onclick="brainTumorOverlay()">This Website</Span>
         </div>
 		
 		<!-- PROJECT OVERLAYS -->
@@ -252,6 +255,24 @@
 		}
 		
 		function websiteOverlay() {
+			document.getElementById('overlay-content').style.display = 'none';
+			document.getElementById('projectsContent').style.display = 'none';
+			document.getElementById('websiteContent').style.display = 'block';
+		}
+
+		function ikesGamesSiteOverlay() {
+			document.getElementById('overlay-content').style.display = 'none';
+			document.getElementById('projectsContent').style.display = 'none';
+			document.getElementById('websiteContent').style.display = 'block';
+		}
+
+		function cvASLOverlay() {
+			document.getElementById('overlay-content').style.display = 'none';
+			document.getElementById('projectsContent').style.display = 'none';
+			document.getElementById('websiteContent').style.display = 'block';
+		}
+		
+		function brainTumorOverlay() {
 			document.getElementById('overlay-content').style.display = 'none';
 			document.getElementById('projectsContent').style.display = 'none';
 			document.getElementById('websiteContent').style.display = 'block';
