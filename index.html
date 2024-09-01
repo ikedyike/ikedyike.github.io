@@ -118,12 +118,38 @@
 		<div class="overlay-content" id="ikesGamesSiteContent" style="display: none;">
 			<Span onclick="projectOverlay()">←</Span>
             		<Span2>Ikes Games Website</Span2>
-			<Span.small> I developed the website for my personal game studio from the ground up using html css and js. have an empty repository link and a website link ikesgames.com
+			<Span.small>I developed the website for my personal game studio from the ground up using html css and js.</Span.small>	
 			<br>
 			<br>
 			<Span.small>Links:</Span.small>
 			<br>
-			<a href="https://github.com/ikedyike/ikedyike.github.io" target="_blank" class="Span.small">Website Repository</a>
+			<a href="" target="_blank" class="Span.small">Website Repository</a>
+			<a href="https://ikesgames.com" target="_blank" class="Span.small">Website</a>
+        	</div>
+
+		<div class="overlay-content" id="cvASLContent" style="display: none;">
+			<Span onclick="projectOverlay()">←</Span>
+            		<Span2>CV Sign Langauge Interpreter</Span2>
+			<Span.small>I developed a sign language interpreter in Python using computer vision and a self trained AI model, 
+				also features a calibration script to calibrate your own specific hand.</Span.small>	
+			<br>
+			<br>
+			<Span.small>Links:</Span.small>
+			<br>
+			<a href="" target="_blank" class="Span.small">Repository</a>
+        	</div>
+
+		<div class="overlay-content" id="brainTumorContent" style="display: none;">
+			<Span onclick="projectOverlay()">←</Span>
+            		<Span2>Brain Tumor Recognition Software</Span2>
+			<Span.small>Worked with a team to develop an AI Model that takes a brain scan and classifies/detects the presence of a brain tumor.
+				I worked on front end development, setting up version control, and training the model.</Span.small>	
+			<br>
+			<br>
+			<Span.small>Links:</Span.small>
+			<br>
+			<a href="" target="_blank" class="Span.small">Repository</a>
+			<a href="https://ecs170group21.github.io/" target="_blank" class="Span.small">Website</a>
         	</div>
 				
 		<div class="overlay-content" id="overlay-content">
@@ -284,13 +310,13 @@
 		function cvASLOverlay() {
 			document.getElementById('overlay-content').style.display = 'none';
 			document.getElementById('projectsContent').style.display = 'none';
-			document.getElementById('websiteContent').style.display = 'block';
+			document.getElementById('cvASLContent').style.display = 'block';
 		}
 		
 		function brainTumorOverlay() {
 			document.getElementById('overlay-content').style.display = 'none';
 			document.getElementById('projectsContent').style.display = 'none';
-			document.getElementById('websiteContent').style.display = 'block';
+			document.getElementById('brainTumorContent').style.display = 'block';
 		}
 		
 		function showMainMenu() {
