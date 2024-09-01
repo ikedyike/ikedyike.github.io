@@ -31,8 +31,8 @@
 	<!-- Overlay content -->
 	<div class="overlay" id="overlay">
 		<div class="overlay-content" id="aboutMeContent" style="display: none;">
-            <Span onclick="showMainMenu()">←</Span>
-            <Span2>About Me (Isaac Craig)</Span2>
+            		<Span onclick="showMainMenu()">←</Span>
+            		<Span2>About Me (Isaac Craig)</Span2>
 			<Span.small>My name is Isaac Craig and I recently graduated with a Bachelors of Science in Computer Science from UC Davis.</Span.small>
 			<Span.small>I am an independent video game developer and software engineer.</Span.small>
 			<Span.small>Welcome to my portfolio.</Span.small>
@@ -47,9 +47,10 @@
 			<a href="https://ikedyike.itch.io/" target="_blank" class="small">Itch.io Account</a>
 			<br>
 			<Span.small>Email: icraig2002@gmail.com</Span.small>
-        </div>
+        	</div>
+		
 		<div class="overlay-content" id="projectsContent" style="display: none;">
-            <Span onclick="showMainMenu()">←</Span>
+            		<Span onclick="showMainMenu()">←</Span>
 			<Span onclick="spellfisterOverlay()">Spellfister</Span>
             		<Span onclick="recycleMeOverlay()">Recycle Me!</Span>
 			<Span onclick="dinoDropOverlay()">Dino Drop</Span>
@@ -57,12 +58,12 @@
 			<Span onclick="ikesGamesSiteOverlay()">Ikes Games Website</Span>
 			<Span onclick="cvASLOverlay()">CV Sign Language Interpreter</Span>
 			<Span onclick="brainTumorOverlay()">This Website</Span>
-        </div>
+        	</div>
 		
 		<!-- PROJECT OVERLAYS -->
 		<div class="overlay-content" id="spellfisterContent" style="display: none;">
-            <Span onclick="projectOverlay()">←</Span>
-            <Span2>Spellfister</Span2>
+            		<Span onclick="projectOverlay()">←</Span>
+            		<Span2>Spellfister</Span2>
 			<Span.small>Spellfister is a magic based FPS I developed with a team as lead programmer.</Span.small>
 			<br>
 			<br>
@@ -73,10 +74,11 @@
 			<a href="https://www.youtube.com/watch?v=YUumzbIi_6k" target="_blank" class="Span.small">Video Game Trailer</a>
 			<br>
 			<a href="https://github.com/angelinajillian/ctrl-freaks" target="_blank" class="Span.small">Website Repository</a>
-        </div>
+        	</div>
+		
 		<div class="overlay-content" id="recycleMeContent" style="display: none;">
-            <Span onclick="projectOverlay()">←</Span>
-            <Span2>Recycle Me!</Span2>
+            		<Span onclick="projectOverlay()">←</Span>
+            		<Span2>Recycle Me!</Span2>
 			<Span.small>You are the duck.</Span.small>
 			<br>
 			<Span.small>Recycle Me! is a game I solo developed where you play as a character who has to sort through falling waste!</Span.small>
@@ -87,10 +89,11 @@
 			<a href="https://youtu.be/OC6Q8ofiM10?si=9v5giO6v8XH_9qbw" target="_blank" class="Span.small">Video Game Trailer</a>
 			<br>
 			<a href="https://github.com/ikedyike/Recycle-Me" target="_blank" class="Span.small">Website Repository</a>
-        </div>
+        	</div>
+		
 		<div class="overlay-content" id="dinoDropContent" style="display: none;">
-            <Span onclick="projectOverlay()">←</Span>
-            <Span2>Dino Drop</Span2>
+            		<Span onclick="projectOverlay()">←</Span>
+            		<Span2>Dino Drop</Span2>
 			<Span.small>Dino Drop is a platformer game I have developed by myself from the ground up.</Span.small>
 			<br>
 			<Span.small>Planned release: 3/30/2024</Span.small>
@@ -99,18 +102,30 @@
 			<Span.small>Links:</Span.small>
 			<br>
 			<a href="https://ikedyike.itch.io/dino-drop" target="_blank" class="Span.small">Dino Drop Page</a>
-        </div>
+        	</div>
+		
 		<div class="overlay-content" id="websiteContent" style="display: none;">
-            <Span onclick="projectOverlay()">←</Span>
-            <Span2>This Website</Span2>
+            		<Span onclick="projectOverlay()">←</Span>
+            		<Span2>This Website</Span2>
 			<Span.small>This website was built from scratch using HTML, CSS and JS.</Span.small>	
 			<br>
 			<br>
 			<Span.small>Links:</Span.small>
 			<br>
 			<a href="https://github.com/ikedyike/ikedyike.github.io" target="_blank" class="Span.small">Website Repository</a>
-        </div>
-		
+        	</div>
+
+		<div class="overlay-content" id="ikesGamesSiteContent" style="display: none;">
+			<Span onclick="projectOverlay()">←</Span>
+            		<Span2>Ikes Games Website</Span2>
+			<Span.small> I developed the website for my personal game studio from the ground up using html css and js. have an empty repository link and a website link ikesgames.com
+			<br>
+			<br>
+			<Span.small>Links:</Span.small>
+			<br>
+			<a href="https://github.com/ikedyike/ikedyike.github.io" target="_blank" class="Span.small">Website Repository</a>
+        	</div>
+				
 		<div class="overlay-content" id="overlay-content">
 			<span onclick="closeOverlay()">✖</span>
 			<span onclick="ikesGamesOverlay()">Ikes Games</span>
@@ -263,7 +278,7 @@
 		function ikesGamesSiteOverlay() {
 			document.getElementById('overlay-content').style.display = 'none';
 			document.getElementById('projectsContent').style.display = 'none';
-			document.getElementById('websiteContent').style.display = 'block';
+			document.getElementById('ikesGamesSiteContent').style.display = 'block';
 		}
 
 		function cvASLOverlay() {
