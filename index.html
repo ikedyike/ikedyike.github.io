@@ -33,8 +33,10 @@
 		<div class="overlay-content" id="aboutMeContent" style="display: none;">
             		<Span onclick="showMainMenu()">←</Span>
             		<Span2>About Me (Isaac Craig)</Span2>
-			<Span.small>My name is Isaac Craig and I recently graduated with a Bachelors of Science in Computer Science from UC Davis.</Span.small>
+			<Span.small>My name is Isaac Craig and I graduated with a Bachelors of Science in Computer Science from UC Davis in 2024.</Span.small>
 			<Span.small>I am an independent video game developer and software engineer.</Span.small>
+			<Span.small>Since graduating, I have been working on multiple projects including a large-scale title called WaxHeart.</Span.small>
+			<br>
 			<Span.small>Welcome to my portfolio.</Span.small>
 			<br>
 			<br>
@@ -50,9 +52,10 @@
         	</div>
 		
 		<div class="overlay-content" id="projectsContent" style="display: none;">
-            		<Span onclick="showMainMenu()">←</Span>
+				<Span onclick="showMainMenu()">←</Span>
+			<Span onclick="waxHeartOverlay()">WaxHeart</Span>
 			<Span onclick="spellfisterOverlay()">Spellfister</Span>
-            		<Span onclick="recycleMeOverlay()">Recycle Me!</Span>
+            <Span onclick="recycleMeOverlay()">Recycle Me!</Span>
 			<Span onclick="dinoDropOverlay()">Dino Drop</Span>
 			<Span onclick="websiteOverlay()">This Website</Span>
 			<Span onclick="ikesGamesSiteOverlay()">Ikes Games Website</Span>
@@ -61,10 +64,27 @@
         	</div>
 		
 		<!-- PROJECT OVERLAYS -->
+		<div class="overlay-content" id="waxHeartContent" style="display: none;">
+            		<Span onclick="projectOverlay()">←</Span>
+            <Span2>WaxHeart</Span2>
+			<Span.small>WaxHeart is an atmospheric puzzle adventure where you play as a wax child with a lantern for a heart, journeying through a dark, ruined world in search of their lost memory.</Span.small>
+			<br>
+			<br>
+			<Span.small>I am a senior developer on the project, I do work on features, bug fixes, and animation hookups.</Span.small>
+			<br>
+			<br>
+			<Span.small>Links:</Span.small>
+			<br>
+			<a href="https://waxheart.info/" target="_blank" class="Span.small">WaxHeart Page</a>
+			<br>
+			<a href="https://youtu.be/z5pg0dOZizs" target="_blank" class="Span.small">Video Game Trailer</a>
+        	</div>
+
 		<div class="overlay-content" id="spellfisterContent" style="display: none;">
             		<Span onclick="projectOverlay()">←</Span>
-            		<Span2>Spellfister</Span2>
+            <Span2>Spellfister</Span2>
 			<Span.small>Spellfister is a magic based FPS I developed with a team as lead programmer.</Span.small>
+			<Span.small>I am currently working on a huge content update to the game.</Span.small>
 			<br>
 			<br>
 			<Span.small>Links:</Span.small>
@@ -154,9 +174,9 @@
 				
 		<div class="overlay-content" id="overlay-content">
 			<span onclick="closeOverlay()">✖</span>
-			<span onclick="ikesGamesOverlay()">Ikes Games</span>
-			<span onclick="projectOverlay()">Personal Projects</span>
 			<span onclick="aboutOverlay()">About Me</span>
+			<span onclick="projectOverlay()">Projects</span>
+			<span onclick="ikesGamesOverlay()">Ikes Games</span>
 		</div>
 	</div>
 	
@@ -266,6 +286,7 @@
 		
 		function projectOverlay() {
 			document.getElementById('overlay-content').style.display = 'none';
+			document.getElementById('waxHeartContent').style.display = 'none';
 			document.getElementById('spellfisterContent').style.display = 'none';
 			document.getElementById('dinoDropContent').style.display = 'none';
 			document.getElementById('recycleMeContent').style.display = 'none';
@@ -278,6 +299,12 @@
 
 		function ikesGamesOverlay() {
    			window.open("https://ikesgames.com", "_blank");
+		}
+
+		function waxHeartOverlay() {
+			document.getElementById('overlay-content').style.display = 'none';
+			document.getElementById('projectsContent').style.display = 'none';
+			document.getElementById('waxHeartContent').style.display = 'block';
 		}
 		
 		function spellfisterOverlay() {
