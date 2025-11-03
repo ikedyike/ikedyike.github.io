@@ -54,6 +54,7 @@
 		<div class="overlay-content" id="projectsContent" style="display: none;">
 				<Span onclick="showMainMenu()">←</Span>
 			<Span onclick="waxHeartOverlay()">WaxHeart</Span>
+			<Span onclick="trickOrTreatOverlay()">Trick or Treat</Span>
 			<Span onclick="spellfisterOverlay()">Spellfister</Span>
             <Span onclick="recycleMeOverlay()">Recycle Me!</Span>
 			<Span onclick="dinoDropOverlay()">Dino Drop</Span>
@@ -80,6 +81,23 @@
 			<a href="https://youtu.be/z5pg0dOZizs" target="_blank" class="Span.small">Video Game Trailer</a>
         	</div>
 
+		<div class="overlay-content" id="trickOrTreatContent" style="display: none;">
+            		<Span onclick="projectOverlay()">←</Span>
+            <Span2>Trick or Treat</Span2>
+			<Span.small>Trick or Treat is a solo Halloween micro-game built in six weeks using Unity and C#.</Span.small>
+		    <Span.small>Features procedural neighborhoods, AI trick-or-treaters with NavMesh, and a karma system that changes your odds based on choices.</Span.small>
+		    <Span.small>Shipped as a polished, replayable experience with WebGL and desktop builds.</Span.small>
+			<br>
+			<br>
+			<Span.small>Links:</Span.small>
+			<br>
+			<a href="https://ikedyike.itch.io/Trick-or-Treat" target="_blank" class="Span.small">Trick or Treat Page</a>
+			<br>
+			<a href="https://youtu.be/XkxccrSllKk?si=Mg2G4gANYvSY43OO" target="_blank" class="Span.small">Video Game Trailer</a>
+			<br>
+			<a href="https://github.com/ikedyike/Trick-R-Treat" target="_blank" class="Span.small">Website Repository</a>
+        	</div>
+			
 		<div class="overlay-content" id="spellfisterContent" style="display: none;">
             		<Span onclick="projectOverlay()">←</Span>
             <Span2>Spellfister</Span2>
@@ -99,10 +117,12 @@
 		<div class="overlay-content" id="recycleMeContent" style="display: none;">
             		<Span onclick="projectOverlay()">←</Span>
             		<Span2>Recycle Me!</Span2>
-			<Span.small>You are the duck.</Span.small>
 			<br>
 			<Span.small>Recycle Me! is a game I solo developed where you play as a character who has to sort through falling waste!</Span.small>
 			<Span.small> Made in under 24 hours for HackDavis '24 with the theme "Social Good." </Span.small>
+			<br>
+			<br>
+			<Span.small>Links:</Span.small>
 			<br>
 			<a href="https://ctrl-freaks.itch.io/recycle-me" target="_blank" class="Span.small">Recycle Me! Page</a>
 			<br>
@@ -115,8 +135,6 @@
             		<Span onclick="projectOverlay()">←</Span>
             		<Span2>Dino Drop</Span2>
 			<Span.small>Dino Drop is a platformer game I have developed by myself from the ground up.</Span.small>
-			<br>
-			<Span.small>Planned release: 3/30/2024</Span.small>
 			<br>
 			<br>
 			<Span.small>Links:</Span.small>
@@ -156,7 +174,7 @@
 			<br>
 			<Span.small>Links:</Span.small>
 			<br>
-			<a href="" target="_blank" class="Span.small">Repository</a>
+			<a href="https://github.com/ikedyike/CVSignLanguage" target="_blank" class="Span.small">Repository</a>
         	</div>
 
 		<div class="overlay-content" id="brainTumorContent" style="display: none;">
@@ -287,6 +305,7 @@
 		function projectOverlay() {
 			document.getElementById('overlay-content').style.display = 'none';
 			document.getElementById('waxHeartContent').style.display = 'none';
+			document.getElementById('trickOrTreatContent').style.display = 'none';
 			document.getElementById('spellfisterContent').style.display = 'none';
 			document.getElementById('dinoDropContent').style.display = 'none';
 			document.getElementById('recycleMeContent').style.display = 'none';
@@ -305,6 +324,12 @@
 			document.getElementById('overlay-content').style.display = 'none';
 			document.getElementById('projectsContent').style.display = 'none';
 			document.getElementById('waxHeartContent').style.display = 'block';
+		}
+		
+		function trickOrTreatOverlay() {
+			document.getElementById('overlay-content').style.display = 'none';
+			document.getElementById('projectsContent').style.display = 'none';
+			document.getElementById('trickOrTreatContent').style.display = 'block';
 		}
 		
 		function spellfisterOverlay() {
@@ -351,6 +376,7 @@
 		
 		function showMainMenu() {
             document.getElementById('overlay-content').style.display = 'block';
+			document.getElementById('trickOrTreatContent').style.display = 'none';
 			document.getElementById('dinoDropContent').style.display = 'none';
 			document.getElementById('projectsContent').style.display = 'none';
             document.getElementById('aboutMeContent').style.display = 'none';
