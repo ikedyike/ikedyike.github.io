@@ -195,6 +195,7 @@
 			<span onclick="aboutOverlay()">About Me</span>
 			<span onclick="projectOverlay()">Projects</span>
 			<span onclick="ikesGamesOverlay()">Ikes Games</span>
+			<span class="secret-button" onclick="goToCelebrate()">★</span>
 		</div>
 	</div>
 	
@@ -386,6 +387,10 @@
 
 		function closeOverlay() {
 			document.getElementById('overlay').style.display = 'none';
+		}
+		
+		function goToCelebrate() {
+        window.location.href = "celebrate.html";
 		}
 			
 		rain();

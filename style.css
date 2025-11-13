@@ -140,6 +140,13 @@ body
 	aspect-ratio: 1 / 1;
 }
 
+.secret-button {
+    font-size: 0.5rem;      /* small */
+    opacity: 0;            /* subtle */
+	cursor: default !important;
+	
+}
+
 .overlay-content span:hover,
 .overlay-content span:active {
     color: #7393B3; /* Change text color when hovered over or pressed */
