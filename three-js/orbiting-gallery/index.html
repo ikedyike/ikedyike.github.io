@@ -156,15 +156,18 @@
 
   // ----- Scene -----
   const scene = new THREE.Scene();
+  
+  scene.fog = new THREE.Fog(0x000000, isMobile() ? 5.5 : 7.0, isMobile() ? 12 : 16);
 
-  // Camera
-  const camera = new THREE.PerspectiveCamera(
-    45,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    200
-  );
-  camera.position.set(0, 0.35, 7);
+	const fov = isMobile() ? 60 : 45; // stronger perspective on mobile
+	const camera = new THREE.PerspectiveCamera(
+	  fov,
+	  window.innerWidth / window.innerHeight,
+	  0.1,
+	  200
+	);
+	camera.position.set(0, isMobile() ? 0.25 : 0.35, isMobile() ? 6.1 : 7.0);
+	camera.lookAt(0, 0, 0);
 
   // Renderer (opaque black => rain behind won't show even if rain.js exists)
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
@@ -180,6 +183,8 @@
   // Group to spin
   const ring = new THREE.Group();
   scene.add(ring);
+  
+  ring.rotation.x = isMobile() ? -0.22 : -0.14; // tilt toward camera => depth
 
   // Load textures
   const loader = new THREE.TextureLoader();
@@ -310,12 +315,32 @@
 
     // Keep cards readable: face camera + tiny bob
     const bob = isMobile() ? 0.05 : 0.10;
-    cards.forEach((mesh, idx) => {
-      mesh.position.y = Math.sin(t * 1.2 + idx * 0.6) * bob;
+	cards.forEach((mesh, idx) => {
+	  mesh.position.y = Math.sin(t * 1.2 + idx * 0.6) * bob;
 
-      mesh.lookAt(camera.position);
-      mesh.rotateY(Math.PI); // keep fronts toward camera
-    });
+	  // Face camera
+	  mesh.lookAt(camera.position);
+	  mesh.rotateY(Math.PI);
+
+	  // --- DEPTH CUES (money part) ---
+	  // distance from camera (bigger = farther)
+	  const d = mesh.getWorldPosition(new THREE.Vector3()).distanceTo(camera.position);
+
+	  // map distance to 0..1 (near..far)
+	  const nearD = isMobile() ? 4.5 : 5.2;
+	  const farD  = isMobile() ? 9.0 : 11.0;
+	  const depth01 = THREE.MathUtils.clamp((d - nearD) / (farD - nearD), 0, 1);
+
+	  // farther = slightly smaller
+	  const s = THREE.MathUtils.lerp(1.0, 0.82, depth01);
+	  mesh.scale.set(s, s, s);
+
+	  // farther = slightly dimmer
+	  if (mesh.material) {
+		mesh.material.opacity = THREE.MathUtils.lerp(1.0, 0.65, depth01);
+		mesh.material.transparent = true;
+	  }
+	});
 
     renderer.render(scene, camera);
   }

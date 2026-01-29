@@ -245,14 +245,85 @@
         console.error("Failed to load model:", err);
       }
     );
+	// --- Drag to rotate (mouse + touch) ---
+	let isDragging = false;
+	let lastX = 0;
+
+	// yaw offset added on top of auto-rotation
+	let dragYaw = 0;
+
+	// inertia after release
+	let velocity = 0;
+
+	// tweak feel
+	const dragSensitivity = 0.005; // higher = rotates more per pixel
+	const damping = 0.92;          // closer to 1 = longer glide
+	const maxVel = 0.12;
+
+	// IMPORTANT: prevent iOS page scrolling while dragging on canvas
+	renderer.domElement.style.touchAction = "none";
+
+	function pointerDown(clientX) {
+	  isDragging = true;
+	  lastX = clientX;
+	  velocity = 0;
+	}
+
+	function pointerMove(clientX) {
+	  if (!isDragging) return;
+
+	  const dx = clientX - lastX;
+	  lastX = clientX;
+
+	  const delta = dx * dragSensitivity;
+	  dragYaw += delta;
+
+	  // store velocity for inertia
+	  velocity = THREE.MathUtils.clamp(delta, -maxVel, maxVel);
+	}
+
+	function pointerUp() {
+	  isDragging = false;
+	}
+
+	// Mouse
+	renderer.domElement.addEventListener("mousedown", (e) => pointerDown(e.clientX));
+	window.addEventListener("mousemove", (e) => pointerMove(e.clientX));
+	window.addEventListener("mouseup", pointerUp);
+
+	// Touch
+	renderer.domElement.addEventListener(
+	  "touchstart",
+	  (e) => { if (e.touches.length) pointerDown(e.touches[0].clientX); },
+	  { passive: true }
+	);
+
+	renderer.domElement.addEventListener(
+	  "touchmove",
+	  (e) => { if (e.touches.length) pointerMove(e.touches[0].clientX); },
+	  { passive: true }
+	);
+
+	renderer.domElement.addEventListener("touchend", pointerUp);
 
     // --- Animate ---
     function animate() {
       requestAnimationFrame(animate);
 
       if (modelRoot) {
-        modelRoot.rotation.y += 0.003;
-      }
+	  // auto rotation
+	  modelRoot.rotation.y += 0.003;
+
+	  // inertia (only when not dragging)
+	  if (!isDragging) {
+		dragYaw += velocity;
+		velocity *= damping;
+	  }
+
+	  // add drag yaw on top of auto spin
+	  modelRoot.rotation.y += dragYaw;
+	  dragYaw *= 0.85; // keeps it from growing forever
+	}
 
       renderer.render(scene, camera);
     }
