@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rotating Image</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+  
+  <script type="importmap">
+	{
+	  "imports": {
+		"three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+		"three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+	  }
+	}
+	</script>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: black;
+      min-height: 100vh;
+      overflow: hidden;
+      color: #fff;
+      font-family: 'Ubuntu Mono', monospace;
+    }
+
+    /* Unicode home button (back to three-js hub) */
+    .home-btn {
+      position: fixed;
+      top: 2%;
+      left: 2%;
+      z-index: 10;
+
+      font-size: 3em;
+      line-height: 1;
+
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin: 0;
+
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+      user-select: none;
+
+      transition: transform 120ms ease, opacity 120ms ease;
+    }
+
+    .home-btn:hover,
+    .home-btn:active {
+      transform: scale(1.06);
+      opacity: 0.9;
+    }
+
+    .title {
+      position: fixed;
+      top: 2%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+
+      text-align: center;
+      pointer-events: none;
+
+      font-weight: 300;
+      letter-spacing: 0.10em;
+      font-size: clamp(1.1rem, 3vw, 2rem);
+      opacity: 0.9;
+    }
+
+    /* Raindrops */
+    i.rain-drop {
+      position: absolute;
+      height: 200px;
+      background: linear-gradient(transparent, #FFF);
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      animation: animate 5s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes animate {
+      0%   { transform: translateY(-200px); }
+      100% { transform: translateY(calc(100vh + 200px)); }
+    }
+
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      z-index: 1; /* above rain, below UI */
+    }
+  </style>
+</head>
+
+<body>
+  <a class="home-btn" href="../index.html" title="Back">←</a>
+  <div class="title">Rotating Image</div>
+
+  <!-- Rain persists via localStorage (uses your existing rain.js) -->
+  <script src="../../rain.js"></script>
+
+  <script type="module">
+    import * as THREE from "three";
+	import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+
+    // --- Scene ---
+    const scene = new THREE.Scene();
+
+    // --- Camera ---
+    const camera = new THREE.PerspectiveCamera(
+      45,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      100
+    );
+    camera.position.set(0, 1.2, 4);
+
+    // --- Renderer ---
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    document.body.appendChild(renderer.domElement);
+
+    // --- Lights (simple, looks good) ---
+    const ambient = new THREE.AmbientLight(0xffffff, 0.65);
+    scene.add(ambient);
+
+    const keyLight = new THREE.DirectionalLight(0xffffff, 1.0);
+    keyLight.position.set(3, 5, 2);
+    scene.add(keyLight);
+
+    const rimLight = new THREE.DirectionalLight(0xffffff, 0.35);
+    rimLight.position.set(-4, 2, -3);
+    scene.add(rimLight);
+
+    // Optional: subtle floor shadow feel (without real shadows)
+    // (Real shadows are heavier; we can add later.)
+    const floor = new THREE.Mesh(
+      new THREE.CircleGeometry(1.6, 64),
+      new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.35 })
+    );
+    floor.rotation.x = -Math.PI / 2;
+    floor.position.y = 0;
+    scene.add(floor);
+
+    // --- Load GLB model ---
+    const loader = new GLTFLoader();
+    let modelRoot = null;
+
+    loader.load(
+      "./candle.glb",
+      (gltf) => {
+        modelRoot = gltf.scene;
+        scene.add(modelRoot);
+
+        // Center + scale to fit camera nicely
+        const box = new THREE.Box3().setFromObject(modelRoot);
+        const size = new THREE.Vector3();
+        box.getSize(size);
+
+        const center = new THREE.Vector3();
+        box.getCenter(center);
+
+        // Move model so it's centered at origin
+        modelRoot.position.x += (modelRoot.position.x - center.x);
+        modelRoot.position.y += (modelRoot.position.y - center.y);
+        modelRoot.position.z += (modelRoot.position.z - center.z);
+
+        // Scale model to a predictable size
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const target = 1.8; // how tall-ish you want it in scene units
+        const scale = target / maxDim;
+        modelRoot.scale.setScalar(scale);
+
+        // Put it slightly above the floor
+        modelRoot.position.y += 0.9;
+
+        // If your model looks dark, bump ambient intensity above
+      },
+      undefined,
+      (err) => {
+        console.error("Failed to load model:", err);
+      }
+    );
+
+    // --- Animate ---
+    function animate() {
+      requestAnimationFrame(animate);
+
+      if (modelRoot) {
+        modelRoot.rotation.y += 0.01;
+      }
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // --- Resize ---
+    window.addEventListener("resize", () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    });
+  </script>
+</body>
+</html>

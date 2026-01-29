@@ -20,35 +20,34 @@
       font-family: 'Ubuntu Mono', monospace;
     }
 
-    /* Home icon: plain white on black */
+    /* Unicode home button (back to three-js hub) */
     .home-btn {
-	  position: fixed;
-	  top: 2%;
-	  left: 2%;
-	  z-index: 10;
+      position: fixed;
+      top: 2%;
+      left: 2%;
+      z-index: 10;
 
-	  font-family: 'Ubuntu Mono', monospace;
-	  font-size: 3em;      /* match your ☰ menu size */
-	  line-height: 1;      /* prevents vertical “float” */
-	  
-	  background: transparent;
-	  border: none;
-	  padding: 0;
-	  margin: 0;
+      font-size: 3em;
+      line-height: 1;
 
-	  color: #fff;
-	  text-decoration: none;
-	  cursor: pointer;
-	  user-select: none;
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin: 0;
 
-	  transition: transform 120ms ease, opacity 120ms ease;
-	}
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+      user-select: none;
 
-.home-btn:hover,
-.home-btn:active {
-  transform: scale(1.06);
-  opacity: 0.9;
-}
+      transition: transform 120ms ease, opacity 120ms ease;
+    }
+
+    .home-btn:hover,
+    .home-btn:active {
+      transform: scale(1.06);
+      opacity: 0.9;
+    }
 
     /* Page layout */
     .page {
@@ -188,7 +187,6 @@
 <body>
   <a class="home-btn" href="../index.html" title="Back to home">⌂</a>
 
-
   <main class="page">
     <div class="header">
       <h1>Three.js Projects</h1>
@@ -210,10 +208,8 @@
 
   <script>
     document.getElementById("btn-rotating").addEventListener("click", () => {
-      console.log("Rotating Image clicked");
-      // later: window.location.href = "./rotating-image.html";
-    });
-
+	  window.location.href = "./rotating-image/index.html";
+	});
     document.getElementById("btn-gallery").addEventListener("click", () => {
       console.log("Orbiting Gallery clicked");
     });
