@@ -106,192 +106,229 @@
   
   <script src="../../rain.js"></script>
 
-  <script type="module">
-    import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
+<script type="module">
+  import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
 
-    // ----- CONFIG: put your PNGs in ./cards/ -----
-    // Add/remove filenames here.
-    const cardFiles = [
-      "cards/card1.png",
-      "cards/card2.png",
-      "cards/card3.png",
-      "cards/card4.png",
-      "cards/card5.png",
-      "cards/card6.png",
-	  "cards/card7.png",
-      "cards/card8.png",
-      "cards/card9.png",
-    ];
+  // ----- CONFIG: put your PNGs in ./cards/ -----
+  const cardFiles = [
+    "cards/card1.png",
+    "cards/card2.png",
+    "cards/card3.png",
+    "cards/card4.png",
+    "cards/card5.png",
+    "cards/card6.png",
+    "cards/card7.png",
+    "cards/card8.png",
+    "cards/card9.png",
+  ];
 
-    // ----- Scene -----
-    const scene = new THREE.Scene();
+  function isMobile() {
+    return window.innerWidth <= 480;
+  }
 
-    // Camera
-    const camera = new THREE.PerspectiveCamera(
-      45,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      200
-    );
-    camera.position.set(0, 0.4, 8);
+  // "Uniform card frame" aspect (width/height)
+  // Pokemon-ish cards are ~ 2.5x3.5 => 0.714
+  const CARD_ASPECT = 0.714;
 
-    // Renderer (opaque black => rain behind won't show even if you include rain.js elsewhere)
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0x000000, 1);
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-    document.body.appendChild(renderer.domElement);
+  function coverCropTexture(texture, frameAspect) {
+    const img = texture.image;
+    if (!img || !img.width || !img.height) return;
 
-    // Lights (subtle, cards are mostly unlit because they’re textures)
-    const ambient = new THREE.AmbientLight(0xffffff, 1.0);
-    scene.add(ambient);
+    const imgAspect = img.width / img.height;
 
-    // Group to spin
-    const ring = new THREE.Group();
-    scene.add(ring);
+    texture.center.set(0.5, 0.5);
+    texture.rotation = 0;
 
-    // Load textures
-    const loader = new THREE.TextureLoader();
-    const textures = await Promise.all(
-      cardFiles.map((src) => new Promise((resolve, reject) => {
-        loader.load(
-          src,
-          (tex) => {
-            tex.colorSpace = THREE.SRGBColorSpace;
-            tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
-            resolve(tex);
-          },
-          undefined,
-          reject
-        );
-      }))
-    );
+    if (imgAspect > frameAspect) {
+      // image is wider -> crop left/right
+      const scaleX = frameAspect / imgAspect;
+      texture.repeat.set(scaleX, 1);
+      texture.offset.set((1 - scaleX) / 2, 0);
+    } else {
+      // image is taller -> crop top/bottom
+      const scaleY = imgAspect / frameAspect;
+      texture.repeat.set(1, scaleY);
+      texture.offset.set(0, (1 - scaleY) / 2);
+    }
 
-    // Card geometry (will scale per texture aspect)
-    const baseHeight = 2.2; // scene units
-    const cards = [];
+    texture.needsUpdate = true;
+  }
 
-    textures.forEach((tex, i) => {
-      // Compute aspect ratio from the loaded image
-      const img = tex.image;
-      const aspect = (img && img.width && img.height) ? (img.width / img.height) : 0.7;
+  // ----- Scene -----
+  const scene = new THREE.Scene();
 
-      const height = baseHeight;
-      const width = baseHeight * aspect;
+  // Camera
+  const camera = new THREE.PerspectiveCamera(
+    45,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    200
+  );
+  camera.position.set(0, 0.35, 7);
 
-      const geom = new THREE.PlaneGeometry(width, height);
+  // Renderer (opaque black => rain behind won't show even if rain.js exists)
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setClearColor(0x000000, 1);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  document.body.appendChild(renderer.domElement);
 
-      // DoubleSide so it doesn’t disappear when rotated
-      const mat = new THREE.MeshBasicMaterial({
-        map: tex,
-        transparent: true,
-        side: THREE.DoubleSide,
-      });
+  // Cards don’t need lighting when using MeshBasicMaterial, but ambient is harmless.
+  scene.add(new THREE.AmbientLight(0xffffff, 1.0));
 
-      const mesh = new THREE.Mesh(geom, mat);
+  // Group to spin
+  const ring = new THREE.Group();
+  scene.add(ring);
 
-      // Position on a ring
-      const count = textures.length;
-      const angle = (i / count) * Math.PI * 2;
+  // Load textures
+  const loader = new THREE.TextureLoader();
+  const textures = await Promise.all(
+    cardFiles.map(
+      (src) =>
+        new Promise((resolve) => {
+          loader.load(
+            src,
+            (tex) => {
+              tex.colorSpace = THREE.SRGBColorSpace;
+              tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+              resolve(tex);
+            },
+            undefined,
+            (err) => {
+              console.warn("Failed to load:", src, err);
+              resolve(null); // keep going even if one fails
+            }
+          );
+        })
+    )
+  );
 
-      const radius = 4.2;
-      mesh.position.set(
-        Math.cos(angle) * radius,
-        0,
-        Math.sin(angle) * radius
-      );
+  const validTextures = textures.filter(Boolean);
 
-      // Face roughly toward center to look “gallery-like”
-      mesh.lookAt(0, 0, 0);
+  // ----- UNIFORM SIZE (same geometry for every card) -----
+  const CARD_H = isMobile() ? 1.15 : 2.05;           // smaller on mobile
+  const CARD_W = CARD_H * CARD_ASPECT;
 
-      ring.add(mesh);
-      cards.push({ mesh, baseAngle: angle });
+  // tighter orbit
+  const RADIUS = isMobile() ? 1.55 : 3.25;
+
+  const cards = [];
+  const geom = new THREE.PlaneGeometry(CARD_W, CARD_H);
+
+  validTextures.forEach((tex, i) => {
+    // cover-crop each texture into the uniform frame
+    coverCropTexture(tex, CARD_W / CARD_H);
+
+    const mat = new THREE.MeshBasicMaterial({
+      map: tex,
+      transparent: true,
+      side: THREE.DoubleSide,
     });
 
-    // ----- Interaction: drag to rotate (mouse + touch) -----
-    let isDown = false;
-    let lastX = 0;
-    let dragVelocity = 0;
-    let targetSpin = 0;
+    const mesh = new THREE.Mesh(geom, mat);
 
-    function onDown(clientX) {
-      isDown = true;
-      lastX = clientX;
-      dragVelocity = 0;
-    }
+    // Position on ring
+    const count = validTextures.length;
+    const angle = (i / count) * Math.PI * 2;
 
-    function onMove(clientX) {
-      if (!isDown) return;
-      const dx = clientX - lastX;
-      lastX = clientX;
+    mesh.position.set(
+      Math.cos(angle) * RADIUS,
+      0,
+      Math.sin(angle) * RADIUS
+    );
 
-      // Convert pixels -> radians
-      const delta = dx * 0.004;
-      targetSpin += delta;
-      dragVelocity = delta;
-    }
+    ring.add(mesh);
+    cards.push(mesh);
+  });
 
-    function onUp() {
-      isDown = false;
-    }
+  // ----- Interaction: drag to rotate (mouse + touch) -----
+  let isDown = false;
+  let lastX = 0;
+  let dragVelocity = 0;
+  let targetSpin = 0;
 
-    window.addEventListener("mousedown", (e) => onDown(e.clientX));
-    window.addEventListener("mousemove", (e) => onMove(e.clientX));
-    window.addEventListener("mouseup", onUp);
+  function onDown(clientX) {
+    isDown = true;
+    lastX = clientX;
+    dragVelocity = 0;
+  }
 
-    window.addEventListener("touchstart", (e) => {
+  function onMove(clientX) {
+    if (!isDown) return;
+    const dx = clientX - lastX;
+    lastX = clientX;
+
+    const delta = dx * 0.0035; // slightly slower than before
+    targetSpin += delta;
+    dragVelocity = delta;
+  }
+
+  function onUp() {
+    isDown = false;
+  }
+
+  window.addEventListener("mousedown", (e) => onDown(e.clientX));
+  window.addEventListener("mousemove", (e) => onMove(e.clientX));
+  window.addEventListener("mouseup", onUp);
+
+  window.addEventListener(
+    "touchstart",
+    (e) => {
       if (e.touches.length > 0) onDown(e.touches[0].clientX);
-    }, { passive: true });
+    },
+    { passive: true }
+  );
 
-    window.addEventListener("touchmove", (e) => {
+  window.addEventListener(
+    "touchmove",
+    (e) => {
       if (e.touches.length > 0) onMove(e.touches[0].clientX);
-    }, { passive: true });
+    },
+    { passive: true }
+  );
 
-    window.addEventListener("touchend", onUp);
+  window.addEventListener("touchend", onUp);
 
-    // ----- Animation -----
-    const clock = new THREE.Clock();
+  // ----- Animation -----
+  const clock = new THREE.Clock();
 
-    function animate() {
-      requestAnimationFrame(animate);
-      const t = clock.getElapsedTime();
+  function animate() {
+    requestAnimationFrame(animate);
+    const t = clock.getElapsedTime();
 
-      // gentle idle spin (unless dragging)
-      const idle = isDown ? 0 : 0.0025;
+    const idle = isDown ? 0 : (isMobile() ? 0.0012 : 0.0018);
 
-      // inertia (feels nice)
-      if (!isDown) {
-        targetSpin += dragVelocity;
-        dragVelocity *= 0.92;
-      }
-
-      ring.rotation.y += idle;
-      ring.rotation.y += targetSpin;
-      targetSpin *= 0.85;
-
-      // Give each card a slight bob + keep facing camera a bit
-      cards.forEach(({ mesh }, idx) => {
-        mesh.position.y = Math.sin(t * 1.2 + idx * 0.7) * 0.12;
-
-        // Subtle “billboard toward camera” so they stay readable
-        // (mix between looking at center and camera)
-        const towardCam = new THREE.Vector3().copy(camera.position);
-        mesh.lookAt(towardCam);
-        mesh.rotateY(Math.PI); // keep fronts facing camera
-      });
-
-      renderer.render(scene, camera);
+    // inertia
+    if (!isDown) {
+      targetSpin += dragVelocity;
+      dragVelocity *= 0.92;
     }
-    animate();
 
-    // ----- Resize -----
-    window.addEventListener("resize", () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    ring.rotation.y += idle + targetSpin;
+    targetSpin *= 0.85;
+
+    // Keep cards readable: face camera + tiny bob
+    const bob = isMobile() ? 0.05 : 0.10;
+    cards.forEach((mesh, idx) => {
+      mesh.position.y = Math.sin(t * 1.2 + idx * 0.6) * bob;
+
+      mesh.lookAt(camera.position);
+      mesh.rotateY(Math.PI); // keep fronts toward camera
     });
-  </script>
+
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  // ----- Resize -----
+  window.addEventListener("resize", () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  });
+</script>
 </body>
 </html>
