@@ -71,6 +71,21 @@
 	  font-size: clamp(1.1rem, 3vw, 2rem);
 	  opacity: 0.9;
 	}
+	
+	.hint {
+	  position: fixed;
+	  left: 50%;
+	  bottom: 7%;
+	  transform: translateX(-50%);
+	  z-index: 10;
+
+	  font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+	  opacity: 0.75;
+	  text-align: center;
+	  padding: 0 1rem;
+	  pointer-events: none;
+	  max-width: 92vw;
+	}
 
     /* Raindrops */
     i.rain-drop {
@@ -102,6 +117,7 @@
 <body>
   <a class="home-btn" href="../index.html" title="Back">←</a>
   <div class="title">Rotating Image</div>
+  <div class="hint">Candle I modelled for my game SpellFister</div>
 
   <!-- Rain persists via localStorage (uses your existing rain.js) -->
   <script src="../../rain.js"></script>
@@ -181,7 +197,7 @@
         modelRoot.scale.setScalar(scale);
 
         // Put it slightly above the floor
-        modelRoot.position.y += 0.8;
+        modelRoot.position.y += 1;
 
 		// show more top
 		modelRoot.rotation.x = 0.25;
