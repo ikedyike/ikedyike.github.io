@@ -59,20 +59,18 @@
     }
 
     .title {
-      position: fixed;
-      top: 2%;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-
-      text-align: center;
-      pointer-events: none;
-
-      font-weight: 300;
-      letter-spacing: 0.10em;
-      font-size: clamp(1.1rem, 3vw, 2rem);
-      opacity: 0.9;
-    }
+	  position: fixed;
+	  top: 7%;
+	  left: 50%;
+	  transform: translateX(-50%);
+	  z-index: 10;
+	  text-align: center;
+	  pointer-events: none;
+	  font-weight: 300;
+	  letter-spacing: 0.10em;
+	  font-size: clamp(1.1rem, 3vw, 2rem);
+	  opacity: 0.9;
+	}
 
     /* Raindrops */
     i.rain-drop {
@@ -183,7 +181,10 @@
         modelRoot.scale.setScalar(scale);
 
         // Put it slightly above the floor
-        modelRoot.position.y += 0.9;
+        modelRoot.position.y += 0.8;
+
+		// show more top
+		modelRoot.rotation.x = -0.25;
 
         // If your model looks dark, bump ambient intensity above
       },
@@ -198,7 +199,7 @@
       requestAnimationFrame(animate);
 
       if (modelRoot) {
-        modelRoot.rotation.y += 0.01;
+        modelRoot.rotation.y += 0.003;
       }
 
       renderer.render(scene, camera);
