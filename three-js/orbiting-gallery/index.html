@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Orbiting Cards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: black;
+      min-height: 100vh;
+      overflow: hidden;
+      color: #fff;
+      font-family: 'Ubuntu Mono', monospace;
+    }
+
+    /* Home button (back to three-js hub) */
+    .home-btn {
+      position: fixed;
+      top: 2%;
+      left: 2%;
+      z-index: 10;
+
+      font-size: 3em;
+      line-height: 1;
+
+      background: rgba(0,0,0,0.85);
+      border: none;
+      padding: 0.1em 0.2em;
+      border-radius: 6px;
+
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+      user-select: none;
+
+      transition: transform 120ms ease, opacity 120ms ease;
+    }
+    .home-btn:hover,
+    .home-btn:active { transform: scale(1.06); opacity: 0.9; }
+
+    /* Readable text strips (no border) */
+    .title, .hint {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+
+      background: rgba(0,0,0,0.85);
+      border-radius: 10px;
+      padding: 0.55rem 0.9rem;
+      text-align: center;
+      max-width: 92vw;
+    }
+
+    .title {
+      top: 6%;
+      font-weight: 300;
+      letter-spacing: 0.10em;
+      font-size: clamp(1.1rem, 3vw, 2rem);
+      opacity: 0.95;
+    }
+
+    .hint {
+      bottom: 6%;
+      font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+      opacity: 0.75;
+    }
+	
+	i.rain-drop {
+	  position: absolute;
+	  height: 200px;
+	  background: linear-gradient(transparent, #FFF);
+	  border-bottom-left-radius: 5px;
+	  border-bottom-right-radius: 5px;
+	  animation: animate 5s linear infinite;
+	  pointer-events: none;
+	  z-index: 0;
+	}
+	
+	@keyframes animate {
+      0%   { transform: translateY(-200px); }
+      100% { transform: translateY(calc(100vh + 200px)); }
+    }
+
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- back to three-js hub -->
+  <a class="home-btn" href="../index.html" title="Back to Three.js">←</a>
+
+  <div class="title">Orbiting Cards</div>
+  <div class="hint">LowkeyMon card art (drag to rotate)</div>
+  
+  <script src="../../rain.js"></script>
+
+  <script type="module">
+    import * as THREE from "https://unpkg.com/three@0.160.0/build/three.module.js";
+
+    // ----- CONFIG: put your PNGs in ./cards/ -----
+    // Add/remove filenames here.
+    const cardFiles = [
+      "cards/card1.png",
+      "cards/card2.png",
+      "cards/card3.png",
+      "cards/card4.png",
+      "cards/card5.png",
+      "cards/card6.png",
+	  "cards/card7.png",
+      "cards/card8.png",
+      "cards/card9.png",
+    ];
+
+    // ----- Scene -----
+    const scene = new THREE.Scene();
+
+    // Camera
+    const camera = new THREE.PerspectiveCamera(
+      45,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      200
+    );
+    camera.position.set(0, 0.4, 8);
+
+    // Renderer (opaque black => rain behind won't show even if you include rain.js elsewhere)
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0x000000, 1);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    document.body.appendChild(renderer.domElement);
+
+    // Lights (subtle, cards are mostly unlit because they’re textures)
+    const ambient = new THREE.AmbientLight(0xffffff, 1.0);
+    scene.add(ambient);
+
+    // Group to spin
+    const ring = new THREE.Group();
+    scene.add(ring);
+
+    // Load textures
+    const loader = new THREE.TextureLoader();
+    const textures = await Promise.all(
+      cardFiles.map((src) => new Promise((resolve, reject) => {
+        loader.load(
+          src,
+          (tex) => {
+            tex.colorSpace = THREE.SRGBColorSpace;
+            tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+            resolve(tex);
+          },
+          undefined,
+          reject
+        );
+      }))
+    );
+
+    // Card geometry (will scale per texture aspect)
+    const baseHeight = 2.2; // scene units
+    const cards = [];
+
+    textures.forEach((tex, i) => {
+      // Compute aspect ratio from the loaded image
+      const img = tex.image;
+      const aspect = (img && img.width && img.height) ? (img.width / img.height) : 0.7;
+
+      const height = baseHeight;
+      const width = baseHeight * aspect;
+
+      const geom = new THREE.PlaneGeometry(width, height);
+
+      // DoubleSide so it doesn’t disappear when rotated
+      const mat = new THREE.MeshBasicMaterial({
+        map: tex,
+        transparent: true,
+        side: THREE.DoubleSide,
+      });
+
+      const mesh = new THREE.Mesh(geom, mat);
+
+      // Position on a ring
+      const count = textures.length;
+      const angle = (i / count) * Math.PI * 2;
+
+      const radius = 4.2;
+      mesh.position.set(
+        Math.cos(angle) * radius,
+        0,
+        Math.sin(angle) * radius
+      );
+
+      // Face roughly toward center to look “gallery-like”
+      mesh.lookAt(0, 0, 0);
+
+      ring.add(mesh);
+      cards.push({ mesh, baseAngle: angle });
+    });
+
+    // ----- Interaction: drag to rotate (mouse + touch) -----
+    let isDown = false;
+    let lastX = 0;
+    let dragVelocity = 0;
+    let targetSpin = 0;
+
+    function onDown(clientX) {
+      isDown = true;
+      lastX = clientX;
+      dragVelocity = 0;
+    }
+
+    function onMove(clientX) {
+      if (!isDown) return;
+      const dx = clientX - lastX;
+      lastX = clientX;
+
+      // Convert pixels -> radians
+      const delta = dx * 0.004;
+      targetSpin += delta;
+      dragVelocity = delta;
+    }
+
+    function onUp() {
+      isDown = false;
+    }
+
+    window.addEventListener("mousedown", (e) => onDown(e.clientX));
+    window.addEventListener("mousemove", (e) => onMove(e.clientX));
+    window.addEventListener("mouseup", onUp);
+
+    window.addEventListener("touchstart", (e) => {
+      if (e.touches.length > 0) onDown(e.touches[0].clientX);
+    }, { passive: true });
+
+    window.addEventListener("touchmove", (e) => {
+      if (e.touches.length > 0) onMove(e.touches[0].clientX);
+    }, { passive: true });
+
+    window.addEventListener("touchend", onUp);
+
+    // ----- Animation -----
+    const clock = new THREE.Clock();
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const t = clock.getElapsedTime();
+
+      // gentle idle spin (unless dragging)
+      const idle = isDown ? 0 : 0.0025;
+
+      // inertia (feels nice)
+      if (!isDown) {
+        targetSpin += dragVelocity;
+        dragVelocity *= 0.92;
+      }
+
+      ring.rotation.y += idle;
+      ring.rotation.y += targetSpin;
+      targetSpin *= 0.85;
+
+      // Give each card a slight bob + keep facing camera a bit
+      cards.forEach(({ mesh }, idx) => {
+        mesh.position.y = Math.sin(t * 1.2 + idx * 0.7) * 0.12;
+
+        // Subtle “billboard toward camera” so they stay readable
+        // (mix between looking at center and camera)
+        const towardCam = new THREE.Vector3().copy(camera.position);
+        mesh.lookAt(towardCam);
+        mesh.rotateY(Math.PI); // keep fronts facing camera
+      });
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // ----- Resize -----
+    window.addEventListener("resize", () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    });
+  </script>
+</body>
+</html>
