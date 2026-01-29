@@ -194,6 +194,7 @@
 			<span onclick="closeOverlay()">✖</span>
 			<span onclick="aboutOverlay()">About Me</span>
 			<span onclick="projectOverlay()">Projects</span>
+			<span onclick="threeJsOverlay()">Three.js</span>
 			<span onclick="ikesGamesOverlay()">Ikes Games</span>
 		</div>
 	</div>
@@ -203,93 +204,17 @@
         <div class="button" id="increaseButton" onclick="increaseRain()" style="background-image: url('img/rain.png');"></div>
     </div>
 	
+	<!-- Load rain first so Rain.* exists -->
+	<script src="rain.js"></script>
+	<script src="script.js"></script>
+
 	<script>
-		window.onresize = function(){ updateRain(); }
-		
-		let isMobile = window.innerWidth <= 768;
-		let maxAmount = isMobile ? 35 : 50;
-		
-		
-		function rain(){
-			let body = document.querySelector('body');
-			let umbrella = document.querySelector('img[src="img/cartoon_umbrella.png"]');
-			
-			if (!umbrella) {
-				console.error("Umbrella image not found.");
-				return;
-			}
-			
-			let umbrellaRect = umbrella.getBoundingClientRect();
-			/* let umbrellaMiddle = (umbrellaRect.left + umbrellaRect.right) / 2; */
-			
-			let i = 0;
-			while (i < maxAmount) {
-				let drop = document.createElement('i');
-				
-				let size = Math.random() * 3;
-				let posX = Math.floor(Math.random() * window.innerWidth);
-				let delay = Math.random() * -20;
-				let duration = Math.random() * 5;
-				
-				/*
-				if (posX >= umbrellaRect.left && posX <= umbrellaRect.right) {
-					if (!isMobile) {
-						drop.style.animation = 'animateAboveUmbrellaPC 5s linear infinite';
-					} else {
-						drop.style.animation = 'animateAboveUmbrellaMobile 5s linear infinite';
-					}
-                } */
-				
-				drop.style.width = 0.2 + size+'px';
-				drop.style.left = posX + 'px'
-				drop.style.animationDelay = delay + 's';
-				drop.style.animationDuration = 3 + duration + 's';
-				drop.style.top = '0';
-				
-				/* if (posX >= umbrellaRect.left && posX <= umbrellaMiddle) {
-					drop.style.top = -(window.innerHeight*1.2) + 'px';
-					console.log(drop.style.top);
-                } else if (posX >= umbrellaMiddle && posX <= umbrellaRect.right) {
-					drop.style.top = -(window.innerHeight*1.15) + 'px';
-				} else {
-					drop.style.top = 0;
-				} */
-		
-				body.appendChild(drop);
-				i++
-			}
-		}
-		
-		function updateRain() {
-			let existingDrops = document.querySelectorAll('i');
-			existingDrops.forEach(drop => {
-				document.body.removeChild(drop);
-				console.log("Removed existing raindrop");
-			});
-			console.log(maxAmount);
-			rain();
-		}
-		
 		function increaseRain() {
-			if (!isMobile && maxAmount < 100) {
-				maxAmount += 25; // Increase the amount of raindrops by 100
-				updateRain();
-			}
-			if (isMobile && maxAmount < 55) {
-				maxAmount += 10; // Increase the amount of raindrops by 100
-				updateRain();
-			}
+		  Rain.increase();
 		}
 
 		function decreaseRain() {
-			if (!isMobile && maxAmount > 25) { // Ensure there are at least 200 raindrops
-				maxAmount -= 25;
-							updateRain();
-			}
-			if (isMobile && maxAmount > 15) {
-				maxAmount -= 10; // Increase the amount of raindrops by 100
-				updateRain();
-			}
+		  Rain.decrease();
 		}
 				
 		function toggleOverlay() {
@@ -314,6 +239,9 @@
 			document.getElementById('cvASLContent').style.display = 'none';
 			document.getElementById('brainTumorContent').style.display = 'none';
             		document.getElementById('projectsContent').style.display = 'block';
+		}
+		function threeJsOverlay() {
+			window.location.href = "three-js/index.html";
 		}
 
 		function ikesGamesOverlay() {
@@ -386,9 +314,7 @@
 
 		function closeOverlay() {
 			document.getElementById('overlay').style.display = 'none';
-		}
-		
-		rain();
+		}	
 	</script>
 	
 </body>

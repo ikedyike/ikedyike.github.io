@@ -237,14 +237,15 @@ a:active {
 	}
 }
 
-i
+i.rain-drop
 {
-	position: absolute;
-	height: 200px;
-	background: linear-gradient(transparent, #FFF); /*#wv33007*/
-	border-bottom-left-radius: 5px;
-	border-bottom-right-radius: 5px;
-	animation: animate 5s linear infinite;
+  position: absolute;
+  height: 200px;
+  background: linear-gradient(transparent, #FFF);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  animation: animate 5s linear infinite;
+  pointer-events: none;
 }
 
 @keyframes animate {

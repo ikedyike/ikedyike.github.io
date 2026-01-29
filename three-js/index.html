@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Three.js projects</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: black;
+      min-height: 100vh;
+      overflow: hidden;
+      color: #fff;
+      font-family: 'Ubuntu Mono', monospace;
+    }
+
+    /* Home icon: plain white on black */
+    .home-btn {
+	  position: fixed;
+	  top: 2%;
+	  left: 2%;
+	  z-index: 10;
+
+	  font-family: 'Ubuntu Mono', monospace;
+	  font-size: 3em;      /* match your ☰ menu size */
+	  line-height: 1;      /* prevents vertical “float” */
+	  
+	  background: transparent;
+	  border: none;
+	  padding: 0;
+	  margin: 0;
+
+	  color: #fff;
+	  text-decoration: none;
+	  cursor: pointer;
+	  user-select: none;
+
+	  transition: transform 120ms ease, opacity 120ms ease;
+	}
+
+.home-btn:hover,
+.home-btn:active {
+  transform: scale(1.06);
+  opacity: 0.9;
+}
+
+    /* Page layout */
+    .page {
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      /* Give top + bottom breathing room, works great on mobile too */
+      padding: 10vh 0 6vh;
+    }
+
+    h1 {
+      font-weight: 300;
+      letter-spacing: 0.10em;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      padding: 0 1rem;
+    }
+
+    .sub {
+      opacity: 0.75;
+      font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+      margin-top: 0.5rem;
+      padding: 0 1rem;
+    }
+
+    /* Wrapper for title area */
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /*
+      Projects section:
+      margin-top: auto pushes it down toward bottom,
+      giving you "more space" between title and buttons naturally.
+    */
+	
+	/* Projects wrapper: stop pushing to bottom */
+    .projects-wrap {
+	  width: 100%;
+	  margin-top: 10rem;
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  gap: 1.25rem;
+	  padding: 0;
+	}
+	
+    /* Square tile grid */
+    .projects {
+      width: min(600px, 60vw);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      justify-items: center;
+      align-items: center;
+    }
+
+    .project-btn {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+
+      font-family: 'Ubuntu Mono', monospace;
+      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+      letter-spacing: 0.06em;
+
+      display: grid;
+      place-items: center;
+
+      cursor: pointer;
+      transition: transform 120ms ease, opacity 120ms ease, background 120ms ease;
+      padding: 1rem;
+      line-height: 1.2;
+    }
+
+    .project-btn:hover,
+    .project-btn:active {
+      transform: scale(1.03);
+      opacity: 0.95;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .hint {
+      opacity: 0.55;
+      font-size: 0.95rem;
+      padding: 0 1rem;
+    }
+
+    /* Tablet / most phones: 2 columns */
+    @media (max-width: 900px) {
+      .projects {
+        grid-template-columns: repeat(2, 1fr);
+        width: min(700px, 92vw);
+      }
+      .page { padding: 11vh 0 6vh; }
+    }
+
+    /* Small phones: 1 column */
+    @media (max-width: 480px) {
+      .projects {
+        grid-template-columns: 1fr;
+        width: min(420px, 92vw);
+      }
+      .page { padding: 12vh 0 5vh; }
+    }
+	
+	/* Raindrop element */
+	i.rain-drop
+	{
+	  position: absolute;
+	  height: 200px;
+	  background: linear-gradient(transparent, #FFF);
+	  border-bottom-left-radius: 5px;
+	  border-bottom-right-radius: 5px;
+	  animation: animate 5s linear infinite;
+	  pointer-events: none;
+	}
+
+	@keyframes animate {
+	  0%   { transform: translateY(-200px); }
+	  100% { transform: translateY(calc(100vh + 200px)); }
+	}
+
+	/* Make sure your UI sits above rain */
+	.page, .home-btn { position: relative; z-index: 2; }
+  </style>
+</head>
+
+<body>
+  <a class="home-btn" href="../index.html" title="Back to home">⌂</a>
+
+
+  <main class="page">
+    <div class="header">
+      <h1>Three.js Projects</h1>
+      <div class="sub">Small experiments + learning builds</div>
+    </div>
+
+    <div class="projects-wrap">
+      <section class="projects">
+        <button class="project-btn" id="btn-rotating">Rotating<br>Image</button>
+        <button class="project-btn" id="btn-gallery">Orbiting<br>Gallery</button>
+        <button class="project-btn" id="btn-third">Solar<br>System</button>
+      </section>
+
+      <div class="hint">Only Rotating Image and Orbiting Gallery are done so far...</div>
+    </div>
+  </main>
+  
+  <script src="../rain.js"></script>
+
+  <script>
+    document.getElementById("btn-rotating").addEventListener("click", () => {
+      console.log("Rotating Image clicked");
+      // later: window.location.href = "./rotating-image.html";
+    });
+
+    document.getElementById("btn-gallery").addEventListener("click", () => {
+      console.log("Orbiting Gallery clicked");
+    });
+
+    document.getElementById("btn-third").addEventListener("click", () => {
+      console.log("Solar System clicked");
+    });
+  </script>
+</body>
+</html>
