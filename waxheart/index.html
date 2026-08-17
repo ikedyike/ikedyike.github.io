@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WaxHeart — Isaac Craig portfolio project.">
+  <title>WaxHeart | Isaac Craig</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../project.css">
+  <script>
+    (() => {
+      const savedTheme = localStorage.getItem("portfolio-theme");
+      document.documentElement.dataset.theme = savedTheme || "light";
+    })();
+  </script>
+</head>
+<body data-page="project">
+  <header class="site-header internal-header" id="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html#home" aria-label="Isaac Craig home">
+        <span class="brand-name">Isaac Craig</span>
+        <span class="brand-divider" aria-hidden="true">|</span>
+        <span class="brand-role">Gameplay Engineer | Unity Developer</span>
+      </a>
+
+      <div class="header-right">
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <a class="nav-link" data-section="home" href="../index.html#home">Home</a>
+          <a class="nav-link" data-section="about" href="../about.html">About Me</a>
+          <a class="nav-link active" data-section="projects" href="../index.html#projects">Projects</a>
+          <a class="nav-link" data-section="contact" href="../about.html#contact">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+            <span class="theme-icon" aria-hidden="true">☾</span>
+          </button>
+          <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="../index.html#home">Home</a>
+      <a href="../about.html">About Me</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../about.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="project-page">
+    <div class="project-detail-shell">
+      <a class="project-back" href="../index.html#projects">← Back to Projects</a>
+
+      <div class="project-detail-head">
+        <div>
+          <h1 class="project-detail-title">WaxHeart</h1>
+          <p class="project-detail-summary">An atmospheric puzzle adventure where I contribute gameplay features, bug fixes, animation integration, and production systems.</p>
+        </div>
+        <div class="project-link-group"><a class="project-external-link" href="https://waxheart.info/" target="_blank" rel="noreferrer">Visit WaxHeart ↗</a></div>
+      </div>
+
+      <div class="project-hero-image">
+        <img src="../assets/images/projects/waxheart.jpg" alt="WaxHeart gameplay">
+      </div>
+
+      <div class="project-detail-content">
+        <div class="project-main-column">
+          <section class="project-copy-section">
+            <h2>Overview</h2>
+            <p>WaxHeart is an atmospheric puzzle adventure that I contribute to as a Gameplay Engineer. My work spans gameplay features, bug fixing, animation integration, and production-facing systems inside an existing Unity project.</p>
+          </section>
+
+          <section class="project-copy-section">
+            <h2>Selected Work</h2>
+            <ul class="project-highlight-list">
+              <li>Gameplay feature implementation</li>
+              <li>Production bug fixing</li>
+              <li>Animation integration</li>
+              <li>Gameplay and production systems</li>
+            </ul>
+          </section>
+
+          <section class="project-copy-section">
+            <h2>More to Come</h2>
+            <div class="project-coming-soon">
+              I’ll keep expanding this page with gameplay clips, screenshots, technical breakdowns, and more detail about my contributions.
+            </div>
+          </section>
+        </div>
+
+        <aside class="project-info-card" aria-label="Project information">
+          <h2>At a Glance</h2>
+          <dl class="project-fact-list">
+            <div class="project-fact"><dt>Role</dt><dd>Gameplay Engineer</dd></div>
+            <div class="project-fact"><dt>Engine</dt><dd>Unity</dd></div>
+            <div class="project-fact"><dt>Tech</dt><dd>C#</dd></div>
+            <div class="project-fact"><dt>Focus</dt><dd>Gameplay Features · Bug Fixes · Animation · Production Systems</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer project-page-footer">
+    <div class="footer-inner">
+      <span>© <span id="current-year">2026</span> Isaac Craig</span>
+      <a href="../index.html#projects">Back to Projects ↑</a>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>

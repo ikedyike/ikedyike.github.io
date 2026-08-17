@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SpellFister — Isaac Craig portfolio project.">
+  <title>SpellFister | Isaac Craig</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../project.css">
+  <script>
+    (() => {
+      const savedTheme = localStorage.getItem("portfolio-theme");
+      document.documentElement.dataset.theme = savedTheme || "light";
+    })();
+  </script>
+</head>
+<body data-page="project">
+  <header class="site-header internal-header" id="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html#home" aria-label="Isaac Craig home">
+        <span class="brand-name">Isaac Craig</span>
+        <span class="brand-divider" aria-hidden="true">|</span>
+        <span class="brand-role">Gameplay Engineer | Unity Developer</span>
+      </a>
+
+      <div class="header-right">
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <a class="nav-link" data-section="home" href="../index.html#home">Home</a>
+          <a class="nav-link" data-section="about" href="../about.html">About Me</a>
+          <a class="nav-link active" data-section="projects" href="../index.html#projects">Projects</a>
+          <a class="nav-link" data-section="contact" href="../about.html#contact">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+            <span class="theme-icon" aria-hidden="true">☾</span>
+          </button>
+          <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="../index.html#home">Home</a>
+      <a href="../about.html">About Me</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../about.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="project-page">
+    <div class="project-detail-shell">
+      <a class="project-back" href="../index.html#projects">← Back to Projects</a>
+
+      <div class="project-detail-head">
+        <div>
+          <h1 class="project-detail-title">SpellFister</h1>
+          <p class="project-detail-summary">A magic-based first-person game built around expressive combat, gameplay systems, enemy behavior, and progression.</p>
+        </div>
+        <div class="project-link-group"><a class="project-external-link" href="https://spellfister.com" target="_blank" rel="noreferrer">Visit SpellFister ↗</a></div>
+      </div>
+
+      <div class="project-hero-image">
+        <img src="../assets/images/projects/spellfister.jpg" alt="SpellFister gameplay">
+      </div>
+
+      <div class="project-detail-content">
+        <div class="project-main-column">
+          <section class="project-copy-section">
+            <h2>Overview</h2>
+            <p>SpellFister is one of my core game-development projects. I worked as Lead Programmer, focusing on the gameplay experience and the systems that support combat, enemies, and progression.</p>
+          </section>
+
+          <section class="project-copy-section">
+            <h2>Selected Work</h2>
+            <ul class="project-highlight-list">
+              <li>Combat and gameplay systems</li>
+              <li>Enemy behavior</li>
+              <li>Progression systems</li>
+              <li>Gameplay iteration and polish</li>
+            </ul>
+          </section>
+
+          <section class="project-copy-section">
+            <h2>More to Come</h2>
+            <div class="project-coming-soon">
+              I’ll keep expanding this page with gameplay clips, screenshots, technical breakdowns, and more detail about my contributions.
+            </div>
+          </section>
+        </div>
+
+        <aside class="project-info-card" aria-label="Project information">
+          <h2>At a Glance</h2>
+          <dl class="project-fact-list">
+            <div class="project-fact"><dt>Role</dt><dd>Lead Programmer</dd></div>
+            <div class="project-fact"><dt>Engine</dt><dd>Unity</dd></div>
+            <div class="project-fact"><dt>Tech</dt><dd>C#</dd></div>
+            <div class="project-fact"><dt>Focus</dt><dd>Combat · Gameplay Systems · Enemy Behavior · Progression</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer project-page-footer">
+    <div class="footer-inner">
+      <span>© <span id="current-year">2026</span> Isaac Craig</span>
+      <a href="../index.html#projects">Back to Projects ↑</a>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
