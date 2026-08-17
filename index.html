@@ -1,322 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-	<!-- <meta http-equiv="X-UA-Copmatible" content="ie=edge"> -->
-	<title>Isaac Craig Portfolio</title>
-	<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Isaac Craig — Gameplay Engineer and Unity Developer portfolio.">
+  <title>Isaac Craig | Gameplay Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    (() => {
+      const savedTheme = localStorage.getItem("portfolio-theme");
+      document.documentElement.dataset.theme = savedTheme || "light";
+    })();
+  </script>
 </head>
 
-<body>
-	<!-- <img src="img/cartoon_umbrella.png" alt="Umbrella" class="center"> -->
-	<div class="container">
-		<img src="img/cartoon_umbrella.png" alt="Portfolio Image" class="portfolio-image">
-		
-		<div id="title">
-			<span>Isaac Craig</span>
-			<span>Portfolio</span>
-		</div>
-	</div>
-	
-	<!-- OVERLAY CONTENT -->
-	<!-- Button to toggle overlay -->
-	<div class="menu-button-container">
-		<div class="menu-button" onclick="toggleOverlay()">☰</div>
-	</div>
-	
-	<div class="umbrella-coverage"></div>
-	
-	<!-- Overlay content -->
-	<div class="overlay" id="overlay">
-		<div class="overlay-content" id="aboutMeContent" style="display: none;">
-            		<Span onclick="showMainMenu()">←</Span>
-            		<Span2>About Me (Isaac Craig)</Span2>
-			<Span.small>My name is Isaac Craig and I graduated with a Bachelors of Science in Computer Science from UC Davis in 2024.</Span.small>
-			<Span.small>I am an independent video game developer and software engineer.</Span.small>
-			<Span.small>Since graduating, I have been working on multiple projects including a large-scale title called WaxHeart.</Span.small>
-			<br>
-			<Span.small>Welcome to my portfolio.</Span.small>
-			<br>
-			<br>
-			<Span.small>Contact me:</Span.small>
-			<br>
-			<a href="https://www.linkedin.com/in/isaac-craig-a98992228/" target="_blank" class="small">LinkedIn Accout</a>
-			<br>
-			<a href="https://github.com/ikedyike" target="_blank" class="small">Github Account</a>
-			<br>
-			<a href="https://ikedyike.itch.io/" target="_blank" class="small">Itch.io Account</a>
-			<br>
-			<Span.small>Email: icraig2002@gmail.com</Span.small>
-        	</div>
-		
-		<div class="overlay-content" id="projectsContent" style="display: none;">
-				<Span onclick="showMainMenu()">←</Span>
-			<Span onclick="waxHeartOverlay()">WaxHeart</Span>
-			<Span onclick="trickOrTreatOverlay()">Trick or Treat</Span>
-			<Span onclick="spellfisterOverlay()">Spellfister</Span>
-            <Span onclick="recycleMeOverlay()">Recycle Me!</Span>
-			<Span onclick="dinoDropOverlay()">Dino Drop</Span>
-			<Span onclick="websiteOverlay()">This Website</Span>
-			<Span onclick="ikesGamesSiteOverlay()">Ikes Games Website</Span>
-			<Span onclick="cvASLOverlay()">CV ASL Interpreter</Span>
-			<Span onclick="brainTumorOverlay()">Brain Tumor Detection</Span>
-        	</div>
-		
-		<!-- PROJECT OVERLAYS -->
-		<div class="overlay-content" id="waxHeartContent" style="display: none;">
-            		<Span onclick="projectOverlay()">←</Span>
-            <Span2>WaxHeart</Span2>
-			<Span.small>WaxHeart is an atmospheric puzzle adventure where you play as a wax child with a lantern for a heart, journeying through a dark, ruined world in search of their lost memory.</Span.small>
-			<br>
-			<br>
-			<Span.small>I am a senior developer on the project, I do work on features, bug fixes, and animation hookups.</Span.small>
-			<br>
-			<br>
-			<Span.small>Links:</Span.small>
-			<br>
-			<a href="https://waxheart.info/" target="_blank" class="Span.small">WaxHeart Page</a>
-			<br>
-			<a href="https://youtu.be/z5pg0dOZizs" target="_blank" class="Span.small">Video Game Trailer</a>
-        	</div>
+<body data-page="home">
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#home" aria-label="Isaac Craig home">
+        <span class="brand-name">Isaac Craig</span>
+        <span class="brand-divider" aria-hidden="true">|</span>
+        <span class="brand-role">Gameplay Engineer | Unity Developer</span>
+      </a>
 
-		<div class="overlay-content" id="trickOrTreatContent" style="display: none;">
-            		<Span onclick="projectOverlay()">←</Span>
-            <Span2>Trick or Treat</Span2>
-			<Span.small>Trick or Treat is a solo Halloween micro-game built in six weeks using Unity and C#.</Span.small>
-		    <Span.small>Features procedural neighborhoods, AI trick-or-treaters with NavMesh, and a karma system that changes your odds based on choices.</Span.small>
-		    <Span.small>Shipped as a polished, replayable experience with WebGL and desktop builds.</Span.small>
-			<br>
-			<br>
-			<Span.small>Links:</Span.small>
-			<br>
-			<a href="https://ikedyike.itch.io/Trick-or-Treat" target="_blank" class="Span.small">Trick or Treat Page</a>
-			<br>
-			<a href="https://youtu.be/XkxccrSllKk?si=Mg2G4gANYvSY43OO" target="_blank" class="Span.small">Video Game Trailer</a>
-			<br>
-			<a href="https://github.com/ikedyike/Trick-R-Treat" target="_blank" class="Span.small">Website Repository</a>
-        	</div>
-			
-		<div class="overlay-content" id="spellfisterContent" style="display: none;">
-            		<Span onclick="projectOverlay()">←</Span>
-            <Span2>Spellfister</Span2>
-			<Span.small>Spellfister is a magic based FPS I developed with a team as lead programmer.</Span.small>
-			<Span.small>I am currently working on a huge content update to the game.</Span.small>
-			<br>
-			<br>
-			<Span.small>Links:</Span.small>
-			<br>
-			<a href="https://ctrl-freaks.itch.io/spellfister" target="_blank" class="Span.small">Spellfister Page</a>
-			<br>
-			<a href="https://www.youtube.com/watch?v=YUumzbIi_6k" target="_blank" class="Span.small">Video Game Trailer</a>
-			<br>
-			<a href="https://github.com/angelinajillian/ctrl-freaks" target="_blank" class="Span.small">Website Repository</a>
-        	</div>
-		
-		<div class="overlay-content" id="recycleMeContent" style="display: none;">
-            		<Span onclick="projectOverlay()">←</Span>
-            		<Span2>Recycle Me!</Span2>
-			<br>
-			<Span.small>Recycle Me! is a game I solo developed where you play as a character who has to sort through falling waste!</Span.small>
-			<Span.small> Made in under 24 hours for HackDavis '24 with the theme "Social Good." </Span.small>
-			<br>
-			<br>
-			<Span.small>Links:</Span.small>
-			<br>
-			<a href="https://ctrl-freaks.itch.io/recycle-me" target="_blank" class="Span.small">Recycle Me! Page</a>
-			<br>
-			<a href="https://youtu.be/OC6Q8ofiM10?si=9v5giO6v8XH_9qbw" target="_blank" class="Span.small">Video Game Trailer</a>
-			<br>
-			<a href="https://github.com/ikedyike/Recycle-Me" target="_blank" class="Span.small">Website Repository</a>
-        	</div>
-		
-		<div class="overlay-content" id="dinoDropContent" style="display: none;">
-            		<Span onclick="projectOverlay()">←</Span>
-            		<Span2>Dino Drop</Span2>
-			<Span.small>Dino Drop is a platformer game I have developed by myself from the ground up.</Span.small>
-			<br>
-			<br>
-			<Span.small>Links:</Span.small>
-			<br>
-			<a href="https://ikedyike.itch.io/dino-drop" target="_blank" class="Span.small">Dino Drop Page</a>
-        	</div>
-		
-		<div class="overlay-content" id="websiteContent" style="display: none;">
-            		<Span onclick="projectOverlay()">←</Span>
-            		<Span2>This Website</Span2>
-			<Span.small>This website was built from scratch using HTML, CSS and JS.</Span.small>	
-			<br>
-			<br>
-			<Span.small>Links:</Span.small>
-			<br>
-			<a href="https://github.com/ikedyike/ikedyike.github.io" target="_blank" class="Span.small">Website Repository</a>
-        	</div>
+      <div class="header-right">
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <a class="nav-link active" data-section="home" href="#home">Home</a>
+          <a class="nav-link" data-section="about" href="about.html">About Me</a>
+          <a class="nav-link" data-section="projects" href="#projects">Projects</a>
+          <a class="nav-link" data-section="contact" href="about.html#contact">Contact</a>
+        </nav>
 
-		<div class="overlay-content" id="ikesGamesSiteContent" style="display: none;">
-			<Span onclick="projectOverlay()">←</Span>
-            		<Span2>Ikes Games Website</Span2>
-			<Span.small>I developed the website for my personal game studio from the ground up using html css and js.</Span.small>	
-			<br>
-			<br>
-			<Span.small>Links:</Span.small>
-			<br>
-			<a href="" target="_blank" class="Span.small">Website Repository</a>
-			<a href="https://ikesgames.com" target="_blank" class="Span.small">Website</a>
-        	</div>
+        <div class="header-actions">
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+            <span class="theme-icon" aria-hidden="true">☾</span>
+          </button>
 
-		<div class="overlay-content" id="cvASLContent" style="display: none;">
-			<Span onclick="projectOverlay()">←</Span>
-            		<Span2>CV Sign Langauge Interpreter</Span2>
-			<Span.small>I developed a sign language interpreter in Python using computer vision and a self trained AI model, 
-				also features a calibration script to calibrate your own specific hand.</Span.small>	
-			<br>
-			<br>
-			<Span.small>Links:</Span.small>
-			<br>
-			<a href="https://github.com/ikedyike/CVSignLanguage" target="_blank" class="Span.small">Repository</a>
-        	</div>
-
-		<div class="overlay-content" id="brainTumorContent" style="display: none;">
-			<Span onclick="projectOverlay()">←</Span>
-            		<Span2>Brain Tumor Recognition Software</Span2>
-			<Span.small>Worked with a team to develop an AI Model that takes a brain scan and classifies/detects the presence of a brain tumor.
-				I worked on front end development, setting up version control, and training the model.</Span.small>	
-			<br>
-			<br>
-			<Span.small>Links:</Span.small>
-			<br>
-			<a href="" target="_blank" class="Span.small">Repository</a>
-			<a href="https://ecs170group21.github.io/" target="_blank" class="Span.small">Website</a>
-        	</div>
-				
-		<div class="overlay-content" id="overlay-content">
-			<span onclick="closeOverlay()">✖</span>
-			<span onclick="aboutOverlay()">About Me</span>
-			<span onclick="projectOverlay()">Projects</span>
-			<span onclick="threeJsOverlay()">Three.js</span>
-			<span onclick="ikesGamesOverlay()">Ikes Games</span>
-		</div>
-	</div>
-	
-	<div class="button-container">
-        <div class="button" id="decreaseButton" onclick="decreaseRain()" style="background-image: url('img/no rain.png');"></div>
-        <div class="button" id="increaseButton" onclick="increaseRain()" style="background-image: url('img/rain.png');"></div>
+          <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
     </div>
-	
-	<!-- Load rain first so Rain.* exists -->
-	<script src="rain.js"></script>
-	<script src="script.js"></script>
 
-	<script>
-		function increaseRain() {
-		  Rain.increase();
-		}
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="#home">Home</a>
+      <a href="about.html">About Me</a>
+      <a href="#projects">Projects</a>
+      <a href="about.html#contact">Contact</a>
+    </nav>
+  </header>
 
-		function decreaseRain() {
-		  Rain.decrease();
-		}
-				
-		function toggleOverlay() {
-			var overlay = document.getElementById('overlay');
-			overlay.style.display = (overlay.style.display === 'none' || overlay.style.display === '') ? 'block' : 'none';
-		}
+  <main>
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-media" aria-hidden="true">
+        <video class="hero-video" id="hero-video" autoplay muted loop playsinline preload="metadata">
+          <!-- Replace this with your finished gameplay montage. -->
+          <source src="assets/video/hero-reel.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-fallback"></div>
+        <div class="hero-scrim"></div>
+      </div>
 
-		function aboutOverlay() {
-			document.getElementById('overlay-content').style.display = 'none';
-            document.getElementById('aboutMeContent').style.display = 'block';
-		}
-		
-		function projectOverlay() {
-			document.getElementById('overlay-content').style.display = 'none';
-			document.getElementById('waxHeartContent').style.display = 'none';
-			document.getElementById('trickOrTreatContent').style.display = 'none';
-			document.getElementById('spellfisterContent').style.display = 'none';
-			document.getElementById('dinoDropContent').style.display = 'none';
-			document.getElementById('recycleMeContent').style.display = 'none';
-			document.getElementById('websiteContent').style.display = 'none';
-			document.getElementById('ikesGamesSiteContent').style.display = 'none';
-			document.getElementById('cvASLContent').style.display = 'none';
-			document.getElementById('brainTumorContent').style.display = 'none';
-            		document.getElementById('projectsContent').style.display = 'block';
-		}
-		function threeJsOverlay() {
-			window.location.href = "three-js/index.html";
-		}
+      <div class="hero-content page-shell">
+        <div class="identity-card">
+          <div class="portrait-wrap">
+            <!-- Drop your portrait at assets/images/isaac.jpg. -->
+            <img src="assets/images/isaac.jpg" alt="Isaac Craig" class="portrait" onerror="this.hidden=true; this.nextElementSibling.hidden=false;">
+            <div class="portrait-placeholder" hidden aria-hidden="true">IC</div>
+          </div>
 
-		function ikesGamesOverlay() {
-   			window.open("https://ikesgames.com", "_blank");
-		}
+          <h1 id="hero-title">Isaac Craig</h1>
+          <p class="hero-copy">Hi, I’m Isaac. I make games.</p>
 
-		function waxHeartOverlay() {
-			document.getElementById('overlay-content').style.display = 'none';
-			document.getElementById('projectsContent').style.display = 'none';
-			document.getElementById('waxHeartContent').style.display = 'block';
-		}
-		
-		function trickOrTreatOverlay() {
-			document.getElementById('overlay-content').style.display = 'none';
-			document.getElementById('projectsContent').style.display = 'none';
-			document.getElementById('trickOrTreatContent').style.display = 'block';
-		}
-		
-		function spellfisterOverlay() {
-			document.getElementById('overlay-content').style.display = 'none';
-			document.getElementById('projectsContent').style.display = 'none';
-			document.getElementById('spellfisterContent').style.display = 'block';
-		}
-		
-		function dinoDropOverlay() {
-			document.getElementById('overlay-content').style.display = 'none';
-			document.getElementById('projectsContent').style.display = 'none';
-			document.getElementById('dinoDropContent').style.display = 'block';
-		}
-		
-		function recycleMeOverlay() {
-			document.getElementById('overlay-content').style.display = 'none';
-			document.getElementById('projectsContent').style.display = 'none';
-			document.getElementById('recycleMeContent').style.display = 'block';
-		}
-		
-		function websiteOverlay() {
-			document.getElementById('overlay-content').style.display = 'none';
-			document.getElementById('projectsContent').style.display = 'none';
-			document.getElementById('websiteContent').style.display = 'block';
-		}
+          <div class="social-row" aria-label="Links">
+            <a class="social-icon" href="https://github.com/ikedyike" target="_blank" rel="noreferrer" aria-label="GitHub" title="GitHub">
+              <img src="assets/images/logos/github.svg" alt="">
+            </a>
+            <a class="social-icon" href="https://www.linkedin.com/in/isaac-craig-a98992228/" target="_blank" rel="noreferrer" aria-label="LinkedIn" title="LinkedIn">
+              <img src="assets/images/logos/linkedin.svg" alt="">
+            </a>
+            <a class="social-icon" href="assets/Isaac-Craig-Resume.pdf" target="_blank" rel="noreferrer" aria-label="Resume" title="Resume">
+              <img src="assets/images/logos/resume.svg" alt="">
+            </a>
+            <!-- Replace this with your channel URL when you have the final YouTube link. -->
+            <a class="social-icon" href="https://www.youtube.com/watch?v=YUumzbIi_6k" target="_blank" rel="noreferrer" aria-label="YouTube" title="YouTube">
+              <img src="assets/images/logos/youtube.svg" alt="">
+            </a>
+            <a class="social-icon" href="https://ikedyike.itch.io/" target="_blank" rel="noreferrer" aria-label="Itch.io" title="Itch.io">
+              <img src="assets/images/logos/itchdotio.svg" alt="">
+            </a>
+            <a class="social-icon" href="mailto:icraig2002@gmail.com" aria-label="Email" title="Email">
+              <img src="assets/images/logos/gmail.svg" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
 
-		function ikesGamesSiteOverlay() {
-			document.getElementById('overlay-content').style.display = 'none';
-			document.getElementById('projectsContent').style.display = 'none';
-			document.getElementById('ikesGamesSiteContent').style.display = 'block';
-		}
+    </section>
 
-		function cvASLOverlay() {
-			document.getElementById('overlay-content').style.display = 'none';
-			document.getElementById('projectsContent').style.display = 'none';
-			document.getElementById('cvASLContent').style.display = 'block';
-		}
-		
-		function brainTumorOverlay() {
-			document.getElementById('overlay-content').style.display = 'none';
-			document.getElementById('projectsContent').style.display = 'none';
-			document.getElementById('brainTumorContent').style.display = 'block';
-		}
-		
-		function showMainMenu() {
-            document.getElementById('overlay-content').style.display = 'block';
-			document.getElementById('trickOrTreatContent').style.display = 'none';
-			document.getElementById('dinoDropContent').style.display = 'none';
-			document.getElementById('projectsContent').style.display = 'none';
-            document.getElementById('aboutMeContent').style.display = 'none';
-			document.getElementById('recycleMeContent').style.display = 'none';
-			document.getElementById('websiteContent').style.display = 'none';
-        }
+    <section class="section projects-section" id="projects">
+      <div class="page-shell">
+        <div class="projects-toolbar">
+          <h2>Projects</h2>
 
-		function closeOverlay() {
-			document.getElementById('overlay').style.display = 'none';
-		}	
-	</script>
-	
+          <div class="project-filters" aria-label="Project filters">
+            <button class="filter-button" type="button" data-filter="all">All</button>
+            <button class="filter-button active" type="button" data-filter="featured">Featured</button>
+            <button class="filter-button" type="button" data-filter="more-games">More Games</button>
+            <button class="filter-button" type="button" data-filter="web-tools">Web &amp; Tools</button>
+            <button class="filter-button" type="button" data-filter="3d">3D</button>
+          </div>
+        </div>
+
+        <div class="project-grid" id="project-grid">
+          <a class="project-card" data-category="featured" href="https://ctrl-freaks.itch.io/spellfister" target="_blank" rel="noreferrer">
+            <div class="project-card-media media-shell compact-media">
+              <img src="assets/images/projects/spellfister.jpg" alt="SpellFister gameplay" loading="lazy" onerror="this.hidden=true;">
+              <div class="media-placeholder"><span>SpellFister</span></div>
+            </div>
+            <div class="project-card-body">
+              <span class="card-meta">Lead Programmer · Unity · C#</span>
+              <h3>SpellFister</h3>
+              <p>A magic-based first-person game built around expressive combat, gameplay systems, enemy behavior, and progression.</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-category="featured" href="https://waxheart.info/" target="_blank" rel="noreferrer">
+            <div class="project-card-media media-shell compact-media">
+              <img src="assets/images/projects/waxheart.jpg" alt="WaxHeart gameplay" loading="lazy" onerror="this.hidden=true;">
+              <div class="media-placeholder"><span>WaxHeart</span></div>
+            </div>
+            <div class="project-card-body">
+              <span class="card-meta">Gameplay Engineer · Unity · C#</span>
+              <h3>WaxHeart</h3>
+              <p>An atmospheric puzzle adventure where I contribute gameplay features, bug fixes, animation integration, and production systems.</p>
+            </div>
+          </a>
+
+          <article class="project-card" data-category="featured">
+            <div class="project-card-media media-shell compact-media">
+              <img src="assets/images/projects/dealt-in-darkness.jpg" alt="Dealt in Darkness gameplay" loading="lazy" onerror="this.hidden=true;">
+              <div class="media-placeholder"><span>Dealt in Darkness</span></div>
+            </div>
+            <div class="project-card-body">
+              <span class="card-meta">Gameplay Engineer · Multiplayer · Unity</span>
+              <h3>Dealt in Darkness</h3>
+              <p>Multiplayer gameplay work including networked systems, player interactions, item behavior, and game feedback.</p>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="more-games">
+            <div class="project-card-media media-shell compact-media">
+              <img src="assets/images/projects/rock-paw-scissors.jpg" alt="Rock Paw Scissors" loading="lazy" onerror="this.hidden=true;">
+              <div class="media-placeholder"><span>Rock Paw Scissors</span></div>
+            </div>
+            <div class="project-card-body">
+              <span class="card-meta">Unity · 3D · OpenCV · WebGL</span>
+              <h3>Rock Paw Scissors</h3>
+              <p>Project details coming soon.</p>
+            </div>
+          </article>
+
+          <a class="project-card" data-category="more-games" href="https://ikedyike.itch.io/dino-drop" target="_blank" rel="noreferrer">
+            <div class="project-card-media media-shell compact-media">
+              <img src="assets/images/projects/dino-drop.jpg" alt="Dino Drop" loading="lazy" onerror="this.hidden=true;">
+              <div class="media-placeholder"><span>Dino Drop</span></div>
+            </div>
+            <div class="project-card-body">
+              <span class="card-meta">Godot · 2D · Solo Game · Platformer</span>
+              <h3>Dino Drop</h3>
+              <p>A platformer developed independently from the ground up.</p>
+            </div>
+          </a>
+
+          <a class="project-card" data-category="more-games" href="https://ikedyike.itch.io/Trick-or-Treat" target="_blank" rel="noreferrer">
+            <div class="project-card-media media-shell compact-media">
+              <img src="assets/images/projects/trick-or-treat.jpg" alt="Trick or Treat" loading="lazy" onerror="this.hidden=true;">
+              <div class="media-placeholder"><span>Trick or Treat</span></div>
+            </div>
+            <div class="project-card-body">
+              <span class="card-meta">Unity · 3D · Procedural Generation</span>
+              <h3>Trick or Treat</h3>
+              <p>Procedural neighborhoods, NavMesh AI, and a karma system in a compact Halloween game.</p>
+            </div>
+          </a>
+
+          <article class="project-card" data-category="more-games">
+            <div class="project-card-media media-shell compact-media">
+              <img src="assets/images/projects/custom-gift-platformer.jpg" alt="Custom Gift Platformer" loading="lazy" onerror="this.hidden=true;">
+              <div class="media-placeholder"><span>Custom Gift Platformer</span></div>
+            </div>
+            <div class="project-card-body">
+              <span class="card-meta">Unity · 2D · Freelance · Platformer</span>
+              <h3>Custom Gift Platformer</h3>
+              <p>Project details coming soon.</p>
+            </div>
+          </article>
+
+          <a class="project-card" data-category="more-games" href="https://ctrl-freaks.itch.io/recycle-me" target="_blank" rel="noreferrer">
+            <div class="project-card-media media-shell compact-media">
+              <img src="assets/images/projects/recycle-me.jpg" alt="Recycle Me!" loading="lazy" onerror="this.hidden=true;">
+              <div class="media-placeholder"><span>Recycle Me!</span></div>
+            </div>
+            <div class="project-card-body">
+              <span class="card-meta">Unity · 3D · Game Jam · Educational</span>
+              <h3>Recycle Me!</h3>
+              <p>A solo game built in under 24 hours for HackDavis 2024's “Social Good” theme.</p>
+            </div>
+          </a>
+
+          <article class="project-card" data-category="more-games">
+            <div class="project-card-media media-shell compact-media">
+              <img src="assets/images/projects/tbdtdgoat.jpg" alt="TBDTDGOAT" loading="lazy" onerror="this.hidden=true;">
+              <div class="media-placeholder"><span>TBDTDGOAT</span></div>
+            </div>
+            <div class="project-card-body">
+              <span class="card-meta">Unity · 2D · Game Jam · Tower Defense</span>
+              <h3>TBDTDGOAT</h3>
+              <p>Project details coming soon.</p>
+            </div>
+          </article>
+
+          <a class="project-card" data-category="web-tools" href="https://github.com/ikedyike/CVSignLanguage" target="_blank" rel="noreferrer">
+            <div class="project-card-media media-shell compact-media">
+              <img src="assets/images/projects/asl.jpg" alt="Computer vision sign language interpreter" loading="lazy" onerror="this.hidden=true;">
+              <div class="media-placeholder"><span>CV ASL Interpreter</span></div>
+            </div>
+            <div class="project-card-body">
+              <span class="card-meta">Python · Computer Vision</span>
+              <h3>CV Sign Language Interpreter</h3>
+              <p>A sign-language interpreter using computer vision and a self-trained model.</p>
+            </div>
+          </a>
+
+          <article class="project-card" data-category="web-tools">
+            <div class="project-card-media media-shell compact-media">
+              <img src="assets/images/projects/whitney-bot.jpg" alt="Whitney Bot" loading="lazy" onerror="this.hidden=true;">
+              <div class="media-placeholder"><span>Whitney Bot</span></div>
+            </div>
+            <div class="project-card-body">
+              <span class="card-meta">Bot · Tool</span>
+              <h3>Whitney Bot</h3>
+              <p>Project details coming soon.</p>
+            </div>
+          </article>
+
+          <a class="project-card" data-category="web-tools" href="https://ecs170group21.github.io/" target="_blank" rel="noreferrer">
+            <div class="project-card-media media-shell compact-media">
+              <img src="assets/images/projects/brain-tumor.jpg" alt="Brain tumor recognition software" loading="lazy" onerror="this.hidden=true;">
+              <div class="media-placeholder"><span>Brain Tumor Recognition</span></div>
+            </div>
+            <div class="project-card-body">
+              <span class="card-meta">AI · Web</span>
+              <h3>Brain Tumor Recognition</h3>
+              <p>A team-built model and web experience for classifying brain scans.</p>
+            </div>
+          </a>
+
+          <a class="project-card project-card-3d" data-category="3d" href="three-js/index.html">
+            <div class="project-card-media media-shell compact-media three-preview">
+              <div class="three-orbit" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="media-placeholder"><span>3D Playground</span></div>
+            </div>
+            <div class="project-card-body">
+              <span class="card-meta">Three.js · WebGL · 3D</span>
+              <h3>Interactive 3D Playground</h3>
+              <p>Models, card experiments, and interactive Three.js builds.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="page-shell footer-inner">
+      <span>© <span id="current-year"></span> Isaac Craig</span>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
-
 </html>
