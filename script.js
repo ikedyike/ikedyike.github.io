@@ -3,7 +3,7 @@
   const body = document.body;
   const header = document.getElementById("site-header");
   const themeToggle = document.getElementById("theme-toggle");
-  const themeIcon = themeToggle.querySelector(".theme-icon");
+  const themeIcon = themeToggle.querySelector(".theme-icon-img, .theme-icon");
   const menuToggle = document.getElementById("menu-toggle");
   const mobileNav = document.getElementById("mobile-nav");
   const mobileLinks = mobileNav.querySelectorAll("a");
@@ -16,7 +16,21 @@
 
   function updateThemeIcon() {
     const dark = root.dataset.theme === "dark";
-    themeIcon.textContent = dark ? "☀" : "☾";
+
+    if (themeIcon) {
+      if (themeIcon.tagName === "IMG") {
+        const currentSrc = themeIcon.getAttribute("src") || "";
+        const iconBase = currentSrc.includes("/")
+          ? currentSrc.slice(0, currentSrc.lastIndexOf("/") + 1)
+          : "assets/images/logos/";
+
+        themeIcon.src = `${iconBase}${dark ? "sun.svg" : "moon.svg"}`;
+      } else {
+        // Backwards compatibility for project pages that still use the old span icon.
+        themeIcon.textContent = dark ? "☀" : "☾";
+      }
+    }
+
     themeToggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
     themeToggle.title = dark ? "Switch to light mode" : "Switch to dark mode";
   }

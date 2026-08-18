@@ -1969,3 +1969,530 @@ html[data-theme="dark"] .project-card {
     white-space: nowrap;
   }
 }
+
+/* --- Portfolio redesign V15: tighter project handoff --- */
+.projects-section {
+  padding-bottom: 68px;
+}
+
+.project-grid {
+  margin-top: 30px;
+}
+
+@media (max-width: 900px) {
+  .projects-section {
+    padding-bottom: 58px;
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-section {
+    padding-bottom: 46px;
+  }
+
+  .project-grid {
+    margin-top: 26px;
+  }
+}
+
+
+/* --- Portfolio redesign V16: lighter hero glass + SVG header icons + compact mobile menu --- */
+
+/* Let more of the finished gameplay reel show through the identity card. */
+.identity-card {
+  background: rgba(18, 18, 18, 0.38);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 24px 72px rgba(0, 0, 0, 0.20);
+  backdrop-filter: blur(13px) saturate(112%);
+  -webkit-backdrop-filter: blur(13px) saturate(112%);
+}
+
+/*
+  Drop these monochrome SVGs into assets/images/logos/:
+  moon.svg, sun.svg, menu.svg
+
+  Masks make the icons inherit `currentColor`, so the same files work
+  over the white header, dark mode, and the hero.
+*/
+.theme-icon {
+  display: none;
+}
+
+.theme-toggle,
+.menu-toggle {
+  position: relative;
+}
+
+.theme-toggle::before,
+.menu-toggle::before {
+  content: "";
+  display: block;
+  width: 19px;
+  height: 19px;
+  background: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+html[data-theme="light"] .theme-toggle::before {
+  -webkit-mask-image: url("assets/images/logos/moon.svg");
+  mask-image: url("assets/images/logos/moon.svg");
+}
+
+html[data-theme="dark"] .theme-toggle::before {
+  -webkit-mask-image: url("assets/images/logos/sun.svg");
+  mask-image: url("assets/images/logos/sun.svg");
+}
+
+.menu-toggle::before {
+  -webkit-mask-image: url("assets/images/logos/menu.svg");
+  mask-image: url("assets/images/logos/menu.svg");
+}
+
+/* The old CSS hamburger lines are no longer needed once menu.svg is present. */
+.menu-toggle span {
+  display: none !important;
+}
+
+@media (max-width: 960px) {
+  /* No circle/button chrome around the mobile menu icon. */
+  .menu-toggle {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .menu-toggle:hover {
+    background: transparent;
+    transform: none;
+    opacity: 0.68;
+  }
+
+  .menu-toggle::before {
+    width: 20px;
+    height: 20px;
+  }
+
+  /*
+    Compact dropdown instead of the old full-width mobile sheet.
+    This keeps the menu visually in line with the streamlined header.
+  */
+  .mobile-nav {
+    top: calc(var(--header-height) + 8px);
+    right: 12px;
+    left: auto;
+    width: min(210px, calc(100vw - 24px));
+    gap: 0;
+    padding: 5px 10px;
+    background: var(--header-bg-solid);
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.11);
+    overflow: hidden;
+    transform: translateY(-10px) scale(0.98);
+    transform-origin: top right;
+  }
+
+  html[data-theme="dark"] .mobile-nav {
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.30);
+  }
+
+  .mobile-nav.open {
+    transform: translateY(0) scale(1);
+  }
+
+  .mobile-nav a {
+    padding: 8px 4px;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.84rem;
+    font-weight: 620;
+    line-height: 1.15;
+  }
+
+  .mobile-nav a:last-child {
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 460px) {
+  .header-actions {
+    gap: 2px;
+  }
+
+  .theme-toggle {
+    width: 26px;
+    height: 26px;
+  }
+
+  .theme-toggle::before {
+    width: 17px;
+    height: 17px;
+  }
+
+  .menu-toggle {
+    width: 26px;
+    height: 26px;
+  }
+
+  .menu-toggle::before {
+    width: 18px;
+    height: 18px;
+  }
+
+  .mobile-nav {
+    top: calc(var(--header-height) + 6px);
+    right: 9px;
+    width: 180px;
+    padding: 4px 9px;
+    border-radius: 11px;
+  }
+
+  .mobile-nav a {
+    padding: 7px 3px;
+    font-size: 0.80rem;
+  }
+}
+
+
+/* --- Portfolio redesign V17: file-safe SVG icons + full-width compact mobile menu --- */
+
+/* More transparent hero identity card. */
+.identity-card {
+  background: rgba(18, 18, 18, 0.25);
+  border-color: rgba(255, 255, 255, 0.20);
+  box-shadow: 0 22px 64px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(9px) saturate(108%);
+  -webkit-backdrop-filter: blur(9px) saturate(108%);
+}
+
+/*
+  These are ordinary <img> elements rather than CSS masks.
+  That means they also work when index.html is opened directly with file://.
+*/
+.theme-icon {
+  /* Keep old span-based project-page icons usable. */
+  display: inline-block;
+}
+
+.header-icon-img {
+  display: block;
+  width: 19px;
+  height: 19px;
+  object-fit: contain;
+  opacity: 0.92;
+}
+
+/* Header is white over the hero, so monochrome black SVGs become white. */
+.site-header:not(.scrolled):not(.internal-header) .header-icon-img {
+  filter: brightness(0) invert(1);
+}
+
+/* Once the light-mode header becomes solid, use black icons. */
+html[data-theme="light"] .site-header.scrolled .header-icon-img,
+html[data-theme="light"] .site-header.internal-header .header-icon-img {
+  filter: brightness(0);
+}
+
+/* Dark-mode solid headers still use white icons. */
+html[data-theme="dark"] .site-header.scrolled .header-icon-img,
+html[data-theme="dark"] .site-header.internal-header .header-icon-img {
+  filter: brightness(0) invert(1);
+}
+
+/* Disable the V16 CSS-mask pseudo-icons. */
+.theme-toggle::before,
+.menu-toggle::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* No circle around the mobile menu button. */
+@media (max-width: 960px) {
+  .menu-toggle {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .menu-toggle:hover {
+    background: transparent;
+    transform: none;
+    opacity: 0.70;
+  }
+
+  .menu-icon-img {
+    width: 20px;
+    height: 20px;
+  }
+
+  /*
+    Restore the original full-width dropdown behavior,
+    but keep the tighter V16 sizing and padding.
+  */
+  .mobile-nav {
+    position: fixed;
+    top: var(--header-height);
+    right: 0;
+    left: 0;
+    width: auto;
+    gap: 0;
+    padding: 6px 20px 10px;
+    background: var(--header-bg-solid);
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    border-radius: 0;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transform: translateY(-120%);
+    transform-origin: top center;
+  }
+
+  html[data-theme="dark"] .mobile-nav {
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.24);
+  }
+
+  .mobile-nav.open {
+    transform: translateY(0);
+  }
+
+  .mobile-nav a {
+    padding: 8px 2px;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.84rem;
+    font-weight: 620;
+    line-height: 1.15;
+  }
+
+  .mobile-nav a:last-child {
+    border-bottom: 0;
+  }
+}
+
+@media (max-width: 460px) {
+  .header-actions {
+    gap: 3px;
+  }
+
+  .theme-toggle,
+  .menu-toggle {
+    width: 26px;
+    height: 26px;
+  }
+
+  .theme-icon-img {
+    width: 17px;
+    height: 17px;
+  }
+
+  .menu-icon-img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .mobile-nav {
+    top: var(--header-height);
+    right: 0;
+    left: 0;
+    width: auto;
+    padding: 5px 16px 8px;
+    border-radius: 0;
+  }
+
+  .mobile-nav a {
+    padding: 7px 1px;
+    font-size: 0.80rem;
+  }
+}
+
+
+/* Keep the existing featured project pages' old two-line hamburger working
+   until their header markup is switched to menu.svg too. */
+@media (max-width: 960px) {
+  .menu-toggle:not(:has(.menu-icon-img)) span {
+    display: block !important;
+  }
+}
+
+
+/* --- Portfolio redesign V18: mobile header + projects polish --- */
+
+/*
+  The header is a static solid bar in the current design, even at the top
+  of the hero. Icon color should therefore follow THEME, not scroll state.
+*/
+html[data-theme="light"] .site-header .header-icon-img {
+  filter: brightness(0) !important;
+}
+
+html[data-theme="dark"] .site-header .header-icon-img {
+  filter: brightness(0) invert(1) !important;
+}
+
+@media (max-width: 960px) {
+  /* Bring the mobile controls a little closer to the screen edges. */
+  .header-inner {
+    width: min(100% - 24px, 1180px);
+  }
+
+  .header-actions {
+    gap: 7px;
+  }
+
+  .theme-toggle,
+  .menu-toggle {
+    display: grid;
+    place-items: center;
+    flex: 0 0 25px;
+    width: 25px;
+    height: 25px;
+    padding: 0;
+  }
+
+  .theme-icon-img {
+    width: 17px;
+    height: 17px;
+    transform: translateX(-0.5px);
+  }
+
+  .menu-icon-img {
+    width: 18px;
+    height: 18px;
+    transform: translateX(0.75px);
+  }
+
+  /* Full-width menu, but lighter/tighter than the original version. */
+  .mobile-nav {
+    padding: 7px 16px 9px;
+  }
+
+  .mobile-nav a {
+    padding: 8px 0;
+    border-bottom: 0 !important;
+    font-size: 0.82rem;
+    line-height: 1.2;
+  }
+
+  /* Center the mobile Projects heading and its segmented filters. */
+  .projects-toolbar {
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+  }
+
+  .projects-toolbar .project-filters {
+    justify-content: center;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-toolbar h2 {
+    width: 100%;
+    text-align: center;
+  }
+
+  .projects-toolbar .project-filters {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 460px) {
+  /*
+    There isn't room for the full desktop role at 400px, but keeping
+    "Unity Developer" preserves useful identity context in the mobile bar.
+  */
+  .brand-divider,
+  .brand-role {
+    display: none !important;
+  }
+
+  .brand {
+    gap: 6px;
+  }
+
+  .brand::after {
+    content: "| Unity Developer";
+    display: inline-block;
+    color: currentColor;
+    font-size: 0.68rem;
+    font-weight: 560;
+    letter-spacing: -0.015em;
+    opacity: 0.70;
+    white-space: nowrap;
+  }
+
+  .brand-name {
+    font-size: 1.12rem;
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  .mobile-nav {
+    padding: 6px 14px 8px;
+  }
+
+  .mobile-nav a {
+    padding: 7px 0;
+    font-size: 0.79rem;
+  }
+
+  .projects-toolbar {
+    gap: 12px;
+  }
+}
+
+
+/* --- Portfolio redesign V19: desktop theme-icon alignment --- */
+
+/*
+  Desktop theme control should read as a bare icon, not a button.
+  Give it a predictable square hitbox and center the SVG optically.
+*/
+@media (min-width: 961px) {
+  .theme-toggle {
+    display: grid;
+    place-items: center;
+    flex: 0 0 28px;
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    padding: 0;
+    margin: 0;
+    border: 0 !important;
+    border-radius: 0;
+    background: transparent !important;
+    line-height: 0;
+  }
+
+  .theme-toggle:hover {
+    background: transparent !important;
+    transform: none;
+    opacity: 0.72;
+  }
+
+  .theme-icon-img {
+    display: block;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    object-fit: contain;
+    object-position: center;
+    transform: translateY(0.25px);
+  }
+
+  .header-actions {
+    align-items: center;
+  }
+}

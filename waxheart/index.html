@@ -13,7 +13,7 @@
   <script>
     (() => {
       const savedTheme = localStorage.getItem("portfolio-theme");
-      document.documentElement.dataset.theme = savedTheme || "light";
+      document.documentElement.dataset.theme = savedTheme || "dark";
     })();
   </script>
 </head>
@@ -60,6 +60,7 @@
       <div class="project-detail-head">
         <div>
           <h1 class="project-detail-title">WaxHeart</h1>
+          <div class="project-meta">Gameplay Engineer | Unity | C#</div>
           <p class="project-detail-summary">An atmospheric puzzle adventure where I contribute gameplay features, bug fixes, animation integration, and production systems.</p>
         </div>
         <div class="project-link-group"><a class="project-external-link" href="https://waxheart.info/" target="_blank" rel="noreferrer">Visit WaxHeart ↗</a></div>
@@ -70,39 +71,20 @@
       </div>
 
       <div class="project-detail-content">
-        <div class="project-main-column">
-          <section class="project-copy-section">
-            <h2>Overview</h2>
-            <p>WaxHeart is an atmospheric puzzle adventure that I contribute to as a Gameplay Engineer. My work spans gameplay features, bug fixing, animation integration, and production-facing systems inside an existing Unity project.</p>
-          </section>
+        <section class="project-copy-section">
+          <h2>Overview</h2>
+          <p>WaxHeart is an atmospheric puzzle adventure that I contribute to as a Gameplay Engineer. My work spans gameplay features, bug fixing, animation integration, and production-facing systems inside an existing Unity project.</p>
+        </section>
 
-          <section class="project-copy-section">
-            <h2>Selected Work</h2>
-            <ul class="project-highlight-list">
-              <li>Gameplay feature implementation</li>
-              <li>Production bug fixing</li>
+        <section class="project-copy-section">
+          <h2>What I Worked On</h2>
+          <ul class="project-work-list">
+              <li>Gameplay features</li>
+              <li>Production bug fixes</li>
               <li>Animation integration</li>
-              <li>Gameplay and production systems</li>
-            </ul>
-          </section>
-
-          <section class="project-copy-section">
-            <h2>More to Come</h2>
-            <div class="project-coming-soon">
-              I’ll keep expanding this page with gameplay clips, screenshots, technical breakdowns, and more detail about my contributions.
-            </div>
-          </section>
-        </div>
-
-        <aside class="project-info-card" aria-label="Project information">
-          <h2>At a Glance</h2>
-          <dl class="project-fact-list">
-            <div class="project-fact"><dt>Role</dt><dd>Gameplay Engineer</dd></div>
-            <div class="project-fact"><dt>Engine</dt><dd>Unity</dd></div>
-            <div class="project-fact"><dt>Tech</dt><dd>C#</dd></div>
-            <div class="project-fact"><dt>Focus</dt><dd>Gameplay Features · Bug Fixes · Animation · Production Systems</dd></div>
-          </dl>
-        </aside>
+              <li>Gameplay & production systems</li>
+          </ul>
+        </section>
       </div>
     </div>
   </main>

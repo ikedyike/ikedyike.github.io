@@ -13,7 +13,7 @@
   <script>
     (() => {
       const savedTheme = localStorage.getItem("portfolio-theme");
-      document.documentElement.dataset.theme = savedTheme || "light";
+      document.documentElement.dataset.theme = savedTheme || "dark";
     })();
   </script>
 </head>
@@ -37,12 +37,11 @@
 
         <div class="header-actions">
           <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
-            <span class="theme-icon" aria-hidden="true">☾</span>
+            <img class="header-icon-img theme-icon-img" src="assets/images/logos/moon.svg" alt="" aria-hidden="true">
           </button>
 
           <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
-            <span></span>
-            <span></span>
+            <img class="header-icon-img menu-icon-img" src="assets/images/logos/menu.svg" alt="" aria-hidden="true">
           </button>
         </div>
       </div>

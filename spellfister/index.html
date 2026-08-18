@@ -13,7 +13,7 @@
   <script>
     (() => {
       const savedTheme = localStorage.getItem("portfolio-theme");
-      document.documentElement.dataset.theme = savedTheme || "light";
+      document.documentElement.dataset.theme = savedTheme || "dark";
     })();
   </script>
 </head>
@@ -36,10 +36,10 @@
 
         <div class="header-actions">
           <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
-            <span class="theme-icon" aria-hidden="true">☾</span>
+            <img class="header-icon-img theme-icon-img" src="../assets/images/logos/moon.svg" alt="" aria-hidden="true">
           </button>
           <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
-            <span></span><span></span>
+            <img class="header-icon-img menu-icon-img" src="../assets/images/logos/menu.svg" alt="" aria-hidden="true">
           </button>
         </div>
       </div>
@@ -53,56 +53,110 @@
     </nav>
   </header>
 
-  <main class="project-page">
+  <main class="project-page spellfister-page">
     <div class="project-detail-shell">
-      <a class="project-back" href="../index.html#projects">← Back to Projects</a>
+      <a class="project-back" href="../index.html#projects">← Projects</a>
 
       <div class="project-detail-head">
         <div>
           <h1 class="project-detail-title">SpellFister</h1>
-          <p class="project-detail-summary">A magic-based first-person game built around expressive combat, gameplay systems, enemy behavior, and progression.</p>
+          <div class="project-meta">Lead Programmer | Unity | C#</div>
+          <p class="project-detail-summary">A fast-paced roguelite fantasy FPS built around expressive spellcasting, arena combat, enemy waves, and upgrade-driven runs.</p>
         </div>
-        <div class="project-link-group"><a class="project-external-link" href="https://spellfister.com" target="_blank" rel="noreferrer">Visit SpellFister ↗</a></div>
+
+        <div class="project-link-group">
+          <a class="project-external-link" href="https://spellfister.com" target="_blank" rel="noreferrer">Visit Website ↗</a>
+          <a class="project-secondary-link" href="https://www.youtube.com/watch?v=PcB2m2cVcmw" target="_blank" rel="noreferrer">Watch Devlog ↗</a>
+        </div>
       </div>
 
       <div class="project-hero-image">
         <img src="../assets/images/projects/spellfister.jpg" alt="SpellFister gameplay">
       </div>
 
-      <div class="project-detail-content">
-        <div class="project-main-column">
-          <section class="project-copy-section">
-            <h2>Overview</h2>
-            <p>SpellFister is one of my core game-development projects. I worked as Lead Programmer, focusing on the gameplay experience and the systems that support combat, enemies, and progression.</p>
-          </section>
+      <div class="project-story">
+        <section class="project-copy-section project-overview">
+          <p class="project-section-label">Overview</p>
+          <h2>Built from the gameplay loop out.</h2>
+          <p>SpellFister is my long-running Unity project and a game I’ve developed across the full gameplay stack. I’ve built and iterated on the combat loop, enemy behaviors, wave encounters, player systems, progression, UI, saving, balancing, and the supporting architecture that lets the game keep growing.</p>
+        </section>
 
-          <section class="project-copy-section">
-            <h2>Selected Work</h2>
-            <ul class="project-highlight-list">
-              <li>Combat and gameplay systems</li>
-              <li>Enemy behavior</li>
-              <li>Progression systems</li>
-              <li>Gameplay iteration and polish</li>
-            </ul>
-          </section>
-
-          <section class="project-copy-section">
-            <h2>More to Come</h2>
-            <div class="project-coming-soon">
-              I’ll keep expanding this page with gameplay clips, screenshots, technical breakdowns, and more detail about my contributions.
+        <section class="project-copy-section">
+          <div class="project-section-heading">
+            <div>
+              <p class="project-section-label">Highlighted Work</p>
+              <h2>Systems I’ve owned.</h2>
             </div>
-          </section>
-        </div>
+          </div>
 
-        <aside class="project-info-card" aria-label="Project information">
-          <h2>At a Glance</h2>
-          <dl class="project-fact-list">
-            <div class="project-fact"><dt>Role</dt><dd>Lead Programmer</dd></div>
-            <div class="project-fact"><dt>Engine</dt><dd>Unity</dd></div>
-            <div class="project-fact"><dt>Tech</dt><dd>C#</dd></div>
-            <div class="project-fact"><dt>Focus</dt><dd>Combat · Gameplay Systems · Enemy Behavior · Progression</dd></div>
-          </dl>
-        </aside>
+          <div class="highlight-grid">
+            <article class="highlight-item">
+              <span class="highlight-number">01</span>
+              <h3>Combat & Spell Systems</h3>
+              <p>Built the core first-person combat loop and reusable spell behavior, including cooldowns, damage scaling, upgrade-driven effects, and the moment-to-moment systems that make casting feel responsive.</p>
+            </article>
+
+            <article class="highlight-item">
+              <span class="highlight-number">02</span>
+              <h3>Enemy AI & Wave Combat</h3>
+              <p>Implemented state-driven enemy behavior and wave-based encounters designed around projectile pressure, positioning, and readable combat roles.</p>
+            </article>
+
+            <article class="highlight-item">
+              <span class="highlight-number">03</span>
+              <h3>Progression & Upgrades</h3>
+              <p>Created modular run and permanent-progression systems that support upgrade combinations, balancing, iteration, and adding new content without rebuilding the surrounding loop.</p>
+            </article>
+
+            <article class="highlight-item">
+              <span class="highlight-number">04</span>
+              <h3>Iteration & Polish</h3>
+              <p>Owned the broader player experience across movement, UI, saving, balancing, feedback, playtesting, and repeated polish passes as the project evolved from prototype to a larger roguelite.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="project-copy-section">
+          <div class="project-section-heading">
+            <div>
+              <p class="project-section-label">Gallery</p>
+              <h2>SpellFister in motion.</h2>
+            </div>
+            <p class="gallery-note">Add or swap screenshots whenever you have stronger shots.</p>
+          </div>
+
+          <div class="project-gallery">
+            <figure class="gallery-item gallery-item-wide">
+              <img src="../assets/images/projects/spellfister/gallery-combat.jpg" alt="SpellFister arena combat" loading="lazy" onerror="this.parentElement.classList.add('image-missing'); this.hidden=true;">
+              <figcaption>Combat</figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+              <img src="../assets/images/projects/spellfister/gallery-upgrades.jpg" alt="SpellFister upgrade system" loading="lazy" onerror="this.parentElement.classList.add('image-missing'); this.hidden=true;">
+              <figcaption>Upgrades</figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+              <img src="../assets/images/projects/spellfister/gallery-enemies.jpg" alt="SpellFister enemy encounter" loading="lazy" onerror="this.parentElement.classList.add('image-missing'); this.hidden=true;">
+              <figcaption>Enemy Encounters</figcaption>
+            </figure>
+
+            <figure class="gallery-item gallery-item-wide">
+              <img src="../assets/images/projects/spellfister/gallery-arena.jpg" alt="SpellFister arena environment" loading="lazy" onerror="this.parentElement.classList.add('image-missing'); this.hidden=true;">
+              <figcaption>Arena</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="project-copy-section tools-section">
+          <p class="project-section-label">Tools & Tech</p>
+          <h2>Built with.</h2>
+          <ul class="project-tool-list" aria-label="Tools and technology">
+            <li>Unity</li>
+            <li>C#</li>
+            <li>Git / GitHub</li>
+          </ul>
+        </section>
       </div>
     </div>
   </main>
