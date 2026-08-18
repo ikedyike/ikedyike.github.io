@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="SpellFister — Isaac Craig portfolio project.">
+  <link rel="icon" type="image/png" href="../assets/images/logos/favicon.png">
   <title>SpellFister | Isaac Craig</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,13 +61,8 @@
       <div class="project-detail-head">
         <div>
           <h1 class="project-detail-title">SpellFister</h1>
-          <div class="project-meta">Lead Programmer | Unity | C#</div>
+          <div class="project-meta">Solo Programmer | Unity | C#</div>
           <p class="project-detail-summary">A fast-paced roguelite fantasy FPS built around expressive spellcasting, arena combat, enemy waves, and upgrade-driven runs.</p>
-        </div>
-
-        <div class="project-link-group">
-          <a class="project-external-link" href="https://spellfister.com" target="_blank" rel="noreferrer">Visit Website ↗</a>
-          <a class="project-secondary-link" href="https://www.youtube.com/watch?v=PcB2m2cVcmw" target="_blank" rel="noreferrer">Watch Devlog ↗</a>
         </div>
       </div>
 
@@ -77,15 +73,49 @@
       <div class="project-story">
         <section class="project-copy-section project-overview">
           <p class="project-section-label">Overview</p>
-          <h2>Built from the gameplay loop out.</h2>
-          <p>SpellFister is my long-running Unity project and a game I’ve developed across the full gameplay stack. I’ve built and iterated on the combat loop, enemy behaviors, wave encounters, player systems, progression, UI, saving, balancing, and the supporting architecture that lets the game keep growing.</p>
+          <h2>From a university project and a dream to a full indie title.</h2>
+          <p>SpellFister began in a university game development course, where I led a small team through a five-week prototype: a tightly scoped, wave-based arena FPS. After the course, I took ownership of the project and continued developing it independently, expanding that prototype toward the game we originally imagined — a full roguelite built around expressive spellcasting, replayable runs, progression, and increasingly chaotic combat.</p>
+        </section>
+
+        <section class="project-copy-section project-resources-section">
+          <p class="project-section-label">SpellFister Links</p>
+          <h2>Follow the project.</h2>
+
+          <div class="project-resource-grid">
+            <a class="project-resource-card" href="https://spellfister.com" target="_blank" rel="noreferrer">
+              <span class="resource-kicker">Website</span>
+              <h3>Visit SpellFister</h3>
+              <p>See the game, current development status, screenshots, and playtest information.</p>
+              <span class="resource-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <div class="project-resource-card resource-coming-soon">
+              <span class="resource-kicker">Steam</span>
+              <h3>Steam page coming soon</h3>
+              <p>The public Steam page is currently in development.</p>
+              <span class="resource-status">Coming Soon</span>
+            </div>
+          </div>
+
+          <a class="devlog-card" href="https://www.youtube.com/watch?v=2cPkBB9qieI" target="_blank" rel="noreferrer">
+            <div class="devlog-thumbnail">
+              <img src="https://i.ytimg.com/vi/2cPkBB9qieI/maxresdefault.jpg" alt="SpellFister July Update devlog thumbnail" loading="lazy">
+              <span class="devlog-play" aria-hidden="true">▶</span>
+            </div>
+            <div class="devlog-copy">
+              <span class="resource-kicker">Devlog</span>
+              <h3>July Update | SpellFister Devlog #2</h3>
+              <p>Watch the latest development update and follow the game as it moves toward its Steam launch.</p>
+              <span class="devlog-watch">Watch on YouTube ↗</span>
+            </div>
+          </a>
         </section>
 
         <section class="project-copy-section">
           <div class="project-section-heading">
             <div>
               <p class="project-section-label">Highlighted Work</p>
-              <h2>Systems I’ve owned.</h2>
+              <h2>Systems I’ve built in SpellFister.</h2>
             </div>
           </div>
 
@@ -120,13 +150,12 @@
           <div class="project-section-heading">
             <div>
               <p class="project-section-label">Gallery</p>
-              <h2>SpellFister in motion.</h2>
+              <h2>Current development photos.</h2>
             </div>
-            <p class="gallery-note">Add or swap screenshots whenever you have stronger shots.</p>
           </div>
 
           <div class="project-gallery">
-            <figure class="gallery-item gallery-item-wide">
+            <figure class="gallery-item">
               <img src="../assets/images/projects/spellfister/gallery-combat.jpg" alt="SpellFister arena combat" loading="lazy" onerror="this.parentElement.classList.add('image-missing'); this.hidden=true;">
               <figcaption>Combat</figcaption>
             </figure>
@@ -141,7 +170,7 @@
               <figcaption>Enemy Encounters</figcaption>
             </figure>
 
-            <figure class="gallery-item gallery-item-wide">
+            <figure class="gallery-item">
               <img src="../assets/images/projects/spellfister/gallery-arena.jpg" alt="SpellFister arena environment" loading="lazy" onerror="this.parentElement.classList.add('image-missing'); this.hidden=true;">
               <figcaption>Arena</figcaption>
             </figure>
@@ -163,7 +192,13 @@
 
   <footer class="site-footer project-page-footer">
     <div class="footer-inner">
-      <span>© <span id="current-year">2026</span> Isaac Craig</span>
+      <div class="footer-spacer" aria-hidden="true"></div>
+
+      <div class="footer-brand">
+        <span>© <span id="current-year">2026</span> Isaac Craig</span>
+        <img class="footer-ikes-logo" src="../assets/images/logos/ikes-games.png" alt="Ikes Games">
+      </div>
+
       <a href="../index.html#projects">Back to Projects ↑</a>
     </div>
   </footer>

@@ -438,3 +438,208 @@ html[data-theme="dark"] .project-hero-image {
     aspect-ratio: 16 / 10;
   }
 }
+
+
+/* --- V21: SpellFister content + gallery polish --- */
+
+/* Keep all gallery tiles the same size. */
+.project-gallery {
+  align-items: stretch;
+}
+
+.gallery-item,
+.gallery-item-wide {
+  aspect-ratio: 16 / 10;
+}
+
+.project-resources-section > h2 {
+  margin-bottom: 22px !important;
+}
+
+.project-resource-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.project-resource-card {
+  position: relative;
+  min-height: 178px;
+  padding: 22px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  transition: transform 170ms ease, border-color 170ms ease, box-shadow 170ms ease;
+}
+
+a.project-resource-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--text) 25%, var(--line));
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.07);
+}
+
+html[data-theme="dark"] a.project-resource-card:hover {
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.20);
+}
+
+.resource-kicker {
+  display: block;
+  margin-bottom: 24px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 760;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.project-resource-card h3,
+.devlog-copy h3 {
+  margin-bottom: 8px;
+  font-size: 1.08rem;
+  font-weight: 720;
+  letter-spacing: -0.025em;
+}
+
+.project-resource-card p,
+.devlog-copy p {
+  max-width: 40ch;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.6;
+}
+
+.resource-arrow {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.resource-status {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  padding: 5px 8px;
+  color: var(--muted);
+  background: var(--surface-soft);
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.resource-coming-soon {
+  opacity: 0.82;
+}
+
+.devlog-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 0;
+  margin-top: 12px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  transition: transform 170ms ease, border-color 170ms ease, box-shadow 170ms ease;
+}
+
+.devlog-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--text) 25%, var(--line));
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.07);
+}
+
+html[data-theme="dark"] .devlog-card:hover {
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.20);
+}
+
+.devlog-thumbnail {
+  position: relative;
+  min-height: 220px;
+  overflow: hidden;
+  background: var(--surface-soft);
+}
+
+.devlog-thumbnail img {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+  transition: transform 300ms ease;
+}
+
+.devlog-card:hover .devlog-thumbnail img {
+  transform: scale(1.018);
+}
+
+.devlog-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 50px;
+  height: 50px;
+  place-items: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  font-size: 0.9rem;
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.devlog-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+}
+
+.devlog-copy .resource-kicker {
+  margin-bottom: 18px;
+}
+
+.devlog-watch {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 720;
+}
+
+@media (max-width: 760px) {
+  .project-resource-grid,
+  .devlog-card {
+    grid-template-columns: 1fr;
+  }
+
+  .project-resource-card {
+    min-height: 158px;
+    padding: 20px;
+  }
+
+  .devlog-thumbnail,
+  .devlog-thumbnail img {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
+
+  .devlog-copy {
+    padding: 20px;
+  }
+
+  .gallery-item,
+  .gallery-item-wide {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+
+/* --- V22: center case-study content beneath the full-width hero --- */
+.project-story {
+  margin-inline: auto;
+}

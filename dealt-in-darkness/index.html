@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Dealt in Darkness — Isaac Craig portfolio project.">
+  <link rel="icon" type="image/png" href="../assets/images/logos/favicon.png">
   <title>Dealt in Darkness | Isaac Craig</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,10 +37,10 @@
 
         <div class="header-actions">
           <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
-            <span class="theme-icon" aria-hidden="true">☾</span>
+            <img class="header-icon-img theme-icon-img" src="../assets/images/logos/moon.svg" alt="" aria-hidden="true">
           </button>
           <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
-            <span></span><span></span>
+            <img class="header-icon-img menu-icon-img" src="../assets/images/logos/menu.svg" alt="" aria-hidden="true">
           </button>
         </div>
       </div>
@@ -53,36 +54,104 @@
     </nav>
   </header>
 
-  <main class="project-page">
+  <main class="project-page dealt-in-darkness-page">
     <div class="project-detail-shell">
-      <a class="project-back" href="../index.html#projects">← Back to Projects</a>
+      <a class="project-back" href="../index.html#projects">← Projects</a>
 
       <div class="project-detail-head">
         <div>
           <h1 class="project-detail-title">Dealt in Darkness</h1>
           <div class="project-meta">Gameplay Engineer | Unity | C# | Multiplayer</div>
-          <p class="project-detail-summary">Multiplayer gameplay work including networked systems, player interactions, item behavior, and game feedback.</p>
+          <p class="project-detail-summary">A multiplayer horror card and board game where I build networked gameplay systems, modular items, targeting flows, game-mode logic, and player-facing feedback.</p>
         </div>
-        
       </div>
 
       <div class="project-hero-image">
         <img src="../assets/images/projects/dealt-in-darkness.jpg" alt="Dealt in Darkness gameplay">
       </div>
 
-      <div class="project-detail-content">
-        <section class="project-copy-section">
-          <h2>Overview</h2>
-          <p>Dealt in Darkness is a multiplayer game where I work as a Gameplay Engineer. My contributions center on networked gameplay systems, player interactions, item behavior, and player-facing feedback.</p>
+      <div class="project-story">
+        <section class="project-copy-section project-overview">
+          <p class="project-section-label">Overview</p>
+          <h2>Gameplay systems that have to work for everyone at the table.</h2>
+          <p>Dealt in Darkness is a multiplayer horror card and board game built in Unity. As a Gameplay Engineer, my work has centered on networked item behavior, player targeting, card interactions, turn flow, game-mode logic, and gameplay feedback. Features frequently cross server authority, hidden information, local presentation, and shared state, so a large part of the work is making sure each interaction behaves correctly for the acting player, the target, and every observing client.</p>
         </section>
 
         <section class="project-copy-section">
-          <h2>What I Worked On</h2>
-          <ul class="project-work-list">
-              <li>Networked gameplay systems</li>
-              <li>Player interactions</li>
-              <li>Item behavior</li>
-              <li>Gameplay feedback</li>
+          <div class="project-section-heading">
+            <div>
+              <p class="project-section-label">Recent Highlighted Work</p>
+              <h2>FlashFire, items, and multiplayer gameplay.</h2>
+            </div>
+          </div>
+
+          <div class="highlight-grid">
+            <article class="highlight-item">
+              <span class="highlight-number">01</span>
+              <h3>FlashFire Rework</h3>
+              <p>Worked on a major rework of FlashFire, a hidden-information game mode where hunters stalk one another across a shared grid. My work has touched movement, shooting, passing, foraging, turn flow, hunter placement and reveal behavior, and the server-authoritative closing-fire progression that forces players inward as the match develops.</p>
+            </article>
+
+            <article class="highlight-item">
+              <span class="highlight-number">02</span>
+              <h3>Modular Networked Items</h3>
+              <p>Built and extended reusable multiplayer item behavior across card logic, targeting, feedback, and state synchronization. Recent item work includes Spider’s Eggs, Card Lighter, Inspector’s Spectacles, Swap Hands, sensitivity-changing effects, camera effects, audio effects, and supporting debug tools used to test them quickly.</p>
+            </article>
+
+            <article class="highlight-item">
+              <span class="highlight-number">03</span>
+              <h3>Homunculus Effect Propagation</h3>
+              <p>Implemented the Homunculus item so player-specific effects can mirror to another player without creating chained propagation. The final approach kept effect-specific receivers and added controlled forwarding for effects such as Jumpscare, Owlfingers, sensitivity changes, Paranoia, and Earworm while preserving network synchronization and existing debug workflows.</p>
+            </article>
+
+            <article class="highlight-item">
+              <span class="highlight-number">04</span>
+              <h3>Multiplayer Debugging &amp; Feedback</h3>
+              <p>Tracked down issues across targeting, turn state, item visuals, UI, and local/networked sessions, including edge cases where the same action could be repeated incorrectly or client presentation drifted from authoritative game state. I also built reusable hooks and feedback paths so new gameplay behavior can integrate without tightly coupling unrelated systems.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="project-copy-section">
+          <div class="project-section-heading">
+            <div>
+              <p class="project-section-label">Gallery</p>
+              <h2>Recent development work.</h2>
+            </div>
+          </div>
+
+          <div class="project-gallery">
+            <figure class="gallery-item">
+              <img src="../assets/images/projects/dealt-in-darkness/gallery-flashfire.gif" alt="Dealt in Darkness FlashFire gameplay" loading="lazy" onerror="this.parentElement.classList.add('image-missing'); this.hidden=true;">
+              <figcaption>FlashFire</figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+              <img src="../assets/images/projects/dealt-in-darkness/gallery-items.gif" alt="Dealt in Darkness multiplayer item behavior" loading="lazy" onerror="this.parentElement.classList.add('image-missing'); this.hidden=true;">
+              <figcaption>Items</figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+              <img src="../assets/images/projects/dealt-in-darkness/gallery-homunculus.gif" alt="Dealt in Darkness Homunculus item effects" loading="lazy" onerror="this.parentElement.classList.add('image-missing'); this.hidden=true;">
+              <figcaption>Homunculus</figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+              <img src="../assets/images/projects/dealt-in-darkness/gallery-multiplayer.gif" alt="Dealt in Darkness multiplayer gameplay" loading="lazy" onerror="this.parentElement.classList.add('image-missing'); this.hidden=true;">
+              <figcaption>Multiplayer</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="project-copy-section tools-section">
+          <p class="project-section-label">Tools &amp; Tech</p>
+          <h2>Built with.</h2>
+          <ul class="project-tool-list" aria-label="Tools and technology">
+            <li>Unity</li>
+            <li>C#</li>
+            <li>Unity Netcode</li>
+            <li>ScriptableObjects</li>
+            <li>Git / GitHub</li>
           </ul>
         </section>
       </div>
@@ -91,7 +160,13 @@
 
   <footer class="site-footer project-page-footer">
     <div class="footer-inner">
-      <span>© <span id="current-year">2026</span> Isaac Craig</span>
+      <div class="footer-spacer" aria-hidden="true"></div>
+
+      <div class="footer-brand">
+        <span>© <span id="current-year">2026</span> Isaac Craig</span>
+        <img class="footer-ikes-logo" src="../assets/images/logos/ikes-games.png" alt="Ikes Games">
+      </div>
+
       <a href="../index.html#projects">Back to Projects ↑</a>
     </div>
   </footer>

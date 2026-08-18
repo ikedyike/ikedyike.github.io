@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="WaxHeart — Isaac Craig portfolio project.">
+  <link rel="icon" type="image/png" href="../assets/images/logos/favicon.png">
   <title>WaxHeart | Isaac Craig</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,10 +37,10 @@
 
         <div class="header-actions">
           <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
-            <span class="theme-icon" aria-hidden="true">☾</span>
+            <img class="header-icon-img theme-icon-img" src="../assets/images/logos/moon.svg" alt="" aria-hidden="true">
           </button>
           <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
-            <span></span><span></span>
+            <img class="header-icon-img menu-icon-img" src="../assets/images/logos/menu.svg" alt="" aria-hidden="true">
           </button>
         </div>
       </div>
@@ -53,36 +54,141 @@
     </nav>
   </header>
 
-  <main class="project-page">
+  <main class="project-page waxheart-page">
     <div class="project-detail-shell">
-      <a class="project-back" href="../index.html#projects">← Back to Projects</a>
+      <a class="project-back" href="../index.html#projects">← Projects</a>
 
       <div class="project-detail-head">
         <div>
           <h1 class="project-detail-title">WaxHeart</h1>
-          <div class="project-meta">Gameplay Engineer | Unity | C#</div>
-          <p class="project-detail-summary">An atmospheric puzzle adventure where I contribute gameplay features, bug fixes, animation integration, and production systems.</p>
+          <div class="project-meta">Gameplay Engineer | Unity | C# | Team Project</div>
+          <p class="project-detail-summary">An atmospheric puzzle-adventure where I contribute gameplay features, animation integration, system refactors, and production bug fixes inside a large shared Unity codebase.</p>
         </div>
-        <div class="project-link-group"><a class="project-external-link" href="https://waxheart.info/" target="_blank" rel="noreferrer">Visit WaxHeart ↗</a></div>
       </div>
 
       <div class="project-hero-image">
-        <img src="../assets/images/projects/waxheart.jpg" alt="WaxHeart gameplay">
+        <img src="../assets/images/projects/waxheart.jpg" alt="WaxHeart key art">
       </div>
 
-      <div class="project-detail-content">
-        <section class="project-copy-section">
-          <h2>Overview</h2>
-          <p>WaxHeart is an atmospheric puzzle adventure that I contribute to as a Gameplay Engineer. My work spans gameplay features, bug fixing, animation integration, and production-facing systems inside an existing Unity project.</p>
+      <div class="project-story">
+        <section class="project-copy-section project-overview">
+          <p class="project-section-label">Overview</p>
+          <h2>Gameplay engineering on a large, living Unity project.</h2>
+          <p>WaxHeart is a collaborative atmospheric puzzle-adventure developed by a multidisciplinary team. For nearly two years, I have worked as a Gameplay Engineer and feature engineer inside its mature shared Unity/C# codebase, implementing gameplay features, integrating animation and player interactions, diagnosing production bugs, and refactoring older systems when they become brittle. Much of my work sits at the seams between gameplay, physics, animation, VFX, and designer-authored content, so even focused features often require understanding how several existing systems interact before changing them safely.</p>
+        </section>
+
+        <section class="project-copy-section project-resources-section">
+          <p class="project-section-label">WaxHeart Links</p>
+          <h2>See the game.</h2>
+
+          <div class="project-resource-grid">
+            <a class="project-resource-card" href="https://waxheart.info/" target="_blank" rel="noreferrer">
+              <span class="resource-kicker">Official Website</span>
+              <h3>Visit WaxHeart</h3>
+              <p>Explore the project, team, gallery, press materials, and current development information.</p>
+              <span class="resource-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a class="project-resource-card" href="https://store.steampowered.com/app/2381630/WaxHeart/" target="_blank" rel="noreferrer">
+              <span class="resource-kicker">Steam</span>
+              <h3>Wishlist &amp; Play the Demo</h3>
+              <p>Visit the Steam page to wishlist WaxHeart and download the current demo.</p>
+              <span class="resource-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+
+          <a class="devlog-card" href="https://www.youtube.com/watch?v=z5pg0dOZizs" target="_blank" rel="noreferrer">
+            <div class="devlog-thumbnail">
+              <img src="https://i.ytimg.com/vi/z5pg0dOZizs/maxresdefault.jpg" alt="WaxHeart Teaser Trailer 2025 thumbnail" loading="lazy">
+              <span class="devlog-play" aria-hidden="true">▶</span>
+            </div>
+            <div class="devlog-copy">
+              <span class="resource-kicker">Trailer</span>
+              <h3>WaxHeart | Teaser Trailer 2025</h3>
+              <p>See the current tone, environments, stealth, traversal, and puzzle-adventure direction of WaxHeart.</p>
+              <span class="devlog-watch">Watch on YouTube ↗</span>
+            </div>
+          </a>
         </section>
 
         <section class="project-copy-section">
-          <h2>What I Worked On</h2>
-          <ul class="project-work-list">
-              <li>Gameplay features</li>
-              <li>Production bug fixes</li>
-              <li>Animation integration</li>
-              <li>Gameplay & production systems</li>
+          <div class="project-section-heading">
+            <div>
+              <p class="project-section-label">Recent Highlighted Work</p>
+              <h2>Systems I’ve built and improved in WaxHeart.</h2>
+            </div>
+          </div>
+
+          <div class="highlight-grid">
+            <article class="highlight-item">
+              <span class="highlight-number">01</span>
+              <h3>Throw Aim System</h3>
+              <p>Implemented a dedicated throw-aim mode that coordinates camera and animator state, visualizes the projected trajectory with spline and particle feedback, validates throw-force data against invalid values, and refines held-object rotation for a clearer and more reliable interaction.</p>
+            </article>
+
+            <article class="highlight-item">
+              <span class="highlight-number">02</span>
+              <h3>Power &amp; Interaction Systems</h3>
+              <p>Refactored the powerline workflow and documented it for level designers, then improved power-source interactions with walk-up insertion behavior and more forgiving interaction tolerances. I also helped align powered-state visuals across conduits, elevator lights, and platform systems.</p>
+            </article>
+
+            <article class="highlight-item">
+              <span class="highlight-number">03</span>
+              <h3>Platforms, Traversal &amp; Animation</h3>
+              <p>Added a configurable parts-only rotation mode for spline-driven platforms so tight turns could preserve a stable player surface while attached visual parts continued to rotate. I also tuned ladder root offsets and transitions to improve hand-to-rung alignment and entry motion.</p>
+            </article>
+
+            <article class="highlight-item">
+              <span class="highlight-number">04</span>
+              <h3>Production Systems &amp; Debugging</h3>
+              <p>Built and refined supporting systems including a designer-facing footstep workflow, reset-safe pickup spawning, and save-aware trigger and animation hookups, while reproducing and fixing gameplay edge cases across interconnected legacy systems.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="project-copy-section">
+          <div class="project-section-heading">
+            <div>
+              <p class="project-section-label">Gallery</p>
+              <h2>Development work in WaxHeart.</h2>
+            </div>
+          </div>
+
+          <div class="project-gallery">
+            <figure class="gallery-item">
+              <img src="../assets/images/projects/waxheart/gallery-throw-aim.gif" alt="WaxHeart throw aim system" loading="lazy" onerror="this.parentElement.classList.add('image-missing'); this.hidden=true;">
+              <figcaption>Throw Aim</figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+              <img src="../assets/images/projects/waxheart/gallery-power.gif" alt="WaxHeart power interaction system" loading="lazy" onerror="this.parentElement.classList.add('image-missing'); this.hidden=true;">
+              <figcaption>Power Systems</figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+              <img src="../assets/images/projects/waxheart/gallery-platform.gif" alt="WaxHeart moving platform system" loading="lazy" onerror="this.parentElement.classList.add('image-missing'); this.hidden=true;">
+              <figcaption>Moving Platforms</figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+              <img src="../assets/images/projects/waxheart/gallery-gameplay.gif" alt="WaxHeart gameplay" loading="lazy" onerror="this.parentElement.classList.add('image-missing'); this.hidden=true;">
+              <figcaption>Gameplay</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="project-copy-section tools-section">
+          <p class="project-section-label">Tools &amp; Tech</p>
+          <h2>Built with.</h2>
+          <ul class="project-tool-list" aria-label="Tools and technology">
+            <li>Unity</li>
+            <li>C#</li>
+            <li>FMOD</li>
+            <li>Final IK</li>
+            <li>Curvy Splines</li>
+            <li>JetBrains Rider</li>
+            <li>Fork</li>
+            <li>Git / GitHub</li>
           </ul>
         </section>
       </div>
@@ -91,7 +197,13 @@
 
   <footer class="site-footer project-page-footer">
     <div class="footer-inner">
-      <span>© <span id="current-year">2026</span> Isaac Craig</span>
+      <div class="footer-spacer" aria-hidden="true"></div>
+
+      <div class="footer-brand">
+        <span>© <span id="current-year">2026</span> Isaac Craig</span>
+        <img class="footer-ikes-logo" src="../assets/images/logos/ikes-games.png" alt="Ikes Games">
+      </div>
+
       <a href="../index.html#projects">Back to Projects ↑</a>
     </div>
   </footer>

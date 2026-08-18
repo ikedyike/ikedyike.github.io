@@ -2496,3 +2496,63 @@ html[data-theme="dark"] .site-header .header-icon-img {
     align-items: center;
   }
 }
+
+
+/* --- V26: Ikes Games footer branding + centered copyright --- */
+
+.footer-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 22px;
+}
+
+.footer-spacer {
+  min-width: 1px;
+}
+
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  white-space: nowrap;
+}
+
+.footer-ikes-logo {
+  display: block;
+  width: 118px;
+  height: auto;
+  max-height: 30px;
+  object-fit: contain;
+}
+
+.footer-inner > a {
+  justify-self: end;
+}
+
+@media (max-width: 600px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 9px;
+    padding-block: 17px;
+  }
+
+  .footer-spacer {
+    display: none;
+  }
+
+  .footer-brand {
+    gap: 10px;
+  }
+
+  .footer-ikes-logo {
+    width: 102px;
+  }
+
+  .footer-inner > a {
+    justify-self: center;
+  }
+}
