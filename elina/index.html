@@ -1,78 +1,255 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <title>Good Job Elina</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A little celebration for Elina.">
+  <title>Isaac Craig | Elina</title>
+  <link rel="icon" type="image/png" href="../assets/images/logos/favicon.png">
 
-    <!-- Canvas Confetti CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
 
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #000000;
-            color: #ffffff;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: clamp(1.8rem, 4vw, 3rem);
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 0 1rem;
-        }
-    </style>
-</head>
-<body>
-    <h1>GOOD JOB ELINA I AM PROUD OF YOU</h1>
-
-    <script>
-    function fireConfetti() {
-        if (typeof confetti !== 'function') {
-            console.log('confetti is not loaded');
-            return;
-        }
-
-        const colors = [
-            '#1B5E20', // deep forest green
-            '#388E3C', // mid green
-            '#81C784', // soft/sagey green
-            '#8D6E63', // warm brown
-            '#D7CCC8'  // light tan
-        ];
-
-        // fire several bursts across the bottom
-        const bursts = 5; // try 5–8 for more coverage
-        for (let i = 0; i < bursts; i++) {
-            confetti({
-                particleCount: 40,         // per burst
-                spread: 150,               // very wide fan
-                startVelocity: 45,
-                scalar: 1.3,               // bigger pieces
-                origin: {
-                    x: i / (bursts - 1),   // evenly from left (0) to right (1)
-                    y: 1                   // bottom of the screen
-                },
-                colors: colors
-            });
-        }
+  <style>
+    :root {
+      --page: #101110;
+      --surface: #171817;
+      --surface-soft: #202220;
+      --text: #f3f2ed;
+      --muted: #aaa9a3;
+      --line: rgba(255, 255, 255, 0.12);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
     }
 
-    window.addEventListener('load', () => {
-        fireConfetti();
-        setTimeout(fireConfetti, 500);
-        setTimeout(fireConfetti, 1000);
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      min-width: 320px;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.055), transparent 32%),
+        var(--page);
+      color: var(--text);
+      font-family: "Manrope", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      text-rendering: optimizeLegibility;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.24;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.72), transparent 82%);
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.72), transparent 82%);
+    }
+
+    .celebration-shell {
+      position: relative;
+      z-index: 1;
+      width: min(980px, calc(100% - 48px));
+    }
+
+    .celebration-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(42px, 8vw, 92px);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.025), transparent 48%),
+        var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .celebration-card::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -120px;
+      bottom: -150px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 42px rgba(255, 255, 255, 0.018),
+        0 0 0 84px rgba(255, 255, 255, 0.012);
+      pointer-events: none;
+    }
+
+    .kicker {
+      margin-bottom: 24px;
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 780px;
+      font-size: clamp(3.8rem, 10vw, 8.5rem);
+      font-weight: 780;
+      line-height: 0.92;
+      letter-spacing: -0.065em;
+    }
+
+    .message {
+      max-width: 620px;
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: clamp(1.2rem, 2.4vw, 1.8rem);
+      font-weight: 500;
+      line-height: 1.45;
+      letter-spacing: -0.025em;
+    }
+
+    .message strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .celebration-line {
+      width: 72px;
+      height: 1px;
+      margin-top: 38px;
+      background: var(--line);
+    }
+
+    .confetti-hint {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 650;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.62;
+      user-select: none;
+    }
+
+    @media (max-width: 600px) {
+      .celebration-shell {
+        width: min(100% - 28px, 980px);
+      }
+
+      .celebration-card {
+        padding: 34px 28px 38px;
+        border-radius: 20px;
+      }
+
+      h1 {
+        font-size: clamp(3.15rem, 18vw, 5.4rem);
+      }
+
+      .message {
+        margin-top: 22px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .confetti-hint {
+        display: none;
+      }
+    }
+  
+    /* V2 refinements */
+    h1 {
+      max-width: none;
+      font-size: clamp(2.7rem, 6vw, 5.4rem);
+      line-height: 0.96;
+      white-space: nowrap;
+    }
+
+    .message {
+      margin-top: 22px;
+    }
+
+    .confetti-hint {
+      margin-top: 28px;
+    }
+
+    @media (max-width: 700px) {
+      h1 {
+        font-size: clamp(2.2rem, 10vw, 4rem);
+        white-space: normal;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <main class="celebration-shell">
+    <section class="celebration-card" aria-labelledby="celebration-title">
+<h1 id="celebration-title">Good job Elina!</h1>
+
+      <p class="message">
+        <strong>I am proud of you.</strong>
+      </p>
+<p class="confetti-hint">Click anywhere for more confetti</p>
+    </section>
+  </main>
+
+  <script>
+    const colors = [
+      "#1B5E20",
+      "#388E3C",
+      "#81C784",
+      "#8D6E63",
+      "#D7CCC8"
+    ];
+
+    function fireConfetti() {
+      if (typeof confetti !== "function") return;
+
+      const bursts = 5;
+
+      for (let i = 0; i < bursts; i++) {
+        confetti({
+          particleCount: 34,
+          spread: 125,
+          startVelocity: 42,
+          scalar: 1.05,
+          gravity: 0.95,
+          origin: {
+            x: i / (bursts - 1),
+            y: 1
+          },
+          colors
+        });
+      }
+    }
+
+    window.addEventListener("load", () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      fireConfetti();
+      setTimeout(fireConfetti, 450);
     });
-</script>
+
+    document.addEventListener("click", () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      fireConfetti();
+    });
+  </script>
 </body>
 </html>
