@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Isaac Craig — Gameplay Engineer and Unity Developer portfolio.">
   <link rel="icon" type="image/png" href="assets/images/logos/favicon.png">
-  <title>Isaac Craig | Gameplay Engineer</title>
+  <title>Isaac Craig</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -274,15 +274,41 @@
 
           <a class="project-card project-card-3d" data-category="three-js" href="three-js/">
             <div class="project-card-media media-shell compact-media three-preview">
-              <div class="three-orbit" aria-hidden="true">
-                <span></span><span></span><span></span>
+              <div class="three-card-scene" aria-hidden="true">
+                <div class="three-card-grid"></div>
+
+                <div class="three-card-orbit">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+
+                <div class="three-card-cube">
+                  <span class="three-cube-face three-cube-front"></span>
+                  <span class="three-cube-face three-cube-back"></span>
+                  <span class="three-cube-face three-cube-right"></span>
+                  <span class="three-cube-face three-cube-left"></span>
+                  <span class="three-cube-face three-cube-top"></span>
+                  <span class="three-cube-face three-cube-bottom"></span>
+                </div>
+
+                <span class="three-tech-chip three-tech-js">JS</span>
+                <span class="three-tech-chip three-tech-gltf">GLTF</span>
+                <span class="three-tech-chip three-tech-webgl">WEBGL</span>
+
+                <span class="three-scene-label">Realtime 3D</span>
               </div>
-              <div class="media-placeholder"><span>Three.js Playground</span></div>
             </div>
-            <div class="project-card-body">
-              <span class="card-meta">Three.js · WebGL · Realtime 3D</span>
-              <h3>Three.js Playground</h3>
-              <p>Realtime browser experiments with interactive models, 3D motion, and WebGL.</p>
+
+            <div class="project-card-body three-card-body">
+              <span class="card-meta">Three.js · WebGL · GLTF</span>
+
+              <div class="three-card-title-row">
+                <h3>Three.js Playground</h3>
+                <span class="three-card-arrow" aria-hidden="true">↗</span>
+              </div>
+
+              <p>Interactive models and realtime browser graphics built with Three.js.</p>
             </div>
           </a>
         </div>

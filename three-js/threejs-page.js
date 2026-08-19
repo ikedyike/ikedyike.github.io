@@ -115,25 +115,66 @@ function setupModelStage(stage, index) {
     stage.dataset.model,
     (gltf) => {
       model = gltf.scene;
+      model.rotation.x = isHero ? 0.10 : 0.08;
 
-      const box = new THREE.Box3().setFromObject(model);
-      const size = new THREE.Vector3();
-      const center = new THREE.Vector3();
+      // Normalize model scale first.
+      model.updateMatrixWorld(true);
 
-      box.getSize(size);
-      box.getCenter(center);
+      const initialBox = new THREE.Box3().setFromObject(model);
+      const initialSize = new THREE.Vector3();
+      initialBox.getSize(initialSize);
 
-      model.position.sub(center);
+      const maxDimension = Math.max(
+        initialSize.x,
+        initialSize.y,
+        initialSize.z
+      );
 
-      const maxDimension = Math.max(size.x, size.y, size.z);
       if (Number.isFinite(maxDimension) && maxDimension > 0) {
-        model.scale.setScalar((isHero ? 2.15 : 1.9) / maxDimension);
+        const targetSize = isHero ? 2.0 : 1.72;
+        model.scale.setScalar(targetSize / maxDimension);
       }
 
-      model.rotation.x = isHero ? 0.10 : 0.08;
-      group.rotation.y = index * 0.31;
+      // Recalculate AFTER scaling, then center the scaled model.
+      // This avoids large/off-center GLBs getting clipped in the card.
+      model.updateMatrixWorld(true);
+
+      const scaledBox = new THREE.Box3().setFromObject(model);
+      const scaledCenter = new THREE.Vector3();
+      scaledBox.getCenter(scaledCenter);
+
+      model.position.x -= scaledCenter.x;
+      model.position.y -= scaledCenter.y;
+      model.position.z -= scaledCenter.z;
 
       group.add(model);
+      group.rotation.y = index * 0.31;
+
+      // Fit the camera to a bounding sphere so differently-shaped models
+      // stay fully visible even while rotating.
+      model.updateMatrixWorld(true);
+
+      const finalBox = new THREE.Box3().setFromObject(model);
+      const sphere = new THREE.Sphere();
+      finalBox.getBoundingSphere(sphere);
+
+      const verticalFov = THREE.MathUtils.degToRad(camera.fov);
+      const horizontalFov = 2 * Math.atan(
+        Math.tan(verticalFov / 2) * camera.aspect
+      );
+      const limitingFov = Math.min(verticalFov, horizontalFov);
+
+      if (Number.isFinite(sphere.radius) && sphere.radius > 0) {
+        const distance =
+          (sphere.radius / Math.sin(limitingFov / 2)) * 1.18;
+
+        camera.position.set(0, 0, distance);
+        camera.near = Math.max(0.01, distance / 100);
+        camera.far = Math.max(50, distance * 20);
+        camera.lookAt(0, 0, 0);
+        camera.updateProjectionMatrix();
+      }
+
       stage.classList.add("is-loaded");
     },
     undefined,
@@ -214,15 +255,14 @@ async function setupOrbitingGallery() {
   scene.add(ring);
 
   const imagePaths = [
-    "../assets/images/projects/spellfister.jpg",
-    "../assets/images/projects/waxheart.jpg",
-    "../assets/images/projects/dealt-in-darkness.jpg",
-    "../assets/images/projects/rock-paw-scissors.jpg",
-    "../assets/images/projects/dino-drop.jpg",
-    "../assets/images/projects/trick-or-treat.jpg",
-    "../assets/images/projects/recycle-me.jpg",
-    "../assets/images/projects/custom-gift-platformer.jpg",
-    "../assets/images/projects/tbdtdgoat.jpg"
+    "../assets/images/three-js/desserts/dessert-1.jpg",
+    "../assets/images/three-js/desserts/dessert-2.jpg",
+    "../assets/images/three-js/desserts/dessert-3.jpg",
+    "../assets/images/three-js/desserts/dessert-4.jpg",
+    "../assets/images/three-js/desserts/dessert-5.jpg",
+    "../assets/images/three-js/desserts/dessert-6.jpg",
+    "../assets/images/three-js/desserts/dessert-7.jpg",
+    "../assets/images/three-js/desserts/dessert-8.jpg"
   ];
 
   const textureLoader = new THREE.TextureLoader();
@@ -232,10 +272,10 @@ async function setupOrbitingGallery() {
     )
   ).filter(Boolean);
 
-  const cardAspect = 16 / 10;
-  const cardHeight = 1.38;
-  const cardWidth = cardHeight * cardAspect;
-  const radius = 3.25;
+  const cardAspect = 1;
+  const cardHeight = 1.46;
+  const cardWidth = cardHeight;
+  const radius = 3.2;
 
   const geometry = new THREE.PlaneGeometry(cardWidth, cardHeight);
   const cards = [];
@@ -342,7 +382,6 @@ async function setupOrbitingGallery() {
           : Math.sin(elapsed * 1.2 + index * 0.6) * 0.08;
 
         card.lookAt(camera.position);
-        card.rotateY(Math.PI);
 
         card.getWorldPosition(worldPosition);
         const distance = worldPosition.distanceTo(camera.position);

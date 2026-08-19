@@ -1093,3 +1093,14 @@ html[data-theme="dark"] .devlog-card:hover {
     padding-top: 44px;
   }
 }
+
+
+/* =========================================================
+   V43 — Orbiting Gallery width
+   ========================================================= */
+
+.threejs-orbit-experiment .threejs-orbit-stage {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+}
