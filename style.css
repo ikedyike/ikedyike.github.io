@@ -2556,3 +2556,21 @@ html[data-theme="dark"] .site-header .header-icon-img {
     justify-self: center;
   }
 }
+
+
+/* --- V27: project footer centering + larger Ikes Games mark --- */
+.project-page-footer .footer-inner {
+  margin-inline: auto;
+}
+
+.footer-ikes-logo {
+  width: 150px;
+  max-height: 38px;
+}
+
+@media (max-width: 600px) {
+  .footer-ikes-logo {
+    width: 122px;
+    max-height: 32px;
+  }
+}
