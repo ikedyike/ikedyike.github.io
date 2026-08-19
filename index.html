@@ -17,6 +17,14 @@
       document.documentElement.dataset.theme = savedTheme || "dark";
     })();
   </script>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
 </head>
 
 <body data-page="home">
@@ -115,7 +123,7 @@
             <button class="filter-button active" type="button" data-filter="featured">Featured</button>
             <button class="filter-button" type="button" data-filter="more-games">More Games</button>
             <button class="filter-button" type="button" data-filter="web-tools">Web &amp; Tools</button>
-            <button class="filter-button" type="button" data-filter="3d">3D</button>
+            <button class="filter-button" type="button" data-filter="three-js">Three.js</button>
           </div>
         </div>
 
@@ -264,17 +272,17 @@
             </div>
           </a>
 
-          <a class="project-card project-card-3d" data-category="3d" href="three-js/index.html">
+          <a class="project-card project-card-3d" data-category="three-js" href="three-js/">
             <div class="project-card-media media-shell compact-media three-preview">
               <div class="three-orbit" aria-hidden="true">
                 <span></span><span></span><span></span>
               </div>
-              <div class="media-placeholder"><span>3D Playground</span></div>
+              <div class="media-placeholder"><span>Three.js Playground</span></div>
             </div>
             <div class="project-card-body">
-              <span class="card-meta">Three.js · WebGL · 3D</span>
-              <h3>Interactive 3D Playground</h3>
-              <p>Models, card experiments, and interactive Three.js builds.</p>
+              <span class="card-meta">Three.js · WebGL · Realtime 3D</span>
+              <h3>Three.js Playground</h3>
+              <p>Realtime browser experiments with interactive models, 3D motion, and WebGL.</p>
             </div>
           </a>
         </div>

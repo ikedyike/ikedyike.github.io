@@ -1,241 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Three.js projects</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Three.js Playground — realtime browser graphics experiments by Isaac Craig.">
+  <link rel="icon" type="image/png" href="../assets/images/logos/favicon.png">
+  <title>Three.js Playground | Isaac Craig</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      background: black;
-      min-height: 100vh;
-      overflow: hidden;
-      color: #fff;
-      font-family: 'Ubuntu Mono', monospace;
-    }
-
-    /* Unicode home button (back to three-js hub) */
-    .home-btn {
-      position: fixed;
-      top: 2%;
-      left: 2%;
-      z-index: 10;
-
-      font-size: 3em;
-      line-height: 1;
-
-      background: transparent;
-      border: none;
-      padding: 0;
-      margin: 0;
-
-      color: #fff;
-      text-decoration: none;
-      cursor: pointer;
-      user-select: none;
-
-      transition: transform 120ms ease, opacity 120ms ease;
-    }
-
-    .home-btn:hover,
-    .home-btn:active {
-      transform: scale(1.06);
-      opacity: 0.9;
-    }
-
-    /* Page layout */
-    .page {
-      min-height: 100vh;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-
-      /* Give top + bottom breathing room, works great on mobile too */
-      padding: 10vh 0 6vh;
-    }
-	
-	.header {
-	  display: flex;
-	  flex-direction: column;
-	  align-items: center;
-	  gap: 0.5rem;
-
-	  background: #000;          /* blocks rain */
-	  padding: 0.75rem 1.25rem;
-	}
-
-    h1 {
-      font-weight: 300;
-      letter-spacing: 0.10em;
-      font-size: clamp(1.8rem, 4vw, 3rem);
-      padding: 0 1rem;
-    }
-
-    .sub {
-      opacity: 0.75;
-      font-size: clamp(0.9rem, 1.4vw, 1.1rem);
-      margin-top: 0.5rem;
-      padding: 0 1rem;
-    }
-
-    /* Wrapper for title area */
-    .header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    /*
-      Projects section:
-      margin-top: auto pushes it down toward bottom,
-      giving you "more space" between title and buttons naturally.
-    */
-	
-	/* Projects wrapper: stop pushing to bottom */
-    .projects-wrap {
-	  width: 100%;
-	  margin-top: 10rem;
-	  display: flex;
-	  flex-direction: column;
-	  align-items: center;
-	  gap: 1.25rem;
-	  padding: 0;
-	}
-	
-    /* Square tile grid */
-    .projects {
-      width: min(600px, 60vw);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-      justify-items: center;
-      align-items: center;
-    }
-
-    .project-btn {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-	  background: #000;
-      border: 2px solid #fff;
-      color: #fff;
-
-      font-family: 'Ubuntu Mono', monospace;
-      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-      letter-spacing: 0.06em;
-
-      display: grid;
-      place-items: center;
-
-      cursor: pointer;
-      transition: transform 120ms ease, opacity 120ms ease, background 120ms ease;
-      padding: 1rem;
-      line-height: 1.2;
-    }
-
-    .project-btn:hover,
-    .project-btn:active {
-      transform: scale(1.03);
-      opacity: 0.95;
-      background: #050505;
-    }
-
-    .hint {
-      opacity: 0.55;
-      font-size: 0.95rem;
-      padding: 0 1rem;
-    }
-
-    /* Tablet / most phones: 2 columns */
-    @media (max-width: 900px) {
-      .projects {
-        grid-template-columns: repeat(2, 1fr);
-        width: min(700px, 92vw);
-      }
-      .page { padding: 11vh 0 6vh; }
-    }
-
-    /* Small phones: 1 column */
-    @media (max-width: 480px) {
-	  .projects {
-		grid-template-columns: 1fr;          /* keep 1 column */
-		width: min(220px, 70vw);             /* much smaller tiles */
-		gap: 0.6rem;
-	  }
-
-	  .project-btn {
-		border-width: 1px;                   /* thinner border */
-		font-size: 0.85rem;                  /* smaller text */
-		padding: 0.6rem;
-	  }
-
-	  .projects-wrap {
-		margin-top: 5rem;                    /* keep spacing reasonable */
-	  }
-	}
-	
-	/* Raindrop element */
-	i.rain-drop
-	{
-	  position: absolute;
-	  height: 200px;
-	  background: linear-gradient(transparent, #FFF);
-	  border-bottom-left-radius: 5px;
-	  border-bottom-right-radius: 5px;
-	  animation: animate 5s linear infinite;
-	  pointer-events: none;
-	}
-
-	@keyframes animate {
-	  0%   { transform: translateY(-200px); }
-	  100% { transform: translateY(calc(100vh + 200px)); }
-	}
-
-	/* Make sure your UI sits above rain */
-	.page, .home-btn { position: relative; z-index: 2; }
-  </style>
-</head>
-
-<body>
-  <a class="home-btn" href="../index.html" title="Back to home">⌂</a>
-
-  <main class="page">
-    <div class="header">
-      <h1>Three.js Projects</h1>
-      <div class="sub">Small experiments + learning builds</div>
-    </div>
-
-    <div class="projects-wrap">
-      <section class="projects">
-        <button class="project-btn" id="btn-rotating">Rotating<br>Image</button>
-        <button class="project-btn" id="btn-gallery">Orbiting<br>Gallery</button>
-        <button class="project-btn" id="btn-third">Solar<br>System</button>
-      </section>
-    </div>
-  </main>
-  
-  <script src="../rain.js"></script>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../project.css">
 
   <script>
-    document.getElementById("btn-rotating").addEventListener("click", () => {
-	  window.location.href = "./rotating-image/index.html";
-	});
-	
-    document.getElementById("btn-gallery").addEventListener("click", () => {
-	  window.location.href = "./orbiting-gallery/index.html";
-	});
-
-    document.getElementById("btn-third").addEventListener("click", () => {
-      console.log("Solar System clicked");
-    });
+    (() => {
+      const savedTheme = localStorage.getItem("portfolio-theme");
+      document.documentElement.dataset.theme = savedTheme || "dark";
+    })();
   </script>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+
+<body data-page="project">
+  <header class="site-header internal-header" id="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html#home" aria-label="Isaac Craig home">
+        <span class="brand-name">Isaac Craig</span>
+        <span class="brand-divider" aria-hidden="true">|</span>
+        <span class="brand-role">Gameplay Engineer | Unity Developer</span>
+      </a>
+
+      <div class="header-right">
+        <nav class="desktop-nav" aria-label="Primary navigation">
+          <a class="nav-link" data-section="home" href="../index.html#home">Home</a>
+          <a class="nav-link" data-section="about" href="../about.html">About Me</a>
+          <a class="nav-link active" data-section="projects" href="../index.html#projects">Projects</a>
+          <a class="nav-link" data-section="contact" href="../about.html#contact">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
+            <img class="header-icon-img theme-icon-img" src="../assets/images/logos/moon.svg" alt="" aria-hidden="true">
+          </button>
+
+          <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav">
+            <img class="header-icon-img menu-icon-img" src="../assets/images/logos/menu.svg" alt="" aria-hidden="true">
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <a href="../index.html#home">Home</a>
+      <a href="../about.html">About Me</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../about.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="project-page threejs-page">
+    <div class="project-detail-shell">
+      <a class="project-back" href="../index.html#projects">← Projects</a>
+
+      <div class="project-detail-head">
+        <div>
+          <h1 class="project-detail-title">Three.js Playground</h1>
+          <div class="project-meta">JavaScript | Three.js | WebGL | GLTF</div>
+          <p class="project-detail-summary">Realtime browser experiments with interactive 3D models, motion, lighting, and WebGL.</p>
+        </div>
+      </div>
+
+      <div class="project-story">
+
+        <section class="project-copy-section threejs-experiment threejs-model-experiment" id="model-gallery">
+          <div class="project-section-heading threejs-feature-heading">
+            <div>
+              <p class="project-section-label">Experiment 01</p>
+              <h2>Realtime Model Gallery</h2>
+            </div>
+            <p class="threejs-experiment-copy">Six GLB models rendered live in the browser, each with its own scene, camera, lighting, automatic rotation, and click-and-drag interaction.</p>
+          </div>
+
+          <div class="threejs-model-grid">
+            <div class="threejs-model-tile threejs-model-stage" data-model="../assets/models/3d/model-1.glb">
+              <span class="threejs-stage-loading">Loading model</span>
+              <span class="threejs-model-index">01</span>
+              <span class="threejs-tile-hint">Drag to rotate</span>
+            </div>
+
+            <div class="threejs-model-tile threejs-model-stage" data-model="../assets/models/3d/model-2.glb">
+              <span class="threejs-stage-loading">Loading model</span>
+              <span class="threejs-model-index">02</span>
+              <span class="threejs-tile-hint">Drag to rotate</span>
+            </div>
+
+            <div class="threejs-model-tile threejs-model-stage" data-model="../assets/models/3d/model-3.glb">
+              <span class="threejs-stage-loading">Loading model</span>
+              <span class="threejs-model-index">03</span>
+              <span class="threejs-tile-hint">Drag to rotate</span>
+            </div>
+
+            <div class="threejs-model-tile threejs-model-stage" data-model="../assets/models/3d/model-4.glb">
+              <span class="threejs-stage-loading">Loading model</span>
+              <span class="threejs-model-index">04</span>
+              <span class="threejs-tile-hint">Drag to rotate</span>
+            </div>
+
+            <div class="threejs-model-tile threejs-model-stage" data-model="../assets/models/3d/model-5.glb">
+              <span class="threejs-stage-loading">Loading model</span>
+              <span class="threejs-model-index">05</span>
+              <span class="threejs-tile-hint">Drag to rotate</span>
+            </div>
+
+            <div class="threejs-model-tile threejs-model-stage" data-model="../assets/models/3d/model-6.glb">
+              <span class="threejs-stage-loading">Loading model</span>
+              <span class="threejs-model-index">06</span>
+              <span class="threejs-tile-hint">Drag to rotate</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="project-copy-section threejs-experiment threejs-orbit-experiment" id="orbiting-gallery">
+          <div class="project-section-heading">
+            <div>
+              <p class="project-section-label">Experiment 02</p>
+              <h2>Orbiting Gallery</h2>
+            </div>
+            <p class="threejs-experiment-copy">A draggable ring of image cards with inertia, depth-based scaling, subtle bobbing, and camera-facing presentation.</p>
+          </div>
+
+          <div class="threejs-orbit-stage" id="threejs-orbit-stage">
+            <span class="threejs-stage-loading">Loading gallery</span>
+            <span class="threejs-stage-hint">Drag left or right</span>
+          </div>
+        </section>
+
+        <section class="project-copy-section threejs-next-section">
+          <p class="project-section-label">Next Experiments</p>
+          <h2>More realtime graphics ideas.</h2>
+
+          <div class="threejs-next-grid">
+            <div class="threejs-next-card">
+              <span>01</span>
+              <h3>Shader &amp; Materials Lab</h3>
+              <p>Custom material, uniform, lighting, and animated shader experiments.</p>
+            </div>
+
+            <div class="threejs-next-card">
+              <span>02</span>
+              <h3>Particle Playground</h3>
+              <p>Realtime particle motion, attraction, trails, and interactive forces.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="project-copy-section tools-section">
+          <p class="project-section-label">Tools &amp; Tech</p>
+          <h2>Built with.</h2>
+          <ul class="project-tool-list" aria-label="Tools and technology">
+            <li>Three.js</li>
+            <li>JavaScript</li>
+            <li>WebGL</li>
+            <li>GLTF / GLB</li>
+            <li>Blender</li>
+            <li>HTML / CSS</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer project-page-footer">
+    <div class="footer-inner">
+      <div class="footer-spacer" aria-hidden="true"></div>
+
+      <div class="footer-brand">
+        <span>© <span id="current-year">2026</span> Isaac Craig</span>
+        <img class="footer-ikes-logo" src="../assets/images/logos/ikes-games.png" alt="Ikes Games">
+      </div>
+
+      <a href="../index.html#projects">Back to Projects ↑</a>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+<script type="module" src="threejs-page.js"></script>
 </body>
 </html>
