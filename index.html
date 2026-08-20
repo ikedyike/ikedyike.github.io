@@ -25,28 +25,57 @@
   <link rel="stylesheet" href="style.css">
 
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Isaac Craig",
-      "url": "https://isaaccraig.com/",
-      "image": "https://isaaccraig.com/assets/images/isaac.jpg",
-      "jobTitle": "Gameplay Engineer",
-      "description": "Gameplay Engineer and Unity Developer specializing in C#, gameplay systems, multiplayer, and interactive experiences.",
-      "sameAs": [
-        "https://github.com/ikedyike",
-        "https://www.linkedin.com/in/isaac-craig-a98992228/",
-        "https://ikedyike.itch.io/"
-      ],
-      "knowsAbout": [
-        "Unity",
-        "C#",
-        "Gameplay Programming",
-        "Game Development",
-        "Multiplayer Game Development",
-        "Three.js"
-      ]
-    }
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://isaaccraig.com/#website",
+        "url": "https://isaaccraig.com/",
+        "name": "Isaac Craig",
+        "alternateName": "Isaac Craig Portfolio"
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://isaaccraig.com/#profile",
+        "url": "https://isaaccraig.com/",
+        "name": "Isaac Craig | Gameplay Engineer & Unity Developer",
+        "isPartOf": {
+          "@id": "https://isaaccraig.com/#website"
+        },
+        "mainEntity": {
+          "@id": "https://isaaccraig.com/#person"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://isaaccraig.com/#person",
+        "name": "Isaac Craig",
+        "url": "https://isaaccraig.com/",
+        "image": "https://isaaccraig.com/assets/images/isaac.jpg",
+        "jobTitle": "Gameplay Engineer",
+        "description": "Gameplay Engineer and Unity Developer specializing in C#, gameplay systems, multiplayer, and interactive experiences.",
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "University of California, Davis"
+        },
+        "sameAs": [
+          "https://github.com/ikedyike",
+          "https://www.linkedin.com/in/isaac-craig-a98992228/",
+          "https://ikedyike.itch.io/"
+        ],
+        "knowsAbout": [
+          "Unity",
+          "C#",
+          "Gameplay Programming",
+          "Game Development",
+          "Multiplayer Game Development",
+          "Three.js",
+          "WebGL"
+        ]
+      }
+    ]
+  }
   </script>
 
   <script>
